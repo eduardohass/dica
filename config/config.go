@@ -14,17 +14,25 @@ var (
 func Init() error {
 	var err error
 
+	// // Initialize SQLite
+	// db, err = InitializeSQLite()
+
 	// Initialize SQLite
-	db, err = InitializeSQLite()
+	db, err = InitializePostgres()
+
+	// if err != nil {
+	// 	return fmt.Errorf("Error initializing sqlite %v", err)
+	// }
 
 	if err != nil {
-		return fmt.Errorf("Error initilizing sqlite %v", err)
+		return fmt.Errorf("Error initializing postgres %v", err)
 	}
+
 	// return errors.New("fake error")
 	return nil
 }
 
-func GetSQLite() *gorm.DB {
+func GetDatabase() *gorm.DB {
 	return db
 }
 
