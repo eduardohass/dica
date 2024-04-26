@@ -41,6 +41,20 @@ services:
       - postgres
     restart: unless-stopped
 
+  api:
+    container_name: api_container
+    platform: linux/x86_64
+    image: eduhass/dica
+    environment:
+      CON_STR: "postgres://postgres:changeme@postgres_container:5432/dica"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - postgres
+    links: 
+      - postgres
+
   # api:
   #   container_name: api_container
   #   depends_on:

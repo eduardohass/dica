@@ -1,6 +1,8 @@
 package config
 
 import (
+	"os"
+
 	"github.com/eduardohass/dica/schemas"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -8,7 +10,8 @@ import (
 
 func InitializePostgres() (*gorm.DB, error) {
 	logger := GetLogger("postgres")
-	dbURL := "postgres://postgres:changeme@postgres_container:5432/dica"
+	// dbURL := "postgres://postgres:changeme@postgres_container:5432/dica"
+	dbURL := os.Getenv("CON_STR")
 
 	// Create DB and connect
 	db, err := gorm.Open(postgres.Open(dbURL), &gorm.Config{})
