@@ -43,9 +43,9 @@ services:
 
   api:
     container_name: api_container
-    image: eduhass/dica
-    environment:
-      CON_STR: "postgres://postgres:changeme@postgres_container:5432/dica"
+    image: eduhass/dica-api
+    # environment:
+    #   CON_STR: "postgres://postgres:changeme@postgres_container:5432/dica"
     depends_on:
       - postgres
     networks:
