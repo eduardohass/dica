@@ -48,8 +48,7 @@ services:
     environment:
       CON_STR: "postgres://postgres:changeme@postgres_container:5432/dica"
     depends_on:
-      postgres:
-        condition: service_healthy
+      - postgres
     networks:
       - postgres
     links: 
