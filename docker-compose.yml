@@ -43,7 +43,6 @@ services:
 
   api:
     container_name: api_container
-    platform: linux/x86_64
     image: eduhass/dica
     environment:
       CON_STR: "postgres://postgres:changeme@postgres_container:5432/dica"
