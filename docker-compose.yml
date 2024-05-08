@@ -1,17 +1,22 @@
 services:
-  # cassandra:
-  #   image: cassandra:latest
-  #   container_name: cassandra-container
-  #   ports:
-  #     - "9042:9042"
-  #   environment:
-  #     - CASSANDRA_USER=admin
-  #     - CASSANDRA_PASSWORD=admin
-  #   volumes:
-  #     - cassandra-data:/var/lib/cassandra
+  proxy:
+    container_name: nginx
+    image: nginx
+    volumes:
+      - type: bind
+        source: ./proxy/nginx.conf
+        target: /etc/nginx/conf.d/default.conf
+        read_only: true
+    ports:
+      - 80:80
+    networks:
+      - dica_net
+    depends_on:
+      - postgres
+      - api
 
   postgres:
-    container_name: postgres_container
+    container_name: postgres
     image: postgres
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
@@ -23,11 +28,11 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - postgres
+      - dica_net
     restart: unless-stopped
   
   pgadmin:
-    container_name: pgadmin_container
+    container_name: pgadmin
     image: dpage/pgadmin4
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
@@ -38,18 +43,16 @@ services:
     ports:
       - "${PGADMIN_PORT:-5050}:80"
     networks:
-      - postgres
+      - dica_net
     restart: unless-stopped
 
   api:
-    container_name: api_container
-    image: eduhass/dica-api
-    # environment:
-    #   CON_STR: "postgres://postgres:changeme@postgres_container:5432/dica"
+    container_name: dica-api
+    image: eduhass/dica-api:03
     depends_on:
       - postgres
     networks:
-      - postgres
+      - dica_net
     links: 
       - postgres
 
@@ -68,13 +71,9 @@ services:
   #     - postgres
 
 networks:
-  postgres:
+  dica_net:
     driver: bridge
 
 volumes:
   postgres:
   pgadmin:
-
-# volumes:
-#   cassandra-data:
-
