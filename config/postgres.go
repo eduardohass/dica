@@ -8,7 +8,7 @@ import (
 
 func InitializePostgres() (*gorm.DB, error) {
 	logger := GetLogger("postgres")
-	dbURL := "postgres://postgres:changeme@postgres_container:5432/dica"
+	dbURL := "postgres://postgres:changeme@postgres:5432/dica"
 	// dbURL := os.Getenv("CON_STR")
 
 	// Create DB and connect
