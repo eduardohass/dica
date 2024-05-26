@@ -49,6 +49,12 @@ services:
   api:
     container_name: dica-api
     image: eduhass/dica-api:03
+    environment:
+      DB_HOST: dicadb.cfa2g2iiaweu.us-east-1.rds.amazonaws.com
+      DB_USER: dica_admin
+      DB_PASSWORD: DicaAdmin321!#
+      DB_NAME: dica
+      DB_PORT: 5432
     depends_on:
       - postgres
     networks:
