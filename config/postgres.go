@@ -11,7 +11,6 @@ import (
 func InitializePostgres() (*gorm.DB, error) {
 	logger := GetLogger("postgres")
 	// dbURL := "postgres://postgres:changeme@postgres:5432/dica"
-	// dbURL := os.Getenv("CON_STR")
 	dbURL := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable TimeZone=America/Sao_Paulo",
 		os.Getenv("DB_HOST"),
 		os.Getenv("DB_USER"),

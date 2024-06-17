@@ -11,7 +11,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
 FROM alpine:latest
 WORKDIR /root/
 COPY --from=builder /app/main .
-ENV CON_STR $CON_STR
+# ENV CON_STR $CON_STR
 ARG PORT
 ENV PORT=8080
 EXPOSE $PORT

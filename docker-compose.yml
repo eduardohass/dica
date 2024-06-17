@@ -12,74 +12,91 @@ services:
     networks:
       - dica_net
     depends_on:
-      # - postgres
+      - postgres
       - api
 
-  api:
-    container_name: dica-api
-    image: eduhass/dica:latest
+  # 
+  # api:
+  #   container_name: dica-api
+  #   image: eduhass/dica:latest
+  #   environment:
+  #     DB_HOST: dica.cfa2g2iiaweu.us-east-1.rds.amazonaws.com
+  #     DB_USER: dica_admin
+  #     DB_PASSWORD: DicaAdmin321!#
+  #     DB_NAME: dica
+  #     DB_PORT: 5432
+  #   # depends_on:
+  #   #   - postgres
+  #   networks:
+  #     - dica_net
+  #   # links: 
+  #   #   - postgres
+    
+  postgres:
+    container_name: postgres
+    image: postgres
     environment:
-      DB_HOST: dica.cfa2g2iiaweu.us-east-1.rds.amazonaws.com
-      DB_USER: dica_admin
-      DB_PASSWORD: DicaAdmin321!#
-      DB_NAME: dica
-      DB_PORT: 5432
-    # depends_on:
-    #   - postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /data/postgres
+      POSTGRES_DB: dica
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
     networks:
       - dica_net
-    # links: 
-    #   - postgres
-    
-  # postgres:
-  #   container_name: postgres
-  #   image: postgres
-  #   environment:
-  #     POSTGRES_USER: ${POSTGRES_USER:-postgres}
-  #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
-  #     PGDATA: /data/postgres
-  #     POSTGRES_DB: dica
-  #   volumes:
-  #      - postgres:/data/postgres
-  #   ports:
-  #     - "5432:5432"
-  #   networks:
-  #     - dica_net
-  #   restart: unless-stopped
-  
-  # pgadmin:
-  #   container_name: pgadmin
-  #   image: dpage/pgadmin4
-  #   environment:
-  #     PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
-  #     PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
-  #     PGADMIN_CONFIG_SERVER_MODE: 'False'
-  #   volumes:
-  #      - pgadmin:/var/lib/pgadmin
-  #   ports:
-  #     - "${PGADMIN_PORT:-5050}:80"
-  #   networks:
-  #     - dica_net
-  #   restart: unless-stopped
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready", "-d", "db_prod"]
+      interval: 30s
+      timeout: 60s
+      retries: 5
+      start_period: 80s
 
-  # api:
-  #   container_name: api_container
-  #   depends_on:
-  #     postgres:
-  #       condition: service_healthy
-  #   build: .
-  #   image: dica-api:latest
-  #   ports:
-  #     - "8080:8080"
-  #   environment:
-  #     - GIN_MODE=release
-  #   links: 
-  #     - postgres
+  api:
+    container_name: api
+    depends_on:
+      postgres:
+        condition: service_healthy
+    build: .
+    image: dica-api:latest
+    ports:
+      - "8080:8080"
+    networks:
+      - dica_net
+    environment:
+      # GIN_MODE: release
+      DB_HOST: postgres
+      DB_USER: postgres
+      DB_PASSWORD: changeme
+      DB_NAME: dica
+      DB_PORT: 5432
+    links: 
+      - postgres
+  
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    networks:
+      - dica_net
+    restart: unless-stopped
+    depends_on:
+      - postgres
+
 
 networks:
   dica_net:
     driver: bridge
 
-# volumes:
-#   postgres:
-#   pgadmin:
+volumes:
+  postgres:
+  pgadmin:
