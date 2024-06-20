@@ -1,6 +1,7 @@
-package handler
+package opening
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/eduardohass/dica/schemas"
@@ -18,8 +19,11 @@ import (
 // @Failure 500 {object} ErrorResponse
 // @Router /openings [get]
 func ListOpeningsHandler(ctx *gin.Context) {
+	fmt.Println("DBG==List Openings")
 	openings := []schemas.Opening{}
+	fmt.Println("DBG==openings: ", openings)
 	if err := db.Find(&openings).Error; err != nil {
+		fmt.Println("DBG==Encontrou um erro ao listar os openings")
 		sendError(ctx, http.StatusInternalServerError, "error listing openings")
 		return
 	}

@@ -1,4 +1,38 @@
 definitions:
+  github_com_eduardohass_dica_handler_letter.ErrorResponse:
+    properties:
+      errorCode:
+        type: string
+      message:
+        type: string
+    type: object
+  github_com_eduardohass_dica_handler_opening.ErrorResponse:
+    properties:
+      errorCode:
+        type: string
+      message:
+        type: string
+    type: object
+  handler.CreateLetterRequest:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      id:
+        type: integer
+      type:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+  handler.CreateLetterResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.LetterResponse'
+      message:
+        type: string
+    type: object
   handler.CreateOpeningRequest:
     properties:
       company:
@@ -21,6 +55,13 @@ definitions:
       message:
         type: string
     type: object
+  handler.DeleteLetterResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.LetterResponse'
+      message:
+        type: string
+    type: object
   handler.DeleteOpeningResponse:
     properties:
       data:
@@ -28,10 +69,12 @@ definitions:
       message:
         type: string
     type: object
-  handler.ErrorResponse:
+  handler.ListLettersResponse:
     properties:
-      errorCode:
-        type: string
+      data:
+        items:
+          $ref: '#/definitions/schemas.LetterResponse'
+        type: array
       message:
         type: string
     type: object
@@ -44,10 +87,37 @@ definitions:
       message:
         type: string
     type: object
+  handler.ShowLetterResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.LetterResponse'
+      message:
+        type: string
+    type: object
   handler.ShowOpeningResponse:
     properties:
       data:
         $ref: '#/definitions/schemas.OpeningResponse'
+      message:
+        type: string
+    type: object
+  handler.UpdateLetterRequest:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      id:
+        type: integer
+      type:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+  handler.UpdateLetterResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.LetterResponse'
       message:
         type: string
     type: object
@@ -71,6 +141,19 @@ definitions:
       data:
         $ref: '#/definitions/schemas.OpeningResponse'
       message:
+        type: string
+    type: object
+  schemas.LetterResponse:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      id:
+        type: integer
+      type:
+        type: string
+      updatedAt:
         type: string
     type: object
   schemas.OpeningResponse:
@@ -99,6 +182,149 @@ definitions:
 info:
   contact: {}
 paths:
+  /letter:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a job letter
+      parameters:
+      - description: Letter identification
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.DeleteLetterResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse'
+      summary: Delete letter
+      tags:
+      - Letters
+    get:
+      consumes:
+      - application/json
+      description: Show a job letter
+      parameters:
+      - description: Letter identification
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.ShowLetterResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse'
+      summary: Show letter
+      tags:
+      - Letters
+    post:
+      consumes:
+      - application/json
+      description: Create a new job letter
+      parameters:
+      - description: Request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/handler.CreateLetterRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.CreateLetterResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse'
+      summary: Create letter
+      tags:
+      - Letters
+    put:
+      consumes:
+      - application/json
+      description: Update a job letter
+      parameters:
+      - description: Letter Identification
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: Letter data to Update
+        in: body
+        name: letter
+        required: true
+        schema:
+          $ref: '#/definitions/handler.UpdateLetterRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.UpdateLetterResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse'
+      summary: Update letter
+      tags:
+      - Letters
+  /letters:
+    get:
+      consumes:
+      - application/json
+      description: List all job letters
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.ListLettersResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse'
+      summary: List letters
+      tags:
+      - Letters
   /opening:
     delete:
       consumes:
@@ -120,11 +346,11 @@ paths:
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/handler.ErrorResponse'
+            $ref: '#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse'
         "404":
           description: Not Found
           schema:
-            $ref: '#/definitions/handler.ErrorResponse'
+            $ref: '#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse'
       summary: Delete opening
       tags:
       - Openings
@@ -148,11 +374,11 @@ paths:
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/handler.ErrorResponse'
+            $ref: '#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse'
         "404":
           description: Not Found
           schema:
-            $ref: '#/definitions/handler.ErrorResponse'
+            $ref: '#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse'
       summary: Show opening
       tags:
       - Openings
@@ -177,11 +403,11 @@ paths:
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/handler.ErrorResponse'
+            $ref: '#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse'
         "500":
           description: Internal Server Error
           schema:
-            $ref: '#/definitions/handler.ErrorResponse'
+            $ref: '#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse'
       summary: Create opening
       tags:
       - Openings
@@ -211,15 +437,15 @@ paths:
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/handler.ErrorResponse'
+            $ref: '#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse'
         "404":
           description: Not Found
           schema:
-            $ref: '#/definitions/handler.ErrorResponse'
+            $ref: '#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse'
         "500":
           description: Internal Server Error
           schema:
-            $ref: '#/definitions/handler.ErrorResponse'
+            $ref: '#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse'
       summary: Update opening
       tags:
       - Openings
@@ -238,7 +464,7 @@ paths:
         "500":
           description: Internal Server Error
           schema:
-            $ref: '#/definitions/handler.ErrorResponse'
+            $ref: '#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse'
       summary: List openings
       tags:
       - Openings

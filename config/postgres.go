@@ -1,11 +1,12 @@
 package config
 
 import (
+	"fmt"
+	"os"
+
 	"github.com/eduardohass/dica/schemas"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	"os"
-	"fmt"
 )
 
 func InitializePostgres() (*gorm.DB, error) {
@@ -25,12 +26,21 @@ func InitializePostgres() (*gorm.DB, error) {
 		logger.Errorf("postgres opening error %v", err)
 		return nil, err
 	}
-	// Migrate the schema
+	// Migrate the opening schema
 	err = db.AutoMigrate(&schemas.Opening{})
 	if err != nil {
-		logger.Errorf("postgres automigration error %v", err)
+		logger.Errorf("postgres automigration error - opening %v", err)
 		return nil, err
 	}
+
+	// Migrate the letter schema
+	err = db.AutoMigrate(&schemas.Letter{})
+	if err != nil {
+		logger.Errorf("postgres automigration error - letter %v", err)
+		return nil, err
+	}
+	fmt.Println("DBG==Conectou no DB")
+	fmt.Println("DBG==db: ", db)
 	// Return the DB
 	return db, nil
 }
