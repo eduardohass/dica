@@ -15,8 +15,8 @@ import (
 // @Tags Questions
 // @Accept json
 // @Produce json
-// @Param request body CreateQuestionRequest true "Request body"
-// @Success 200 {object} CreateQuestionResponse
+// @Param request body CreateQuestionAnswerRequest true "Request body"
+// @Success 200 {object} CreateQuestionAnswerRequest
 // @Failure 400 {object} ErrorResponse
 // @Failure 500 {object} ErrorResponse
 // @Router /questionAnswer [post]

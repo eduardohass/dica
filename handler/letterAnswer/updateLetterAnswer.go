@@ -16,7 +16,7 @@ import (
 // @Accept json
 // @Produce json
 // @Param id query string true "Letter Identification"
-// @Param letterAnswer body UpdateLetterRequest true "Letter data to Update"
+// @Param letterAnswer body UpdateLetterAnswerRequest true "Letter data to Update"
 // @Success 200 {object} UpdateLetterResponse
 // @Failure 400 {object} ErrorResponse
 // @Failure 404 {object} ErrorResponse

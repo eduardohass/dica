@@ -15,6 +15,222 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/answer": {
+            "get": {
+                "description": "Show a job answer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Answers"
+                ],
+                "summary": "Show answer",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Answer identification",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/answer.ShowAnswerResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/answer.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/answer.ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update a job answer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Answers"
+                ],
+                "summary": "Update answer",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Answer Identification",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "description": "Answer data to Update",
+                        "name": "answer",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/answer.UpdateAnswerRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/answer.UpdateAnswerResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/answer.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/answer.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/answer.ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a new job answer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Answers"
+                ],
+                "summary": "Create answer",
+                "parameters": [
+                    {
+                        "description": "Request body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/answer.CreateAnswerRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/answer.CreateAnswerResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/answer.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/answer.ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete a job answer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Answers"
+                ],
+                "summary": "Delete answer",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Answer identification",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/answer.DeleteAnswerResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/answer.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/answer.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/answers": {
+            "get": {
+                "description": "List all job answers",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Answers"
+                ],
+                "summary": "List answers",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/answer.ListAnswersResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/answer.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
         "/letter": {
             "get": {
                 "description": "Show a job letter",
@@ -41,19 +257,19 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/handler.ShowLetterResponse"
+                            "$ref": "#/definitions/letter.ShowLetterResponse"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse"
+                            "$ref": "#/definitions/letter.ErrorResponse"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse"
+                            "$ref": "#/definitions/letter.ErrorResponse"
                         }
                     }
                 }
@@ -84,7 +300,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/handler.UpdateLetterRequest"
+                            "$ref": "#/definitions/letter.UpdateLetterRequest"
                         }
                     }
                 ],
@@ -92,25 +308,25 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/handler.UpdateLetterResponse"
+                            "$ref": "#/definitions/letter.UpdateLetterResponse"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse"
+                            "$ref": "#/definitions/letter.ErrorResponse"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse"
+                            "$ref": "#/definitions/letter.ErrorResponse"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse"
+                            "$ref": "#/definitions/letter.ErrorResponse"
                         }
                     }
                 }
@@ -134,7 +350,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/handler.CreateLetterRequest"
+                            "$ref": "#/definitions/letter.CreateLetterRequest"
                         }
                     }
                 ],
@@ -142,19 +358,19 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/handler.CreateLetterResponse"
+                            "$ref": "#/definitions/letter.CreateLetterResponse"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse"
+                            "$ref": "#/definitions/letter.ErrorResponse"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse"
+                            "$ref": "#/definitions/letter.ErrorResponse"
                         }
                     }
                 }
@@ -184,19 +400,235 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/handler.DeleteLetterResponse"
+                            "$ref": "#/definitions/letter.DeleteLetterResponse"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse"
+                            "$ref": "#/definitions/letter.ErrorResponse"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse"
+                            "$ref": "#/definitions/letter.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/letterAnswer": {
+            "get": {
+                "description": "Show a job letterAnswer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Letters"
+                ],
+                "summary": "Show letterAnswer",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Letter identification",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/letterAnswer.ShowLetterResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/letterAnswer.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/letterAnswer.ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update a job letterAnswer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Letters"
+                ],
+                "summary": "Update letterAnswer",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Letter Identification",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "description": "Letter data to Update",
+                        "name": "letterAnswer",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/letterAnswer.UpdateLetterAnswerRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/letterAnswer.UpdateLetterResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/letterAnswer.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/letterAnswer.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/letterAnswer.ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a new job letterAnswer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Letters"
+                ],
+                "summary": "Create letterAnswer",
+                "parameters": [
+                    {
+                        "description": "Request body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/letterAnswer.CreateLetterAnswerRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/letterAnswer.CreateLetterResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/letterAnswer.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/letterAnswer.ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete a job letterAnswer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Letters"
+                ],
+                "summary": "Delete letterAnswer",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Letter identification",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/letterAnswer.DeleteLetterResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/letterAnswer.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/letterAnswer.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/letterAnswers": {
+            "get": {
+                "description": "List all job letterAnswers",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Letters"
+                ],
+                "summary": "List letterAnswers",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/letterAnswer.ListLettersResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/letterAnswer.ErrorResponse"
                         }
                     }
                 }
@@ -219,13 +651,13 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/handler.ListLettersResponse"
+                            "$ref": "#/definitions/letter.ListLettersResponse"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse"
+                            "$ref": "#/definitions/letter.ErrorResponse"
                         }
                     }
                 }
@@ -257,19 +689,19 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/handler.ShowOpeningResponse"
+                            "$ref": "#/definitions/opening.ShowOpeningResponse"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse"
+                            "$ref": "#/definitions/opening.ErrorResponse"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse"
+                            "$ref": "#/definitions/opening.ErrorResponse"
                         }
                     }
                 }
@@ -300,7 +732,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/handler.UpdateOpeningRequest"
+                            "$ref": "#/definitions/opening.UpdateOpeningRequest"
                         }
                     }
                 ],
@@ -308,25 +740,25 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/handler.UpdateOpeningResponse"
+                            "$ref": "#/definitions/opening.UpdateOpeningResponse"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse"
+                            "$ref": "#/definitions/opening.ErrorResponse"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse"
+                            "$ref": "#/definitions/opening.ErrorResponse"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse"
+                            "$ref": "#/definitions/opening.ErrorResponse"
                         }
                     }
                 }
@@ -350,7 +782,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/handler.CreateOpeningRequest"
+                            "$ref": "#/definitions/opening.CreateOpeningRequest"
                         }
                     }
                 ],
@@ -358,19 +790,19 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/handler.CreateOpeningResponse"
+                            "$ref": "#/definitions/opening.CreateOpeningResponse"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse"
+                            "$ref": "#/definitions/opening.ErrorResponse"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse"
+                            "$ref": "#/definitions/opening.ErrorResponse"
                         }
                     }
                 }
@@ -400,19 +832,19 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/handler.DeleteOpeningResponse"
+                            "$ref": "#/definitions/opening.DeleteOpeningResponse"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse"
+                            "$ref": "#/definitions/opening.ErrorResponse"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse"
+                            "$ref": "#/definitions/opening.ErrorResponse"
                         }
                     }
                 }
@@ -435,13 +867,661 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/handler.ListOpeningsResponse"
+                            "$ref": "#/definitions/opening.ListOpeningsResponse"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse"
+                            "$ref": "#/definitions/opening.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/question": {
+            "get": {
+                "description": "Show a job question",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Questions"
+                ],
+                "summary": "Show question",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Question identification",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/question.ShowQuestionResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/question.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/question.ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update a job question",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Questions"
+                ],
+                "summary": "Update question",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Question Identification",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "description": "Question data to Update",
+                        "name": "question",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/question.UpdateQuestionRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/question.UpdateQuestionResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/question.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/question.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/question.ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a new job question",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Questions"
+                ],
+                "summary": "Create question",
+                "parameters": [
+                    {
+                        "description": "Request body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/question.CreateQuestionRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/question.CreateQuestionResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/question.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/question.ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete a job question",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Questions"
+                ],
+                "summary": "Delete question",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Question identification",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/question.DeleteQuestionResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/question.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/question.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/questionAnswer": {
+            "get": {
+                "description": "Show a job questionAnswer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Questions"
+                ],
+                "summary": "Show questionAnswer",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Question identification",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/questionAnswer.ShowQuestionResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/questionAnswer.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/questionAnswer.ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update a job questionAnswer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Questions"
+                ],
+                "summary": "Update questionAnswer",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Question Identification",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "description": "Question data to Update",
+                        "name": "questionAnswer",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/questionAnswer.UpdateQuestionAnswerRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/questionAnswer.UpdateQuestionResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/questionAnswer.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/questionAnswer.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/questionAnswer.ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a new job questionAnswer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Questions"
+                ],
+                "summary": "Create questionAnswer",
+                "parameters": [
+                    {
+                        "description": "Request body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/questionAnswer.CreateQuestionAnswerRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/questionAnswer.CreateQuestionAnswerRequest"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/questionAnswer.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/questionAnswer.ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete a job questionAnswer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Questions"
+                ],
+                "summary": "Delete questionAnswer",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Question identification",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/questionAnswer.DeleteQuestionResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/questionAnswer.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/questionAnswer.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/questionAnswers": {
+            "get": {
+                "description": "List all job questionAnswers",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Questions"
+                ],
+                "summary": "List questionAnswers",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/questionAnswer.ListQuestionsResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/questionAnswer.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/questions": {
+            "get": {
+                "description": "List all job questions",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Questions"
+                ],
+                "summary": "List questions",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/question.ListQuestionsResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/question.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/userAnswer": {
+            "get": {
+                "description": "Show a job userAnswer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "UserAnswers"
+                ],
+                "summary": "Show userAnswer",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "UserAnswer identification",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.ShowUserAnswerResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update a job userAnswer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "UserAnswers"
+                ],
+                "summary": "Update userAnswer",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "UserAnswer Identification",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "description": "UserAnswer data to Update",
+                        "name": "userAnswer",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.UpdateUserAnswerRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.UpdateUserAnswerResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a new job userAnswer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "UserAnswers"
+                ],
+                "summary": "Create userAnswer",
+                "parameters": [
+                    {
+                        "description": "Request body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.CreateUserAnswerRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.CreateUserAnswerResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete a job userAnswer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "UserAnswers"
+                ],
+                "summary": "Delete userAnswer",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "UserAnswer identification",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.DeleteUserAnswerResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/userAnswers": {
+            "get": {
+                "description": "List all job userAnswers",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "UserAnswers"
+                ],
+                "summary": "List userAnswers",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.ListUserAnswersResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.ErrorResponse"
                         }
                     }
                 }
@@ -449,7 +1529,37 @@ const docTemplate = `{
         }
     },
     "definitions": {
-        "github_com_eduardohass_dica_handler_letter.ErrorResponse": {
+        "answer.CreateAnswerRequest": {
+            "type": "object",
+            "properties": {
+                "answer": {
+                    "type": "string"
+                }
+            }
+        },
+        "answer.CreateAnswerResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.AnswerResponse"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "answer.DeleteAnswerResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.AnswerResponse"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "answer.ErrorResponse": {
             "type": "object",
             "properties": {
                 "errorCode": {
@@ -460,38 +1570,59 @@ const docTemplate = `{
                 }
             }
         },
-        "github_com_eduardohass_dica_handler_opening.ErrorResponse": {
+        "answer.ListAnswersResponse": {
             "type": "object",
             "properties": {
-                "errorCode": {
-                    "type": "string"
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/schemas.AnswerResponse"
+                    }
                 },
                 "message": {
                     "type": "string"
                 }
             }
         },
-        "handler.CreateLetterRequest": {
+        "answer.ShowAnswerResponse": {
             "type": "object",
             "properties": {
-                "createdAt": {
+                "data": {
+                    "$ref": "#/definitions/schemas.AnswerResponse"
+                },
+                "message": {
                     "type": "string"
-                },
-                "deletedAt": {
+                }
+            }
+        },
+        "answer.UpdateAnswerRequest": {
+            "type": "object",
+            "properties": {
+                "answer": {
                     "type": "string"
+                }
+            }
+        },
+        "answer.UpdateAnswerResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.AnswerResponse"
                 },
-                "id": {
-                    "type": "integer"
-                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "letter.CreateLetterRequest": {
+            "type": "object",
+            "properties": {
                 "type": {
                     "type": "string"
-                },
-                "updatedAt": {
-                    "type": "string"
                 }
             }
         },
-        "handler.CreateLetterResponse": {
+        "letter.CreateLetterResponse": {
             "type": "object",
             "properties": {
                 "data": {
@@ -502,41 +1633,7 @@ const docTemplate = `{
                 }
             }
         },
-        "handler.CreateOpeningRequest": {
-            "type": "object",
-            "properties": {
-                "company": {
-                    "type": "string"
-                },
-                "link": {
-                    "type": "string"
-                },
-                "location": {
-                    "type": "string"
-                },
-                "remote": {
-                    "type": "boolean"
-                },
-                "role": {
-                    "type": "string"
-                },
-                "salary": {
-                    "type": "integer"
-                }
-            }
-        },
-        "handler.CreateOpeningResponse": {
-            "type": "object",
-            "properties": {
-                "data": {
-                    "$ref": "#/definitions/schemas.OpeningResponse"
-                },
-                "message": {
-                    "type": "string"
-                }
-            }
-        },
-        "handler.DeleteLetterResponse": {
+        "letter.DeleteLetterResponse": {
             "type": "object",
             "properties": {
                 "data": {
@@ -547,18 +1644,18 @@ const docTemplate = `{
                 }
             }
         },
-        "handler.DeleteOpeningResponse": {
+        "letter.ErrorResponse": {
             "type": "object",
             "properties": {
-                "data": {
-                    "$ref": "#/definitions/schemas.OpeningResponse"
+                "errorCode": {
+                    "type": "string"
                 },
                 "message": {
                     "type": "string"
                 }
             }
         },
-        "handler.ListLettersResponse": {
+        "letter.ListLettersResponse": {
             "type": "object",
             "properties": {
                 "data": {
@@ -572,13 +1669,87 @@ const docTemplate = `{
                 }
             }
         },
-        "handler.ListOpeningsResponse": {
+        "letter.ShowLetterResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.LetterResponse"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "letter.UpdateLetterRequest": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "letter.UpdateLetterResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.LetterResponse"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "letterAnswer.CreateLetterAnswerRequest": {
+            "type": "object",
+            "properties": {
+                "idAnswer": {
+                    "type": "integer"
+                },
+                "idLetter": {
+                    "type": "integer"
+                }
+            }
+        },
+        "letterAnswer.CreateLetterResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.LetterResponse"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "letterAnswer.DeleteLetterResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.LetterResponse"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "letterAnswer.ErrorResponse": {
+            "type": "object",
+            "properties": {
+                "errorCode": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "letterAnswer.ListLettersResponse": {
             "type": "object",
             "properties": {
                 "data": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/schemas.OpeningResponse"
+                        "$ref": "#/definitions/schemas.LetterResponse"
                     }
                 },
                 "message": {
@@ -586,7 +1757,7 @@ const docTemplate = `{
                 }
             }
         },
-        "handler.ShowLetterResponse": {
+        "letterAnswer.ShowLetterResponse": {
             "type": "object",
             "properties": {
                 "data": {
@@ -597,38 +1768,18 @@ const docTemplate = `{
                 }
             }
         },
-        "handler.ShowOpeningResponse": {
+        "letterAnswer.UpdateLetterAnswerRequest": {
             "type": "object",
             "properties": {
-                "data": {
-                    "$ref": "#/definitions/schemas.OpeningResponse"
-                },
-                "message": {
-                    "type": "string"
-                }
-            }
-        },
-        "handler.UpdateLetterRequest": {
-            "type": "object",
-            "properties": {
-                "createdAt": {
-                    "type": "string"
-                },
-                "deletedAt": {
-                    "type": "string"
-                },
-                "id": {
+                "idAnswer": {
                     "type": "integer"
                 },
-                "type": {
-                    "type": "string"
-                },
-                "updatedAt": {
-                    "type": "string"
+                "idLetter": {
+                    "type": "integer"
                 }
             }
         },
-        "handler.UpdateLetterResponse": {
+        "letterAnswer.UpdateLetterResponse": {
             "type": "object",
             "properties": {
                 "data": {
@@ -639,7 +1790,7 @@ const docTemplate = `{
                 }
             }
         },
-        "handler.UpdateOpeningRequest": {
+        "opening.CreateOpeningRequest": {
             "type": "object",
             "properties": {
                 "company": {
@@ -662,13 +1813,297 @@ const docTemplate = `{
                 }
             }
         },
-        "handler.UpdateOpeningResponse": {
+        "opening.CreateOpeningResponse": {
             "type": "object",
             "properties": {
                 "data": {
                     "$ref": "#/definitions/schemas.OpeningResponse"
                 },
                 "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "opening.DeleteOpeningResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.OpeningResponse"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "opening.ErrorResponse": {
+            "type": "object",
+            "properties": {
+                "errorCode": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "opening.ListOpeningsResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/schemas.OpeningResponse"
+                    }
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "opening.ShowOpeningResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.OpeningResponse"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "opening.UpdateOpeningRequest": {
+            "type": "object",
+            "properties": {
+                "company": {
+                    "type": "string"
+                },
+                "link": {
+                    "type": "string"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "remote": {
+                    "type": "boolean"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "salary": {
+                    "type": "integer"
+                }
+            }
+        },
+        "opening.UpdateOpeningResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.OpeningResponse"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "question.CreateQuestionRequest": {
+            "type": "object",
+            "properties": {
+                "question": {
+                    "type": "string"
+                }
+            }
+        },
+        "question.CreateQuestionResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.QuestionResponse"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "question.DeleteQuestionResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.QuestionResponse"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "question.ErrorResponse": {
+            "type": "object",
+            "properties": {
+                "errorCode": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "question.ListQuestionsResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/schemas.QuestionResponse"
+                    }
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "question.ShowQuestionResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.QuestionResponse"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "question.UpdateQuestionRequest": {
+            "type": "object",
+            "properties": {
+                "question": {
+                    "type": "string"
+                }
+            }
+        },
+        "question.UpdateQuestionResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.QuestionResponse"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "questionAnswer.CreateQuestionAnswerRequest": {
+            "type": "object",
+            "properties": {
+                "idAnswer1": {
+                    "type": "integer"
+                },
+                "idAnswer2": {
+                    "type": "integer"
+                },
+                "idAnswer3": {
+                    "type": "integer"
+                },
+                "idAnswer4": {
+                    "type": "integer"
+                },
+                "idQuestion": {
+                    "type": "integer"
+                }
+            }
+        },
+        "questionAnswer.DeleteQuestionResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.QuestionResponse"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "questionAnswer.ErrorResponse": {
+            "type": "object",
+            "properties": {
+                "errorCode": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "questionAnswer.ListQuestionsResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/schemas.QuestionResponse"
+                    }
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "questionAnswer.ShowQuestionResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.QuestionResponse"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "questionAnswer.UpdateQuestionAnswerRequest": {
+            "type": "object",
+            "properties": {
+                "idAnswer1": {
+                    "type": "integer"
+                },
+                "idAnswer2": {
+                    "type": "integer"
+                },
+                "idAnswer3": {
+                    "type": "integer"
+                },
+                "idAnswer4": {
+                    "type": "integer"
+                },
+                "idQuestion": {
+                    "type": "integer"
+                }
+            }
+        },
+        "questionAnswer.UpdateQuestionResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.QuestionResponse"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "schemas.AnswerResponse": {
+            "type": "object",
+            "properties": {
+                "answer": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "deletedAt": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "updatedAt": {
                     "type": "string"
                 }
             }
@@ -724,6 +2159,167 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "updatedAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "schemas.QuestionResponse": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "deletedAt": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "question": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "schemas.UserAnswerResponse": {
+            "type": "object",
+            "properties": {
+                "IdQuestion": {
+                    "type": "integer"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "deletedAt": {
+                    "type": "string"
+                },
+                "idAnswer1": {
+                    "type": "integer"
+                },
+                "idAnswer2": {
+                    "type": "integer"
+                },
+                "idAnswer3": {
+                    "type": "integer"
+                },
+                "idAnswer4": {
+                    "type": "integer"
+                },
+                "updatedAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "userAnswer.CreateUserAnswerRequest": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "idAnswer1": {
+                    "type": "integer"
+                },
+                "idAnswer2": {
+                    "type": "integer"
+                },
+                "idAnswer3": {
+                    "type": "integer"
+                },
+                "idAnswer4": {
+                    "type": "integer"
+                },
+                "idQuestion": {
+                    "type": "integer"
+                }
+            }
+        },
+        "userAnswer.CreateUserAnswerResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.UserAnswerResponse"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "userAnswer.DeleteUserAnswerResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.UserAnswerResponse"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "userAnswer.ErrorResponse": {
+            "type": "object",
+            "properties": {
+                "errorCode": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "userAnswer.ListUserAnswersResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/schemas.UserAnswerResponse"
+                    }
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "userAnswer.ShowUserAnswerResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.UserAnswerResponse"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "userAnswer.UpdateUserAnswerRequest": {
+            "type": "object",
+            "properties": {
+                "idAnswer1": {
+                    "type": "integer"
+                },
+                "idAnswer2": {
+                    "type": "integer"
+                },
+                "idAnswer3": {
+                    "type": "integer"
+                },
+                "idAnswer4": {
+                    "type": "integer"
+                },
+                "idQuestion": {
+                    "type": "integer"
+                }
+            }
+        },
+        "userAnswer.UpdateUserAnswerResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.UserAnswerResponse"
+                },
+                "message": {
                     "type": "string"
                 }
             }

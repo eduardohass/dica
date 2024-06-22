@@ -1,75 +1,85 @@
 definitions:
-  github_com_eduardohass_dica_handler_letter.ErrorResponse:
+  answer.CreateAnswerRequest:
+    properties:
+      answer:
+        type: string
+    type: object
+  answer.CreateAnswerResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.AnswerResponse'
+      message:
+        type: string
+    type: object
+  answer.DeleteAnswerResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.AnswerResponse'
+      message:
+        type: string
+    type: object
+  answer.ErrorResponse:
     properties:
       errorCode:
         type: string
       message:
         type: string
     type: object
-  github_com_eduardohass_dica_handler_opening.ErrorResponse:
+  answer.ListAnswersResponse:
     properties:
-      errorCode:
-        type: string
+      data:
+        items:
+          $ref: '#/definitions/schemas.AnswerResponse'
+        type: array
       message:
         type: string
     type: object
-  handler.CreateLetterRequest:
+  answer.ShowAnswerResponse:
     properties:
-      createdAt:
+      data:
+        $ref: '#/definitions/schemas.AnswerResponse'
+      message:
         type: string
-      deletedAt:
+    type: object
+  answer.UpdateAnswerRequest:
+    properties:
+      answer:
         type: string
-      id:
-        type: integer
+    type: object
+  answer.UpdateAnswerResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.AnswerResponse'
+      message:
+        type: string
+    type: object
+  letter.CreateLetterRequest:
+    properties:
       type:
         type: string
-      updatedAt:
-        type: string
     type: object
-  handler.CreateLetterResponse:
+  letter.CreateLetterResponse:
     properties:
       data:
         $ref: '#/definitions/schemas.LetterResponse'
       message:
         type: string
     type: object
-  handler.CreateOpeningRequest:
-    properties:
-      company:
-        type: string
-      link:
-        type: string
-      location:
-        type: string
-      remote:
-        type: boolean
-      role:
-        type: string
-      salary:
-        type: integer
-    type: object
-  handler.CreateOpeningResponse:
-    properties:
-      data:
-        $ref: '#/definitions/schemas.OpeningResponse'
-      message:
-        type: string
-    type: object
-  handler.DeleteLetterResponse:
+  letter.DeleteLetterResponse:
     properties:
       data:
         $ref: '#/definitions/schemas.LetterResponse'
       message:
         type: string
     type: object
-  handler.DeleteOpeningResponse:
+  letter.ErrorResponse:
     properties:
-      data:
-        $ref: '#/definitions/schemas.OpeningResponse'
+      errorCode:
+        type: string
       message:
         type: string
     type: object
-  handler.ListLettersResponse:
+  letter.ListLettersResponse:
     properties:
       data:
         items:
@@ -78,50 +88,84 @@ definitions:
       message:
         type: string
     type: object
-  handler.ListOpeningsResponse:
+  letter.ShowLetterResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.LetterResponse'
+      message:
+        type: string
+    type: object
+  letter.UpdateLetterRequest:
+    properties:
+      type:
+        type: string
+    type: object
+  letter.UpdateLetterResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.LetterResponse'
+      message:
+        type: string
+    type: object
+  letterAnswer.CreateLetterAnswerRequest:
+    properties:
+      idAnswer:
+        type: integer
+      idLetter:
+        type: integer
+    type: object
+  letterAnswer.CreateLetterResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.LetterResponse'
+      message:
+        type: string
+    type: object
+  letterAnswer.DeleteLetterResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.LetterResponse'
+      message:
+        type: string
+    type: object
+  letterAnswer.ErrorResponse:
+    properties:
+      errorCode:
+        type: string
+      message:
+        type: string
+    type: object
+  letterAnswer.ListLettersResponse:
     properties:
       data:
         items:
-          $ref: '#/definitions/schemas.OpeningResponse'
+          $ref: '#/definitions/schemas.LetterResponse'
         type: array
       message:
         type: string
     type: object
-  handler.ShowLetterResponse:
+  letterAnswer.ShowLetterResponse:
     properties:
       data:
         $ref: '#/definitions/schemas.LetterResponse'
       message:
         type: string
     type: object
-  handler.ShowOpeningResponse:
+  letterAnswer.UpdateLetterAnswerRequest:
     properties:
-      data:
-        $ref: '#/definitions/schemas.OpeningResponse'
-      message:
-        type: string
-    type: object
-  handler.UpdateLetterRequest:
-    properties:
-      createdAt:
-        type: string
-      deletedAt:
-        type: string
-      id:
+      idAnswer:
         type: integer
-      type:
-        type: string
-      updatedAt:
-        type: string
+      idLetter:
+        type: integer
     type: object
-  handler.UpdateLetterResponse:
+  letterAnswer.UpdateLetterResponse:
     properties:
       data:
         $ref: '#/definitions/schemas.LetterResponse'
       message:
         type: string
     type: object
-  handler.UpdateOpeningRequest:
+  opening.CreateOpeningRequest:
     properties:
       company:
         type: string
@@ -136,11 +180,193 @@ definitions:
       salary:
         type: integer
     type: object
-  handler.UpdateOpeningResponse:
+  opening.CreateOpeningResponse:
     properties:
       data:
         $ref: '#/definitions/schemas.OpeningResponse'
       message:
+        type: string
+    type: object
+  opening.DeleteOpeningResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.OpeningResponse'
+      message:
+        type: string
+    type: object
+  opening.ErrorResponse:
+    properties:
+      errorCode:
+        type: string
+      message:
+        type: string
+    type: object
+  opening.ListOpeningsResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/schemas.OpeningResponse'
+        type: array
+      message:
+        type: string
+    type: object
+  opening.ShowOpeningResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.OpeningResponse'
+      message:
+        type: string
+    type: object
+  opening.UpdateOpeningRequest:
+    properties:
+      company:
+        type: string
+      link:
+        type: string
+      location:
+        type: string
+      remote:
+        type: boolean
+      role:
+        type: string
+      salary:
+        type: integer
+    type: object
+  opening.UpdateOpeningResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.OpeningResponse'
+      message:
+        type: string
+    type: object
+  question.CreateQuestionRequest:
+    properties:
+      question:
+        type: string
+    type: object
+  question.CreateQuestionResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.QuestionResponse'
+      message:
+        type: string
+    type: object
+  question.DeleteQuestionResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.QuestionResponse'
+      message:
+        type: string
+    type: object
+  question.ErrorResponse:
+    properties:
+      errorCode:
+        type: string
+      message:
+        type: string
+    type: object
+  question.ListQuestionsResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/schemas.QuestionResponse'
+        type: array
+      message:
+        type: string
+    type: object
+  question.ShowQuestionResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.QuestionResponse'
+      message:
+        type: string
+    type: object
+  question.UpdateQuestionRequest:
+    properties:
+      question:
+        type: string
+    type: object
+  question.UpdateQuestionResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.QuestionResponse'
+      message:
+        type: string
+    type: object
+  questionAnswer.CreateQuestionAnswerRequest:
+    properties:
+      idAnswer1:
+        type: integer
+      idAnswer2:
+        type: integer
+      idAnswer3:
+        type: integer
+      idAnswer4:
+        type: integer
+      idQuestion:
+        type: integer
+    type: object
+  questionAnswer.DeleteQuestionResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.QuestionResponse'
+      message:
+        type: string
+    type: object
+  questionAnswer.ErrorResponse:
+    properties:
+      errorCode:
+        type: string
+      message:
+        type: string
+    type: object
+  questionAnswer.ListQuestionsResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/schemas.QuestionResponse'
+        type: array
+      message:
+        type: string
+    type: object
+  questionAnswer.ShowQuestionResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.QuestionResponse'
+      message:
+        type: string
+    type: object
+  questionAnswer.UpdateQuestionAnswerRequest:
+    properties:
+      idAnswer1:
+        type: integer
+      idAnswer2:
+        type: integer
+      idAnswer3:
+        type: integer
+      idAnswer4:
+        type: integer
+      idQuestion:
+        type: integer
+    type: object
+  questionAnswer.UpdateQuestionResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.QuestionResponse'
+      message:
+        type: string
+    type: object
+  schemas.AnswerResponse:
+    properties:
+      answer:
+        type: string
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      id:
+        type: integer
+      updatedAt:
         type: string
     type: object
   schemas.LetterResponse:
@@ -179,9 +405,256 @@ definitions:
       updatedAt:
         type: string
     type: object
+  schemas.QuestionResponse:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      id:
+        type: integer
+      question:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+  schemas.UserAnswerResponse:
+    properties:
+      IdQuestion:
+        type: integer
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      idAnswer1:
+        type: integer
+      idAnswer2:
+        type: integer
+      idAnswer3:
+        type: integer
+      idAnswer4:
+        type: integer
+      updatedAt:
+        type: string
+    type: object
+  userAnswer.CreateUserAnswerRequest:
+    properties:
+      id:
+        type: integer
+      idAnswer1:
+        type: integer
+      idAnswer2:
+        type: integer
+      idAnswer3:
+        type: integer
+      idAnswer4:
+        type: integer
+      idQuestion:
+        type: integer
+    type: object
+  userAnswer.CreateUserAnswerResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.UserAnswerResponse'
+      message:
+        type: string
+    type: object
+  userAnswer.DeleteUserAnswerResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.UserAnswerResponse'
+      message:
+        type: string
+    type: object
+  userAnswer.ErrorResponse:
+    properties:
+      errorCode:
+        type: string
+      message:
+        type: string
+    type: object
+  userAnswer.ListUserAnswersResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/schemas.UserAnswerResponse'
+        type: array
+      message:
+        type: string
+    type: object
+  userAnswer.ShowUserAnswerResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.UserAnswerResponse'
+      message:
+        type: string
+    type: object
+  userAnswer.UpdateUserAnswerRequest:
+    properties:
+      idAnswer1:
+        type: integer
+      idAnswer2:
+        type: integer
+      idAnswer3:
+        type: integer
+      idAnswer4:
+        type: integer
+      idQuestion:
+        type: integer
+    type: object
+  userAnswer.UpdateUserAnswerResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.UserAnswerResponse'
+      message:
+        type: string
+    type: object
 info:
   contact: {}
 paths:
+  /answer:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a job answer
+      parameters:
+      - description: Answer identification
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/answer.DeleteAnswerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/answer.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/answer.ErrorResponse'
+      summary: Delete answer
+      tags:
+      - Answers
+    get:
+      consumes:
+      - application/json
+      description: Show a job answer
+      parameters:
+      - description: Answer identification
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/answer.ShowAnswerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/answer.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/answer.ErrorResponse'
+      summary: Show answer
+      tags:
+      - Answers
+    post:
+      consumes:
+      - application/json
+      description: Create a new job answer
+      parameters:
+      - description: Request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/answer.CreateAnswerRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/answer.CreateAnswerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/answer.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/answer.ErrorResponse'
+      summary: Create answer
+      tags:
+      - Answers
+    put:
+      consumes:
+      - application/json
+      description: Update a job answer
+      parameters:
+      - description: Answer Identification
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: Answer data to Update
+        in: body
+        name: answer
+        required: true
+        schema:
+          $ref: '#/definitions/answer.UpdateAnswerRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/answer.UpdateAnswerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/answer.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/answer.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/answer.ErrorResponse'
+      summary: Update answer
+      tags:
+      - Answers
+  /answers:
+    get:
+      consumes:
+      - application/json
+      description: List all job answers
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/answer.ListAnswersResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/answer.ErrorResponse'
+      summary: List answers
+      tags:
+      - Answers
   /letter:
     delete:
       consumes:
@@ -199,15 +672,15 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/handler.DeleteLetterResponse'
+            $ref: '#/definitions/letter.DeleteLetterResponse'
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse'
+            $ref: '#/definitions/letter.ErrorResponse'
         "404":
           description: Not Found
           schema:
-            $ref: '#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse'
+            $ref: '#/definitions/letter.ErrorResponse'
       summary: Delete letter
       tags:
       - Letters
@@ -227,15 +700,15 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/handler.ShowLetterResponse'
+            $ref: '#/definitions/letter.ShowLetterResponse'
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse'
+            $ref: '#/definitions/letter.ErrorResponse'
         "404":
           description: Not Found
           schema:
-            $ref: '#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse'
+            $ref: '#/definitions/letter.ErrorResponse'
       summary: Show letter
       tags:
       - Letters
@@ -249,22 +722,22 @@ paths:
         name: request
         required: true
         schema:
-          $ref: '#/definitions/handler.CreateLetterRequest'
+          $ref: '#/definitions/letter.CreateLetterRequest'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/handler.CreateLetterResponse'
+            $ref: '#/definitions/letter.CreateLetterResponse'
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse'
+            $ref: '#/definitions/letter.ErrorResponse'
         "500":
           description: Internal Server Error
           schema:
-            $ref: '#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse'
+            $ref: '#/definitions/letter.ErrorResponse'
       summary: Create letter
       tags:
       - Letters
@@ -283,27 +756,170 @@ paths:
         name: letter
         required: true
         schema:
-          $ref: '#/definitions/handler.UpdateLetterRequest'
+          $ref: '#/definitions/letter.UpdateLetterRequest'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/handler.UpdateLetterResponse'
+            $ref: '#/definitions/letter.UpdateLetterResponse'
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse'
+            $ref: '#/definitions/letter.ErrorResponse'
         "404":
           description: Not Found
           schema:
-            $ref: '#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse'
+            $ref: '#/definitions/letter.ErrorResponse'
         "500":
           description: Internal Server Error
           schema:
-            $ref: '#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse'
+            $ref: '#/definitions/letter.ErrorResponse'
       summary: Update letter
+      tags:
+      - Letters
+  /letterAnswer:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a job letterAnswer
+      parameters:
+      - description: Letter identification
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/letterAnswer.DeleteLetterResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/letterAnswer.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/letterAnswer.ErrorResponse'
+      summary: Delete letterAnswer
+      tags:
+      - Letters
+    get:
+      consumes:
+      - application/json
+      description: Show a job letterAnswer
+      parameters:
+      - description: Letter identification
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/letterAnswer.ShowLetterResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/letterAnswer.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/letterAnswer.ErrorResponse'
+      summary: Show letterAnswer
+      tags:
+      - Letters
+    post:
+      consumes:
+      - application/json
+      description: Create a new job letterAnswer
+      parameters:
+      - description: Request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/letterAnswer.CreateLetterAnswerRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/letterAnswer.CreateLetterResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/letterAnswer.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/letterAnswer.ErrorResponse'
+      summary: Create letterAnswer
+      tags:
+      - Letters
+    put:
+      consumes:
+      - application/json
+      description: Update a job letterAnswer
+      parameters:
+      - description: Letter Identification
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: Letter data to Update
+        in: body
+        name: letterAnswer
+        required: true
+        schema:
+          $ref: '#/definitions/letterAnswer.UpdateLetterAnswerRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/letterAnswer.UpdateLetterResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/letterAnswer.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/letterAnswer.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/letterAnswer.ErrorResponse'
+      summary: Update letterAnswer
+      tags:
+      - Letters
+  /letterAnswers:
+    get:
+      consumes:
+      - application/json
+      description: List all job letterAnswers
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/letterAnswer.ListLettersResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/letterAnswer.ErrorResponse'
+      summary: List letterAnswers
       tags:
       - Letters
   /letters:
@@ -317,11 +933,11 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/handler.ListLettersResponse'
+            $ref: '#/definitions/letter.ListLettersResponse'
         "500":
           description: Internal Server Error
           schema:
-            $ref: '#/definitions/github_com_eduardohass_dica_handler_letter.ErrorResponse'
+            $ref: '#/definitions/letter.ErrorResponse'
       summary: List letters
       tags:
       - Letters
@@ -342,15 +958,15 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/handler.DeleteOpeningResponse'
+            $ref: '#/definitions/opening.DeleteOpeningResponse'
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse'
+            $ref: '#/definitions/opening.ErrorResponse'
         "404":
           description: Not Found
           schema:
-            $ref: '#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse'
+            $ref: '#/definitions/opening.ErrorResponse'
       summary: Delete opening
       tags:
       - Openings
@@ -370,15 +986,15 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/handler.ShowOpeningResponse'
+            $ref: '#/definitions/opening.ShowOpeningResponse'
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse'
+            $ref: '#/definitions/opening.ErrorResponse'
         "404":
           description: Not Found
           schema:
-            $ref: '#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse'
+            $ref: '#/definitions/opening.ErrorResponse'
       summary: Show opening
       tags:
       - Openings
@@ -392,22 +1008,22 @@ paths:
         name: request
         required: true
         schema:
-          $ref: '#/definitions/handler.CreateOpeningRequest'
+          $ref: '#/definitions/opening.CreateOpeningRequest'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/handler.CreateOpeningResponse'
+            $ref: '#/definitions/opening.CreateOpeningResponse'
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse'
+            $ref: '#/definitions/opening.ErrorResponse'
         "500":
           description: Internal Server Error
           schema:
-            $ref: '#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse'
+            $ref: '#/definitions/opening.ErrorResponse'
       summary: Create opening
       tags:
       - Openings
@@ -426,26 +1042,26 @@ paths:
         name: opening
         required: true
         schema:
-          $ref: '#/definitions/handler.UpdateOpeningRequest'
+          $ref: '#/definitions/opening.UpdateOpeningRequest'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/handler.UpdateOpeningResponse'
+            $ref: '#/definitions/opening.UpdateOpeningResponse'
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse'
+            $ref: '#/definitions/opening.ErrorResponse'
         "404":
           description: Not Found
           schema:
-            $ref: '#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse'
+            $ref: '#/definitions/opening.ErrorResponse'
         "500":
           description: Internal Server Error
           schema:
-            $ref: '#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse'
+            $ref: '#/definitions/opening.ErrorResponse'
       summary: Update opening
       tags:
       - Openings
@@ -460,12 +1076,441 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/handler.ListOpeningsResponse'
+            $ref: '#/definitions/opening.ListOpeningsResponse'
         "500":
           description: Internal Server Error
           schema:
-            $ref: '#/definitions/github_com_eduardohass_dica_handler_opening.ErrorResponse'
+            $ref: '#/definitions/opening.ErrorResponse'
       summary: List openings
       tags:
       - Openings
+  /question:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a job question
+      parameters:
+      - description: Question identification
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/question.DeleteQuestionResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/question.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/question.ErrorResponse'
+      summary: Delete question
+      tags:
+      - Questions
+    get:
+      consumes:
+      - application/json
+      description: Show a job question
+      parameters:
+      - description: Question identification
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/question.ShowQuestionResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/question.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/question.ErrorResponse'
+      summary: Show question
+      tags:
+      - Questions
+    post:
+      consumes:
+      - application/json
+      description: Create a new job question
+      parameters:
+      - description: Request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/question.CreateQuestionRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/question.CreateQuestionResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/question.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/question.ErrorResponse'
+      summary: Create question
+      tags:
+      - Questions
+    put:
+      consumes:
+      - application/json
+      description: Update a job question
+      parameters:
+      - description: Question Identification
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: Question data to Update
+        in: body
+        name: question
+        required: true
+        schema:
+          $ref: '#/definitions/question.UpdateQuestionRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/question.UpdateQuestionResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/question.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/question.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/question.ErrorResponse'
+      summary: Update question
+      tags:
+      - Questions
+  /questionAnswer:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a job questionAnswer
+      parameters:
+      - description: Question identification
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/questionAnswer.DeleteQuestionResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/questionAnswer.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/questionAnswer.ErrorResponse'
+      summary: Delete questionAnswer
+      tags:
+      - Questions
+    get:
+      consumes:
+      - application/json
+      description: Show a job questionAnswer
+      parameters:
+      - description: Question identification
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/questionAnswer.ShowQuestionResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/questionAnswer.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/questionAnswer.ErrorResponse'
+      summary: Show questionAnswer
+      tags:
+      - Questions
+    post:
+      consumes:
+      - application/json
+      description: Create a new job questionAnswer
+      parameters:
+      - description: Request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/questionAnswer.CreateQuestionAnswerRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/questionAnswer.CreateQuestionAnswerRequest'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/questionAnswer.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/questionAnswer.ErrorResponse'
+      summary: Create questionAnswer
+      tags:
+      - Questions
+    put:
+      consumes:
+      - application/json
+      description: Update a job questionAnswer
+      parameters:
+      - description: Question Identification
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: Question data to Update
+        in: body
+        name: questionAnswer
+        required: true
+        schema:
+          $ref: '#/definitions/questionAnswer.UpdateQuestionAnswerRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/questionAnswer.UpdateQuestionResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/questionAnswer.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/questionAnswer.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/questionAnswer.ErrorResponse'
+      summary: Update questionAnswer
+      tags:
+      - Questions
+  /questionAnswers:
+    get:
+      consumes:
+      - application/json
+      description: List all job questionAnswers
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/questionAnswer.ListQuestionsResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/questionAnswer.ErrorResponse'
+      summary: List questionAnswers
+      tags:
+      - Questions
+  /questions:
+    get:
+      consumes:
+      - application/json
+      description: List all job questions
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/question.ListQuestionsResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/question.ErrorResponse'
+      summary: List questions
+      tags:
+      - Questions
+  /userAnswer:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a job userAnswer
+      parameters:
+      - description: UserAnswer identification
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/userAnswer.DeleteUserAnswerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/userAnswer.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/userAnswer.ErrorResponse'
+      summary: Delete userAnswer
+      tags:
+      - UserAnswers
+    get:
+      consumes:
+      - application/json
+      description: Show a job userAnswer
+      parameters:
+      - description: UserAnswer identification
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/userAnswer.ShowUserAnswerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/userAnswer.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/userAnswer.ErrorResponse'
+      summary: Show userAnswer
+      tags:
+      - UserAnswers
+    post:
+      consumes:
+      - application/json
+      description: Create a new job userAnswer
+      parameters:
+      - description: Request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/userAnswer.CreateUserAnswerRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/userAnswer.CreateUserAnswerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/userAnswer.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/userAnswer.ErrorResponse'
+      summary: Create userAnswer
+      tags:
+      - UserAnswers
+    put:
+      consumes:
+      - application/json
+      description: Update a job userAnswer
+      parameters:
+      - description: UserAnswer Identification
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: UserAnswer data to Update
+        in: body
+        name: userAnswer
+        required: true
+        schema:
+          $ref: '#/definitions/userAnswer.UpdateUserAnswerRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/userAnswer.UpdateUserAnswerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/userAnswer.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/userAnswer.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/userAnswer.ErrorResponse'
+      summary: Update userAnswer
+      tags:
+      - UserAnswers
+  /userAnswers:
+    get:
+      consumes:
+      - application/json
+      description: List all job userAnswers
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/userAnswer.ListUserAnswersResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/userAnswer.ErrorResponse'
+      summary: List userAnswers
+      tags:
+      - UserAnswers
 swagger: "2.0"

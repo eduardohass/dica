@@ -15,7 +15,7 @@ import (
 // @Tags Letters
 // @Accept json
 // @Produce json
-// @Param request body CreateLetterRequest true "Request body"
+// @Param request body CreateLetterAnswerRequest true "Request body"
 // @Success 200 {object} CreateLetterResponse
 // @Failure 400 {object} ErrorResponse
 // @Failure 500 {object} ErrorResponse
