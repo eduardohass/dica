@@ -8,7 +8,6 @@ import (
 
 type Answer struct {
 	gorm.Model
-	Id     int64
 	Answer string
 }
 

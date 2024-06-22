@@ -8,7 +8,6 @@ import (
 
 type Question struct {
 	gorm.Model
-	Id       string
 	Question string
 }
 

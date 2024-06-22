@@ -8,20 +8,20 @@ import (
 
 type QuestionAnswer struct {
 	gorm.Model
-	Id_question int64
-	Id_answer_1 int64
-	Id_answer_2 int64
-	Id_answer_3 int64
-	Id_answer_4 int64
+	IdQuestion int64
+	IdAnswer1  int64
+	IdAnswer2  int64
+	IdAnswer3  int64
+	IdAnswer4  int64
 }
 
 type QuestionAnswerResponse struct {
-	Id_question uint      `json:"id_question"`
-	Id_answer_1 uint      `json:"id_answer_1"`
-	Id_answer_2 uint      `json:"id_answer_2"`
-	Id_answer_3 uint      `json:"id_answer_3"`
-	Id_answer_4 uint      `json:"id_answer_4"`
-	CreatedAt   time.Time `json:"createdAt"`
-	UpdatedAt   time.Time `json:"updatedAt"`
-	DeletedAt   time.Time `json:"deletedAt"`
+	IdQuestion uint      `json:"idQuestion"`
+	IdAnswer1  uint      `json:"idAnswer1"`
+	IdAnswer2  uint      `json:"idAnswer2"`
+	IdAnswer3  uint      `json:"idAnswer3"`
+	IdAnswer4  uint      `json:"idAnswer4"`
+	CreatedAt  time.Time `json:"createdAt"`
+	UpdatedAt  time.Time `json:"updatedAt"`
+	DeletedAt  time.Time `json:"deletedAt"`
 }
