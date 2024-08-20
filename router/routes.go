@@ -7,6 +7,8 @@ import (
 	handlerOpening "github.com/eduardohass/dica/handler/opening"
 	handlerQuestion "github.com/eduardohass/dica/handler/question"
 	handlerQuestionAnswer "github.com/eduardohass/dica/handler/questionAnswer"
+
+	// handlerUserAnswer "github.com/eduardohass/dica/handler/userAnswer"
 	"github.com/gin-gonic/gin"
 	swaggerfiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
@@ -18,6 +20,7 @@ func initializeRoutes(router *gin.Engine) {
 	handlerAnswer.InitializeHandler()
 	handlerQuestion.InitializeHandler()
 	handlerQuestionAnswer.InitializeHandler()
+	// handlerUserAnswer.InitializeHandler()
 	basePath := "/api/v1"
 	docs.SwaggerInfo.BasePath = basePath
 	v1 := router.Group("/api/v1")
@@ -46,6 +49,18 @@ func initializeRoutes(router *gin.Engine) {
 		v1.PUT("questionAnswer", handlerQuestionAnswer.UpdateQuestionAnswerHandler)
 		v1.DELETE("questionAnswer", handlerQuestionAnswer.DeleteQuestionAnswerHandler)
 		v1.GET("questionAnswer", handlerQuestionAnswer.ListQuestionsAnswerHandler)
+		// Answer
+		v1.GET("answer", handlerAnswer.ShowAnswerHandler)
+		v1.POST("answer", handlerAnswer.CreateAnswerHandler)
+		v1.PUT("answer", handlerAnswer.UpdateAnswerHandler)
+		v1.DELETE("answer", handlerAnswer.DeleteAnswerHandler)
+		v1.GET("answer", handlerAnswer.ListAnswersHandler)
+		// UserAnswer
+		// v1.GET("userAnswer", handlerUserAnswer.ShowUserAnswerHandler)
+		// v1.POST("userAnswer", handlerUserAnswer.CreateUserAnswerHandler)
+		// v1.PUT("userAnswer", handlerUserAnswer.UpdateUserAnswerHandler)
+		// v1.DELETE("userAnswer", handlerUserAnswer.DeleteUserAnswerHandler)
+		// v1.GET("userAnswer", handlerUserAnswer.ListQuestionsAnswerHandler)
 	}
 	// Initialize Swagger
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
