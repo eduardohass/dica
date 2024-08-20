@@ -62,18 +62,12 @@ jobs:
       #     echo VERSION_TAG=$(echo ${{ steps.version_step.outputs.version_tag }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
       #     echo LASTEST_TAG=$(echo ${{ steps.version_step.outputs.latest_tag  }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
       
-      - name: Auto increment tag
-        id: tag
-        uses: sophiware/actions-auto-increment-tag@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}:${{ steps.tag.outputs.tag }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}:$GITHUB_SHA
           platforms: ${{ matrix.platform }}
 
       #### WORKING
