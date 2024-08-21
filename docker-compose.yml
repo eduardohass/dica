@@ -40,8 +40,8 @@ services:
       POSTGRES_PASSWORD: postgres
       PGDATA: /data/postgres
       POSTGRES_DB: dica
-      POSTGRES_LOG_STATEMENT: 'all'  # Mostra todas as queries executadas
-      POSTGRES_LOG_MIN_MESSAGES: 'debug1'  # Mostra mais detalhes de debug
+      # POSTGRES_LOG_STATEMENT: 'all'  # Mostra todas as queries executadas
+      # POSTGRES_LOG_MIN_MESSAGES: 'debug1'  # Mostra mais detalhes de debug
     volumes:
       - postgres:/data/postgres
     ports:
@@ -62,7 +62,8 @@ services:
       postgres:
         condition: service_healthy
     build: .
-    image: dica-api:latest
+    image: dica-api:0.0.1
+    pull_policy: always
     ports:
       - "8080:8080"
     networks:
@@ -77,25 +78,25 @@ services:
     links: 
       - postgres
   
-  # pgadmin:
-  #   container_name: pgadmin
-  #   image: dpage/pgadmin4
-  #   environment:
-  #     PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
-  #     PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
-  #     PGADMIN_LISTEN_PORT: 80
-  #     PGADMIN_CONFIG_SERVER_MODE: 'False'
-  #     PGADMIN_CONFIG_CONSOLE_LOG_LEVEL: 10
-  #   volumes:
-  #     - pgadmin:/var/lib/pgadmin
-  #     - ./servers.json:/pgadmin4/servers.json  # Monta um arquivo JSON para configuração do servidor
-  #   ports:
-  #     - "${PGADMIN_PORT:-5050}:80"
-  #   networks:
-  #     - dica_net
-  #   restart: unless-stopped
-  #   depends_on:
-  #     - postgres
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_LISTEN_PORT: 80
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+      # PGADMIN_CONFIG_CONSOLE_LOG_LEVEL: 10
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+      - ./servers.json:/pgadmin4/servers.json  # Monta um arquivo JSON para configuração do servidor
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    networks:
+      - dica_net
+    restart: unless-stopped
+    depends_on:
+      - postgres
 
 
 networks:
