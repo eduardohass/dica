@@ -1,0 +1,15 @@
+{
+    "Servers": {
+        "1": {
+            "Name": "dica",
+            "Group": "DICA",
+            "Host": "postgres",
+            "Port": 5432,
+            "MaintenanceDB": "dica",
+            "Username": "postgres",
+            "Password": "postgres",
+            "SSLMode": "prefer",
+            "ConnectionTimeout": 10
+        }
+    }
+}
