@@ -12,7 +12,7 @@ import (
 
 // @Summary Create letterAnswer
 // @Description Create a new job letterAnswer
-// @Tags Letters
+// @Tags LettersAnswer
 // @Accept json
 // @Produce json
 // @Param request body CreateLetterAnswerRequest true "Request body"

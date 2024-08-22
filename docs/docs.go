@@ -428,7 +428,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Letters"
+                    "LettersAnswer"
                 ],
                 "summary": "Show letterAnswer",
                 "parameters": [
@@ -470,7 +470,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Letters"
+                    "LettersAnswer"
                 ],
                 "summary": "Update letterAnswer",
                 "parameters": [
@@ -527,7 +527,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Letters"
+                    "LettersAnswer"
                 ],
                 "summary": "Create letterAnswer",
                 "parameters": [
@@ -571,7 +571,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Letters"
+                    "LettersAnswer"
                 ],
                 "summary": "Delete letterAnswer",
                 "parameters": [
@@ -615,7 +615,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Letters"
+                    "LettersAnswer"
                 ],
                 "summary": "List letterAnswers",
                 "responses": {
@@ -1076,7 +1076,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Questions"
+                    "QuestionsAnswer"
                 ],
                 "summary": "Show questionAnswer",
                 "parameters": [
@@ -1118,7 +1118,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Questions"
+                    "QuestionsAnswer"
                 ],
                 "summary": "Update questionAnswer",
                 "parameters": [
@@ -1175,7 +1175,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Questions"
+                    "QuestionsAnswer"
                 ],
                 "summary": "Create questionAnswer",
                 "parameters": [
@@ -1219,7 +1219,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Questions"
+                    "QuestionsAnswer"
                 ],
                 "summary": "Delete questionAnswer",
                 "parameters": [
@@ -1263,7 +1263,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Questions"
+                    "QuestionsAnswer"
                 ],
                 "summary": "List questionAnswers",
                 "responses": {
@@ -1306,222 +1306,6 @@ const docTemplate = `{
                         "description": "Internal Server Error",
                         "schema": {
                             "$ref": "#/definitions/question.ErrorResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/userAnswer": {
-            "get": {
-                "description": "Show a job userAnswer",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "UserAnswers"
-                ],
-                "summary": "Show userAnswer",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "UserAnswer identification",
-                        "name": "id",
-                        "in": "query",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/userAnswer.ShowUserAnswerResponse"
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "schema": {
-                            "$ref": "#/definitions/userAnswer.ErrorResponse"
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "schema": {
-                            "$ref": "#/definitions/userAnswer.ErrorResponse"
-                        }
-                    }
-                }
-            },
-            "put": {
-                "description": "Update a job userAnswer",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "UserAnswers"
-                ],
-                "summary": "Update userAnswer",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "UserAnswer Identification",
-                        "name": "id",
-                        "in": "query",
-                        "required": true
-                    },
-                    {
-                        "description": "UserAnswer data to Update",
-                        "name": "userAnswer",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/userAnswer.UpdateUserAnswerRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/userAnswer.UpdateUserAnswerResponse"
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "schema": {
-                            "$ref": "#/definitions/userAnswer.ErrorResponse"
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "schema": {
-                            "$ref": "#/definitions/userAnswer.ErrorResponse"
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "schema": {
-                            "$ref": "#/definitions/userAnswer.ErrorResponse"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "description": "Create a new job userAnswer",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "UserAnswers"
-                ],
-                "summary": "Create userAnswer",
-                "parameters": [
-                    {
-                        "description": "Request body",
-                        "name": "request",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/userAnswer.CreateUserAnswerRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/userAnswer.CreateUserAnswerResponse"
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "schema": {
-                            "$ref": "#/definitions/userAnswer.ErrorResponse"
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "schema": {
-                            "$ref": "#/definitions/userAnswer.ErrorResponse"
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "description": "Delete a job userAnswer",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "UserAnswers"
-                ],
-                "summary": "Delete userAnswer",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "UserAnswer identification",
-                        "name": "id",
-                        "in": "query",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/userAnswer.DeleteUserAnswerResponse"
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "schema": {
-                            "$ref": "#/definitions/userAnswer.ErrorResponse"
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "schema": {
-                            "$ref": "#/definitions/userAnswer.ErrorResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/userAnswers": {
-            "get": {
-                "description": "List all job userAnswers",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "UserAnswers"
-                ],
-                "summary": "List userAnswers",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/userAnswer.ListUserAnswersResponse"
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "schema": {
-                            "$ref": "#/definitions/userAnswer.ErrorResponse"
                         }
                     }
                 }
@@ -2179,147 +1963,6 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "updatedAt": {
-                    "type": "string"
-                }
-            }
-        },
-        "schemas.UserAnswerResponse": {
-            "type": "object",
-            "properties": {
-                "IdQuestion": {
-                    "type": "integer"
-                },
-                "createdAt": {
-                    "type": "string"
-                },
-                "deletedAt": {
-                    "type": "string"
-                },
-                "idAnswer1": {
-                    "type": "integer"
-                },
-                "idAnswer2": {
-                    "type": "integer"
-                },
-                "idAnswer3": {
-                    "type": "integer"
-                },
-                "idAnswer4": {
-                    "type": "integer"
-                },
-                "updatedAt": {
-                    "type": "string"
-                }
-            }
-        },
-        "userAnswer.CreateUserAnswerRequest": {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "integer"
-                },
-                "idAnswer1": {
-                    "type": "integer"
-                },
-                "idAnswer2": {
-                    "type": "integer"
-                },
-                "idAnswer3": {
-                    "type": "integer"
-                },
-                "idAnswer4": {
-                    "type": "integer"
-                },
-                "idQuestion": {
-                    "type": "integer"
-                }
-            }
-        },
-        "userAnswer.CreateUserAnswerResponse": {
-            "type": "object",
-            "properties": {
-                "data": {
-                    "$ref": "#/definitions/schemas.UserAnswerResponse"
-                },
-                "message": {
-                    "type": "string"
-                }
-            }
-        },
-        "userAnswer.DeleteUserAnswerResponse": {
-            "type": "object",
-            "properties": {
-                "data": {
-                    "$ref": "#/definitions/schemas.UserAnswerResponse"
-                },
-                "message": {
-                    "type": "string"
-                }
-            }
-        },
-        "userAnswer.ErrorResponse": {
-            "type": "object",
-            "properties": {
-                "errorCode": {
-                    "type": "string"
-                },
-                "message": {
-                    "type": "string"
-                }
-            }
-        },
-        "userAnswer.ListUserAnswersResponse": {
-            "type": "object",
-            "properties": {
-                "data": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/schemas.UserAnswerResponse"
-                    }
-                },
-                "message": {
-                    "type": "string"
-                }
-            }
-        },
-        "userAnswer.ShowUserAnswerResponse": {
-            "type": "object",
-            "properties": {
-                "data": {
-                    "$ref": "#/definitions/schemas.UserAnswerResponse"
-                },
-                "message": {
-                    "type": "string"
-                }
-            }
-        },
-        "userAnswer.UpdateUserAnswerRequest": {
-            "type": "object",
-            "properties": {
-                "idAnswer1": {
-                    "type": "integer"
-                },
-                "idAnswer2": {
-                    "type": "integer"
-                },
-                "idAnswer3": {
-                    "type": "integer"
-                },
-                "idAnswer4": {
-                    "type": "integer"
-                },
-                "idQuestion": {
-                    "type": "integer"
-                }
-            }
-        },
-        "userAnswer.UpdateUserAnswerResponse": {
-            "type": "object",
-            "properties": {
-                "data": {
-                    "$ref": "#/definitions/schemas.UserAnswerResponse"
-                },
-                "message": {
                     "type": "string"
                 }
             }

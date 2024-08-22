@@ -42,25 +42,25 @@ func initializeRoutes(router *gin.Engine) {
 		v1.POST("question", handlerQuestion.CreateQuestionHandler)
 		v1.PUT("question", handlerQuestion.UpdateQuestionHandler)
 		v1.DELETE("question", handlerQuestion.DeleteQuestionHandler)
-		v1.GET("question", handlerQuestion.ListQuestionsHandler)
+		v1.GET("questions", handlerQuestion.ListQuestionsHandler)
 		// QuestionAnswer
 		v1.GET("questionAnswer", handlerQuestionAnswer.ShowQuestionAnswerHandler)
 		v1.POST("questionAnswer", handlerQuestionAnswer.CreateQuestionAnswerHandler)
 		v1.PUT("questionAnswer", handlerQuestionAnswer.UpdateQuestionAnswerHandler)
 		v1.DELETE("questionAnswer", handlerQuestionAnswer.DeleteQuestionAnswerHandler)
-		v1.GET("questionAnswer", handlerQuestionAnswer.ListQuestionsAnswerHandler)
+		v1.GET("questionAnswers", handlerQuestionAnswer.ListQuestionsAnswerHandler)
 		// // Answer
 		v1.GET("answer", handlerAnswer.ShowAnswerHandler)
 		v1.POST("answer", handlerAnswer.CreateAnswerHandler)
 		v1.PUT("answer", handlerAnswer.UpdateAnswerHandler)
 		v1.DELETE("answer", handlerAnswer.DeleteAnswerHandler)
-		v1.GET("answer", handlerAnswer.ListAnswersHandler)
+		v1.GET("answers", handlerAnswer.ListAnswersHandler)
 		// // UserAnswer
 		// v1.GET("userAnswer", handlerUserAnswer.ShowUserAnswerHandler)
 		// v1.POST("userAnswer", handlerUserAnswer.CreateUserAnswerHandler)
 		// v1.PUT("userAnswer", handlerUserAnswer.UpdateUserAnswerHandler)
 		// v1.DELETE("userAnswer", handlerUserAnswer.DeleteUserAnswerHandler)
-		// v1.GET("userAnswer", handlerUserAnswer.ListQuestionsAnswerHandler)
+		// v1.GET("userAnswers", handlerUserAnswer.ListQuestionsAnswerHandler)
 	}
 	// Initialize Swagger
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))

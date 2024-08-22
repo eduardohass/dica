@@ -12,7 +12,7 @@ import (
 
 // @Summary Update questionAnswer
 // @Description Update a job questionAnswer
-// @Tags Questions
+// @Tags QuestionsAnswer
 // @Accept json
 // @Produce json
 // @Param id query string true "Question Identification"

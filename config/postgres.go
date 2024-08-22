@@ -26,6 +26,14 @@ func InitializePostgres() (*gorm.DB, error) {
 		logger.Errorf("postgres opening error %v", err)
 		return nil, err
 	}
+
+	// Migrate the answer schema
+	err = db.AutoMigrate(&schemas.Answer{})
+	if err != nil {
+		logger.Errorf("postgres automigration error - answer %v", err)
+		return nil, err
+	}
+
 	// Migrate the opening schema
 	err = db.AutoMigrate(&schemas.Opening{})
 	if err != nil {
@@ -39,6 +47,35 @@ func InitializePostgres() (*gorm.DB, error) {
 		logger.Errorf("postgres automigration error - letter %v", err)
 		return nil, err
 	}
+
+	// Migrate the letterAnswer schema
+	err = db.AutoMigrate(&schemas.LetterAnswer{})
+	if err != nil {
+		logger.Errorf("postgres automigration error - letterAnswer %v", err)
+		return nil, err
+	}
+
+	// Migrate the question schema
+	err = db.AutoMigrate(&schemas.Question{})
+	if err != nil {
+		logger.Errorf("postgres automigration error - question %v", err)
+		return nil, err
+	}
+
+	// Migrate the questionAnswer schema
+	err = db.AutoMigrate(&schemas.QuestionAnswer{})
+	if err != nil {
+		logger.Errorf("postgres automigration error - questionAnswer %v", err)
+		return nil, err
+	}
+
+	// // Migrate the letter questionAnswer
+	// err = db.AutoMigrate(&schemas.QuestionAnswer{})
+	// if err != nil {
+	// 	logger.Errorf("postgres automigration error - questionAnswer %v", err)
+	// 	return nil, err
+	// }
+
 	fmt.Println("DBG==Conectou no DB")
 	fmt.Println("DBG==db: ", db)
 	// Return the DB

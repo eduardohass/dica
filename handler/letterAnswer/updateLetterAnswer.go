@@ -12,7 +12,7 @@ import (
 
 // @Summary Update letterAnswer
 // @Description Update a job letterAnswer
-// @Tags Letters
+// @Tags LettersAnswer
 // @Accept json
 // @Produce json
 // @Param id query string true "Letter Identification"

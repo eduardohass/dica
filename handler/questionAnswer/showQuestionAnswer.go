@@ -11,7 +11,7 @@ import (
 
 // @Summary Show questionAnswer
 // @Description Show a job questionAnswer
-// @Tags Questions
+// @Tags QuestionsAnswer
 // @Accept json
 // @Produce json
 // @Param id query string true "Question identification"

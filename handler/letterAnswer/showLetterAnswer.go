@@ -11,7 +11,7 @@ import (
 
 // @Summary Show letterAnswer
 // @Description Show a job letterAnswer
-// @Tags Letters
+// @Tags LettersAnswer
 // @Accept json
 // @Produce json
 // @Param id query string true "Letter identification"

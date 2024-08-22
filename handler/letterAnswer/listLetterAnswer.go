@@ -12,7 +12,7 @@ import (
 
 // @Summary List letterAnswers
 // @Description List all job letterAnswers
-// @Tags Letters
+// @Tags LettersAnswer
 // @Accept json
 // @Produce json
 // @Success 200 {object} ListLettersResponse

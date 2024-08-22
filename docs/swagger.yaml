@@ -418,97 +418,6 @@ definitions:
       updatedAt:
         type: string
     type: object
-  schemas.UserAnswerResponse:
-    properties:
-      IdQuestion:
-        type: integer
-      createdAt:
-        type: string
-      deletedAt:
-        type: string
-      idAnswer1:
-        type: integer
-      idAnswer2:
-        type: integer
-      idAnswer3:
-        type: integer
-      idAnswer4:
-        type: integer
-      updatedAt:
-        type: string
-    type: object
-  userAnswer.CreateUserAnswerRequest:
-    properties:
-      id:
-        type: integer
-      idAnswer1:
-        type: integer
-      idAnswer2:
-        type: integer
-      idAnswer3:
-        type: integer
-      idAnswer4:
-        type: integer
-      idQuestion:
-        type: integer
-    type: object
-  userAnswer.CreateUserAnswerResponse:
-    properties:
-      data:
-        $ref: '#/definitions/schemas.UserAnswerResponse'
-      message:
-        type: string
-    type: object
-  userAnswer.DeleteUserAnswerResponse:
-    properties:
-      data:
-        $ref: '#/definitions/schemas.UserAnswerResponse'
-      message:
-        type: string
-    type: object
-  userAnswer.ErrorResponse:
-    properties:
-      errorCode:
-        type: string
-      message:
-        type: string
-    type: object
-  userAnswer.ListUserAnswersResponse:
-    properties:
-      data:
-        items:
-          $ref: '#/definitions/schemas.UserAnswerResponse'
-        type: array
-      message:
-        type: string
-    type: object
-  userAnswer.ShowUserAnswerResponse:
-    properties:
-      data:
-        $ref: '#/definitions/schemas.UserAnswerResponse'
-      message:
-        type: string
-    type: object
-  userAnswer.UpdateUserAnswerRequest:
-    properties:
-      idAnswer1:
-        type: integer
-      idAnswer2:
-        type: integer
-      idAnswer3:
-        type: integer
-      idAnswer4:
-        type: integer
-      idQuestion:
-        type: integer
-    type: object
-  userAnswer.UpdateUserAnswerResponse:
-    properties:
-      data:
-        $ref: '#/definitions/schemas.UserAnswerResponse'
-      message:
-        type: string
-    type: object
 info:
   contact: {}
 paths:
@@ -807,7 +716,7 @@ paths:
             $ref: '#/definitions/letterAnswer.ErrorResponse'
       summary: Delete letterAnswer
       tags:
-      - Letters
+      - LettersAnswer
     get:
       consumes:
       - application/json
@@ -835,7 +744,7 @@ paths:
             $ref: '#/definitions/letterAnswer.ErrorResponse'
       summary: Show letterAnswer
       tags:
-      - Letters
+      - LettersAnswer
     post:
       consumes:
       - application/json
@@ -864,7 +773,7 @@ paths:
             $ref: '#/definitions/letterAnswer.ErrorResponse'
       summary: Create letterAnswer
       tags:
-      - Letters
+      - LettersAnswer
     put:
       consumes:
       - application/json
@@ -902,7 +811,7 @@ paths:
             $ref: '#/definitions/letterAnswer.ErrorResponse'
       summary: Update letterAnswer
       tags:
-      - Letters
+      - LettersAnswer
   /letterAnswers:
     get:
       consumes:
@@ -921,7 +830,7 @@ paths:
             $ref: '#/definitions/letterAnswer.ErrorResponse'
       summary: List letterAnswers
       tags:
-      - Letters
+      - LettersAnswer
   /letters:
     get:
       consumes:
@@ -1236,7 +1145,7 @@ paths:
             $ref: '#/definitions/questionAnswer.ErrorResponse'
       summary: Delete questionAnswer
       tags:
-      - Questions
+      - QuestionsAnswer
     get:
       consumes:
       - application/json
@@ -1264,7 +1173,7 @@ paths:
             $ref: '#/definitions/questionAnswer.ErrorResponse'
       summary: Show questionAnswer
       tags:
-      - Questions
+      - QuestionsAnswer
     post:
       consumes:
       - application/json
@@ -1293,7 +1202,7 @@ paths:
             $ref: '#/definitions/questionAnswer.ErrorResponse'
       summary: Create questionAnswer
       tags:
-      - Questions
+      - QuestionsAnswer
     put:
       consumes:
       - application/json
@@ -1331,7 +1240,7 @@ paths:
             $ref: '#/definitions/questionAnswer.ErrorResponse'
       summary: Update questionAnswer
       tags:
-      - Questions
+      - QuestionsAnswer
   /questionAnswers:
     get:
       consumes:
@@ -1350,7 +1259,7 @@ paths:
             $ref: '#/definitions/questionAnswer.ErrorResponse'
       summary: List questionAnswers
       tags:
-      - Questions
+      - QuestionsAnswer
   /questions:
     get:
       consumes:
@@ -1370,147 +1279,4 @@ paths:
       summary: List questions
       tags:
       - Questions
-  /userAnswer:
-    delete:
-      consumes:
-      - application/json
-      description: Delete a job userAnswer
-      parameters:
-      - description: UserAnswer identification
-        in: query
-        name: id
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/userAnswer.DeleteUserAnswerResponse'
-        "400":
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/userAnswer.ErrorResponse'
-        "404":
-          description: Not Found
-          schema:
-            $ref: '#/definitions/userAnswer.ErrorResponse'
-      summary: Delete userAnswer
-      tags:
-      - UserAnswers
-    get:
-      consumes:
-      - application/json
-      description: Show a job userAnswer
-      parameters:
-      - description: UserAnswer identification
-        in: query
-        name: id
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/userAnswer.ShowUserAnswerResponse'
-        "400":
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/userAnswer.ErrorResponse'
-        "404":
-          description: Not Found
-          schema:
-            $ref: '#/definitions/userAnswer.ErrorResponse'
-      summary: Show userAnswer
-      tags:
-      - UserAnswers
-    post:
-      consumes:
-      - application/json
-      description: Create a new job userAnswer
-      parameters:
-      - description: Request body
-        in: body
-        name: request
-        required: true
-        schema:
-          $ref: '#/definitions/userAnswer.CreateUserAnswerRequest'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/userAnswer.CreateUserAnswerResponse'
-        "400":
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/userAnswer.ErrorResponse'
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/userAnswer.ErrorResponse'
-      summary: Create userAnswer
-      tags:
-      - UserAnswers
-    put:
-      consumes:
-      - application/json
-      description: Update a job userAnswer
-      parameters:
-      - description: UserAnswer Identification
-        in: query
-        name: id
-        required: true
-        type: string
-      - description: UserAnswer data to Update
-        in: body
-        name: userAnswer
-        required: true
-        schema:
-          $ref: '#/definitions/userAnswer.UpdateUserAnswerRequest'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/userAnswer.UpdateUserAnswerResponse'
-        "400":
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/userAnswer.ErrorResponse'
-        "404":
-          description: Not Found
-          schema:
-            $ref: '#/definitions/userAnswer.ErrorResponse'
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/userAnswer.ErrorResponse'
-      summary: Update userAnswer
-      tags:
-      - UserAnswers
-  /userAnswers:
-    get:
-      consumes:
-      - application/json
-      description: List all job userAnswers
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/userAnswer.ListUserAnswersResponse'
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/userAnswer.ErrorResponse'
-      summary: List userAnswers
-      tags:
-      - UserAnswers
 swagger: "2.0"
