@@ -114,17 +114,17 @@ definitions:
       idLetter:
         type: integer
     type: object
-  letterAnswer.CreateLetterResponse:
+  letterAnswer.CreateLetterAnswerResponse:
     properties:
       data:
-        $ref: '#/definitions/schemas.LetterResponse'
+        $ref: '#/definitions/schemas.LetterAnswerResponse'
       message:
         type: string
     type: object
-  letterAnswer.DeleteLetterResponse:
+  letterAnswer.DeleteLetterAnswerResponse:
     properties:
       data:
-        $ref: '#/definitions/schemas.LetterResponse'
+        $ref: '#/definitions/schemas.LetterAnswerResponse'
       message:
         type: string
     type: object
@@ -135,19 +135,19 @@ definitions:
       message:
         type: string
     type: object
-  letterAnswer.ListLettersResponse:
+  letterAnswer.ListLettersAnswerResponse:
     properties:
       data:
         items:
-          $ref: '#/definitions/schemas.LetterResponse'
+          $ref: '#/definitions/schemas.LetterAnswerResponse'
         type: array
       message:
         type: string
     type: object
-  letterAnswer.ShowLetterResponse:
+  letterAnswer.ShowLetterAnswerResponse:
     properties:
       data:
-        $ref: '#/definitions/schemas.LetterResponse'
+        $ref: '#/definitions/schemas.LetterAnswerResponse'
       message:
         type: string
     type: object
@@ -158,10 +158,10 @@ definitions:
       idLetter:
         type: integer
     type: object
-  letterAnswer.UpdateLetterResponse:
+  letterAnswer.UpdateLetterAnswerResponse:
     properties:
       data:
-        $ref: '#/definitions/schemas.LetterResponse'
+        $ref: '#/definitions/schemas.LetterAnswerResponse'
       message:
         type: string
     type: object
@@ -306,10 +306,10 @@ definitions:
       idQuestion:
         type: integer
     type: object
-  questionAnswer.DeleteQuestionResponse:
+  questionAnswer.DeleteQuestionAnswerResponse:
     properties:
       data:
-        $ref: '#/definitions/schemas.QuestionResponse'
+        $ref: '#/definitions/schemas.QuestionAnswerResponse'
       message:
         type: string
     type: object
@@ -320,19 +320,19 @@ definitions:
       message:
         type: string
     type: object
-  questionAnswer.ListQuestionsResponse:
+  questionAnswer.ListQuestionsAnswerResponse:
     properties:
       data:
         items:
-          $ref: '#/definitions/schemas.QuestionResponse'
+          $ref: '#/definitions/schemas.QuestionAnswerResponse'
         type: array
       message:
         type: string
     type: object
-  questionAnswer.ShowQuestionResponse:
+  questionAnswer.ShowQuestionAnswerResponse:
     properties:
       data:
-        $ref: '#/definitions/schemas.QuestionResponse'
+        $ref: '#/definitions/schemas.QuestionAnswerResponse'
       message:
         type: string
     type: object
@@ -349,10 +349,10 @@ definitions:
       idQuestion:
         type: integer
     type: object
-  questionAnswer.UpdateQuestionResponse:
+  questionAnswer.UpdateQuestionAnswerResponse:
     properties:
       data:
-        $ref: '#/definitions/schemas.QuestionResponse'
+        $ref: '#/definitions/schemas.QuestionAnswerResponse'
       message:
         type: string
     type: object
@@ -365,6 +365,19 @@ definitions:
       deletedAt:
         type: string
       id:
+        type: integer
+      updatedAt:
+        type: string
+    type: object
+  schemas.LetterAnswerResponse:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      idAnswer:
+        type: integer
+      idLetter:
         type: integer
       updatedAt:
         type: string
@@ -405,6 +418,25 @@ definitions:
       updatedAt:
         type: string
     type: object
+  schemas.QuestionAnswerResponse:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      idAnswer1:
+        type: integer
+      idAnswer2:
+        type: integer
+      idAnswer3:
+        type: integer
+      idAnswer4:
+        type: integer
+      idQuestion:
+        type: integer
+      updatedAt:
+        type: string
+    type: object
   schemas.QuestionResponse:
     properties:
       createdAt:
@@ -418,9 +450,156 @@ definitions:
       updatedAt:
         type: string
     type: object
+  schemas.UserAnswerResponse:
+    properties:
+      IdQuestion:
+        type: integer
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      idAnswer1:
+        type: integer
+      idAnswer2:
+        type: integer
+      idAnswer3:
+        type: integer
+      idAnswer4:
+        type: integer
+      updatedAt:
+        type: string
+    type: object
+  userAnswer.CreateUserAnswerRequest:
+    properties:
+      idAnswer1:
+        type: integer
+      idAnswer2:
+        type: integer
+      idAnswer3:
+        type: integer
+      idAnswer4:
+        type: integer
+      idQuestion:
+        type: integer
+    type: object
+  userAnswer.CreateUserAnswerResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.UserAnswerResponse'
+      message:
+        type: string
+    type: object
+  userAnswer.DeleteUserAnswerResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.UserAnswerResponse'
+      message:
+        type: string
+    type: object
+  userAnswer.ErrorResponse:
+    properties:
+      errorCode:
+        type: string
+      message:
+        type: string
+    type: object
+  userAnswer.ListUsersAnswerResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/schemas.UserAnswerResponse'
+        type: array
+      message:
+        type: string
+    type: object
+  userAnswer.ShowUserAnswerResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.UserAnswerResponse'
+      message:
+        type: string
+    type: object
+  userAnswer.UpdateUserAnswerRequest:
+    properties:
+      idAnswer1:
+        type: integer
+      idAnswer2:
+        type: integer
+      idAnswer3:
+        type: integer
+      idAnswer4:
+        type: integer
+      idQuestion:
+        type: integer
+    type: object
+  userAnswer.UpdateUserAnswerResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.UserAnswerResponse'
+      message:
+        type: string
+    type: object
 info:
   contact: {}
 paths:
+  /UserAnswer:
+    put:
+      consumes:
+      - application/json
+      description: Update a job UserAnswer
+      parameters:
+      - description: UserAnswer Identification
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: UserAnswer data to Update
+        in: body
+        name: UserAnswer
+        required: true
+        schema:
+          $ref: '#/definitions/userAnswer.UpdateUserAnswerRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/userAnswer.UpdateUserAnswerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/userAnswer.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/userAnswer.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/userAnswer.ErrorResponse'
+      summary: Update UserAnswer
+      tags:
+      - UsersAnswer
+  /UserAnswers:
+    get:
+      consumes:
+      - application/json
+      description: List all job UserAnswers
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/userAnswer.ListUsersAnswerResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/userAnswer.ErrorResponse'
+      summary: List UserAnswers
+      tags:
+      - UsersAnswer
   /answer:
     delete:
       consumes:
@@ -705,7 +884,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/letterAnswer.DeleteLetterResponse'
+            $ref: '#/definitions/letterAnswer.DeleteLetterAnswerResponse'
         "400":
           description: Bad Request
           schema:
@@ -733,7 +912,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/letterAnswer.ShowLetterResponse'
+            $ref: '#/definitions/letterAnswer.ShowLetterAnswerResponse'
         "400":
           description: Bad Request
           schema:
@@ -762,7 +941,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/letterAnswer.CreateLetterResponse'
+            $ref: '#/definitions/letterAnswer.CreateLetterAnswerResponse'
         "400":
           description: Bad Request
           schema:
@@ -796,7 +975,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/letterAnswer.UpdateLetterResponse'
+            $ref: '#/definitions/letterAnswer.UpdateLetterAnswerResponse'
         "400":
           description: Bad Request
           schema:
@@ -823,7 +1002,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/letterAnswer.ListLettersResponse'
+            $ref: '#/definitions/letterAnswer.ListLettersAnswerResponse'
         "500":
           description: Internal Server Error
           schema:
@@ -1134,7 +1313,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/questionAnswer.DeleteQuestionResponse'
+            $ref: '#/definitions/questionAnswer.DeleteQuestionAnswerResponse'
         "400":
           description: Bad Request
           schema:
@@ -1162,7 +1341,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/questionAnswer.ShowQuestionResponse'
+            $ref: '#/definitions/questionAnswer.ShowQuestionAnswerResponse'
         "400":
           description: Bad Request
           schema:
@@ -1225,7 +1404,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/questionAnswer.UpdateQuestionResponse'
+            $ref: '#/definitions/questionAnswer.UpdateQuestionAnswerResponse'
         "400":
           description: Bad Request
           schema:
@@ -1252,7 +1431,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/questionAnswer.ListQuestionsResponse'
+            $ref: '#/definitions/questionAnswer.ListQuestionsAnswerResponse'
         "500":
           description: Internal Server Error
           schema:
@@ -1279,4 +1458,90 @@ paths:
       summary: List questions
       tags:
       - Questions
+  /userAnswer:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a job userAnswer
+      parameters:
+      - description: UserAnswer identification
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/userAnswer.DeleteUserAnswerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/userAnswer.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/userAnswer.ErrorResponse'
+      summary: Delete userAnswer
+      tags:
+      - usersAnswer
+    get:
+      consumes:
+      - application/json
+      description: Show a job userAnswer
+      parameters:
+      - description: UserAnswer identification
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/userAnswer.ShowUserAnswerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/userAnswer.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/userAnswer.ErrorResponse'
+      summary: Show userAnswer
+      tags:
+      - UserAnswer
+    post:
+      consumes:
+      - application/json
+      description: Create a new job userAnswer
+      parameters:
+      - description: Request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/userAnswer.CreateUserAnswerRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/userAnswer.CreateUserAnswerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/userAnswer.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/userAnswer.ErrorResponse'
+      summary: Create userAnswer
+      tags:
+      - UsersAnswer
 swagger: "2.0"

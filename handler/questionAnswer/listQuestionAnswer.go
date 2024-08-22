@@ -15,7 +15,7 @@ import (
 // @Tags QuestionsAnswer
 // @Accept json
 // @Produce json
-// @Success 200 {object} ListQuestionsResponse
+// @Success 200 {object} ListQuestionsAnswerResponse
 // @Failure 500 {object} ErrorResponse
 // @Router /questionAnswers [get]
 func ListQuestionsAnswerHandler(ctx *gin.Context) {

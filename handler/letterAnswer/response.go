@@ -29,24 +29,24 @@ type ErrorResponse struct {
 	ErrorCode string `json:"errorCode"`
 }
 
-type CreateLetterResponse struct {
-	Message string                 `json:"message"`
-	Data    schemas.LetterResponse `json:"data"`
+type CreateLetterAnswerResponse struct {
+	Message string                       `json:"message"`
+	Data    schemas.LetterAnswerResponse `json:"data"`
 }
 
-type DeleteLetterResponse struct {
-	Message string                 `json:"message"`
-	Data    schemas.LetterResponse `json:"data"`
+type DeleteLetterAnswerResponse struct {
+	Message string                       `json:"message"`
+	Data    schemas.LetterAnswerResponse `json:"data"`
 }
-type ShowLetterResponse struct {
-	Message string                 `json:"message"`
-	Data    schemas.LetterResponse `json:"data"`
+type ShowLetterAnswerResponse struct {
+	Message string                       `json:"message"`
+	Data    schemas.LetterAnswerResponse `json:"data"`
 }
-type ListLettersResponse struct {
-	Message string                   `json:"message"`
-	Data    []schemas.LetterResponse `json:"data"`
+type ListLettersAnswerResponse struct {
+	Message string                         `json:"message"`
+	Data    []schemas.LetterAnswerResponse `json:"data"`
 }
-type UpdateLetterResponse struct {
-	Message string                 `json:"message"`
-	Data    schemas.LetterResponse `json:"data"`
+type UpdateLetterAnswerResponse struct {
+	Message string                       `json:"message"`
+	Data    schemas.LetterAnswerResponse `json:"data"`
 }

@@ -69,12 +69,12 @@ func InitializePostgres() (*gorm.DB, error) {
 		return nil, err
 	}
 
-	// // Migrate the letter questionAnswer
-	// err = db.AutoMigrate(&schemas.QuestionAnswer{})
-	// if err != nil {
-	// 	logger.Errorf("postgres automigration error - questionAnswer %v", err)
-	// 	return nil, err
-	// }
+	// Migrate the letter userAnswer
+	err = db.AutoMigrate(&schemas.UserAnswer{})
+	if err != nil {
+		logger.Errorf("postgres automigration error - userAnswer %v", err)
+		return nil, err
+	}
 
 	fmt.Println("DBG==Conectou no DB")
 	fmt.Println("DBG==db: ", db)

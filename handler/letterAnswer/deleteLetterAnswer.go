@@ -16,7 +16,7 @@ import (
 // @Accept json
 // @Produce json
 // @Param id query string true "Letter identification"
-// @Success 200 {object} DeleteLetterResponse
+// @Success 200 {object} DeleteLetterAnswerResponse
 // @Failure 400 {object} ErrorResponse
 // @Failure 404 {object} ErrorResponse
 // @Router /letterAnswer [delete]

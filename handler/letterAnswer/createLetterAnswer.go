@@ -16,7 +16,7 @@ import (
 // @Accept json
 // @Produce json
 // @Param request body CreateLetterAnswerRequest true "Request body"
-// @Success 200 {object} CreateLetterResponse
+// @Success 200 {object} CreateLetterAnswerResponse
 // @Failure 400 {object} ErrorResponse
 // @Failure 500 {object} ErrorResponse
 // @Router /letterAnswer [post]

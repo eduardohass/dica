@@ -16,7 +16,7 @@ import (
 // @Accept json
 // @Produce json
 // @Param id query string true "Question identification"
-// @Success 200 {object} DeleteQuestionResponse
+// @Success 200 {object} DeleteQuestionAnswerResponse
 // @Failure 400 {object} ErrorResponse
 // @Failure 404 {object} ErrorResponse
 // @Router /questionAnswer [delete]

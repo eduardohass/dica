@@ -15,6 +15,94 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/UserAnswer": {
+            "put": {
+                "description": "Update a job UserAnswer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "UsersAnswer"
+                ],
+                "summary": "Update UserAnswer",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "UserAnswer Identification",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "description": "UserAnswer data to Update",
+                        "name": "UserAnswer",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.UpdateUserAnswerRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.UpdateUserAnswerResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/UserAnswers": {
+            "get": {
+                "description": "List all job UserAnswers",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "UsersAnswer"
+                ],
+                "summary": "List UserAnswers",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.ListUsersAnswerResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
         "/answer": {
             "get": {
                 "description": "Show a job answer",
@@ -444,7 +532,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/letterAnswer.ShowLetterResponse"
+                            "$ref": "#/definitions/letterAnswer.ShowLetterAnswerResponse"
                         }
                     },
                     "400": {
@@ -495,7 +583,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/letterAnswer.UpdateLetterResponse"
+                            "$ref": "#/definitions/letterAnswer.UpdateLetterAnswerResponse"
                         }
                     },
                     "400": {
@@ -545,7 +633,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/letterAnswer.CreateLetterResponse"
+                            "$ref": "#/definitions/letterAnswer.CreateLetterAnswerResponse"
                         }
                     },
                     "400": {
@@ -587,7 +675,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/letterAnswer.DeleteLetterResponse"
+                            "$ref": "#/definitions/letterAnswer.DeleteLetterAnswerResponse"
                         }
                     },
                     "400": {
@@ -622,7 +710,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/letterAnswer.ListLettersResponse"
+                            "$ref": "#/definitions/letterAnswer.ListLettersAnswerResponse"
                         }
                     },
                     "500": {
@@ -1092,7 +1180,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/questionAnswer.ShowQuestionResponse"
+                            "$ref": "#/definitions/questionAnswer.ShowQuestionAnswerResponse"
                         }
                     },
                     "400": {
@@ -1143,7 +1231,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/questionAnswer.UpdateQuestionResponse"
+                            "$ref": "#/definitions/questionAnswer.UpdateQuestionAnswerResponse"
                         }
                     },
                     "400": {
@@ -1235,7 +1323,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/questionAnswer.DeleteQuestionResponse"
+                            "$ref": "#/definitions/questionAnswer.DeleteQuestionAnswerResponse"
                         }
                     },
                     "400": {
@@ -1270,7 +1358,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/questionAnswer.ListQuestionsResponse"
+                            "$ref": "#/definitions/questionAnswer.ListQuestionsAnswerResponse"
                         }
                     },
                     "500": {
@@ -1306,6 +1394,136 @@ const docTemplate = `{
                         "description": "Internal Server Error",
                         "schema": {
                             "$ref": "#/definitions/question.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/userAnswer": {
+            "get": {
+                "description": "Show a job userAnswer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "UserAnswer"
+                ],
+                "summary": "Show userAnswer",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "UserAnswer identification",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.ShowUserAnswerResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a new job userAnswer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "UsersAnswer"
+                ],
+                "summary": "Create userAnswer",
+                "parameters": [
+                    {
+                        "description": "Request body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.CreateUserAnswerRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.CreateUserAnswerResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete a job userAnswer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "usersAnswer"
+                ],
+                "summary": "Delete userAnswer",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "UserAnswer identification",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.DeleteUserAnswerResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.ErrorResponse"
                         }
                     }
                 }
@@ -1494,22 +1712,22 @@ const docTemplate = `{
                 }
             }
         },
-        "letterAnswer.CreateLetterResponse": {
+        "letterAnswer.CreateLetterAnswerResponse": {
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/schemas.LetterResponse"
+                    "$ref": "#/definitions/schemas.LetterAnswerResponse"
                 },
                 "message": {
                     "type": "string"
                 }
             }
         },
-        "letterAnswer.DeleteLetterResponse": {
+        "letterAnswer.DeleteLetterAnswerResponse": {
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/schemas.LetterResponse"
+                    "$ref": "#/definitions/schemas.LetterAnswerResponse"
                 },
                 "message": {
                     "type": "string"
@@ -1527,13 +1745,13 @@ const docTemplate = `{
                 }
             }
         },
-        "letterAnswer.ListLettersResponse": {
+        "letterAnswer.ListLettersAnswerResponse": {
             "type": "object",
             "properties": {
                 "data": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/schemas.LetterResponse"
+                        "$ref": "#/definitions/schemas.LetterAnswerResponse"
                     }
                 },
                 "message": {
@@ -1541,11 +1759,11 @@ const docTemplate = `{
                 }
             }
         },
-        "letterAnswer.ShowLetterResponse": {
+        "letterAnswer.ShowLetterAnswerResponse": {
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/schemas.LetterResponse"
+                    "$ref": "#/definitions/schemas.LetterAnswerResponse"
                 },
                 "message": {
                     "type": "string"
@@ -1563,11 +1781,11 @@ const docTemplate = `{
                 }
             }
         },
-        "letterAnswer.UpdateLetterResponse": {
+        "letterAnswer.UpdateLetterAnswerResponse": {
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/schemas.LetterResponse"
+                    "$ref": "#/definitions/schemas.LetterAnswerResponse"
                 },
                 "message": {
                     "type": "string"
@@ -1794,11 +2012,11 @@ const docTemplate = `{
                 }
             }
         },
-        "questionAnswer.DeleteQuestionResponse": {
+        "questionAnswer.DeleteQuestionAnswerResponse": {
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/schemas.QuestionResponse"
+                    "$ref": "#/definitions/schemas.QuestionAnswerResponse"
                 },
                 "message": {
                     "type": "string"
@@ -1816,13 +2034,13 @@ const docTemplate = `{
                 }
             }
         },
-        "questionAnswer.ListQuestionsResponse": {
+        "questionAnswer.ListQuestionsAnswerResponse": {
             "type": "object",
             "properties": {
                 "data": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/schemas.QuestionResponse"
+                        "$ref": "#/definitions/schemas.QuestionAnswerResponse"
                     }
                 },
                 "message": {
@@ -1830,11 +2048,11 @@ const docTemplate = `{
                 }
             }
         },
-        "questionAnswer.ShowQuestionResponse": {
+        "questionAnswer.ShowQuestionAnswerResponse": {
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/schemas.QuestionResponse"
+                    "$ref": "#/definitions/schemas.QuestionAnswerResponse"
                 },
                 "message": {
                     "type": "string"
@@ -1861,11 +2079,11 @@ const docTemplate = `{
                 }
             }
         },
-        "questionAnswer.UpdateQuestionResponse": {
+        "questionAnswer.UpdateQuestionAnswerResponse": {
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/schemas.QuestionResponse"
+                    "$ref": "#/definitions/schemas.QuestionAnswerResponse"
                 },
                 "message": {
                     "type": "string"
@@ -1885,6 +2103,26 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "id": {
+                    "type": "integer"
+                },
+                "updatedAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "schemas.LetterAnswerResponse": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "deletedAt": {
+                    "type": "string"
+                },
+                "idAnswer": {
+                    "type": "integer"
+                },
+                "idLetter": {
                     "type": "integer"
                 },
                 "updatedAt": {
@@ -1947,6 +2185,35 @@ const docTemplate = `{
                 }
             }
         },
+        "schemas.QuestionAnswerResponse": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "deletedAt": {
+                    "type": "string"
+                },
+                "idAnswer1": {
+                    "type": "integer"
+                },
+                "idAnswer2": {
+                    "type": "integer"
+                },
+                "idAnswer3": {
+                    "type": "integer"
+                },
+                "idAnswer4": {
+                    "type": "integer"
+                },
+                "idQuestion": {
+                    "type": "integer"
+                },
+                "updatedAt": {
+                    "type": "string"
+                }
+            }
+        },
         "schemas.QuestionResponse": {
             "type": "object",
             "properties": {
@@ -1963,6 +2230,144 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "updatedAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "schemas.UserAnswerResponse": {
+            "type": "object",
+            "properties": {
+                "IdQuestion": {
+                    "type": "integer"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "deletedAt": {
+                    "type": "string"
+                },
+                "idAnswer1": {
+                    "type": "integer"
+                },
+                "idAnswer2": {
+                    "type": "integer"
+                },
+                "idAnswer3": {
+                    "type": "integer"
+                },
+                "idAnswer4": {
+                    "type": "integer"
+                },
+                "updatedAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "userAnswer.CreateUserAnswerRequest": {
+            "type": "object",
+            "properties": {
+                "idAnswer1": {
+                    "type": "integer"
+                },
+                "idAnswer2": {
+                    "type": "integer"
+                },
+                "idAnswer3": {
+                    "type": "integer"
+                },
+                "idAnswer4": {
+                    "type": "integer"
+                },
+                "idQuestion": {
+                    "type": "integer"
+                }
+            }
+        },
+        "userAnswer.CreateUserAnswerResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.UserAnswerResponse"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "userAnswer.DeleteUserAnswerResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.UserAnswerResponse"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "userAnswer.ErrorResponse": {
+            "type": "object",
+            "properties": {
+                "errorCode": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "userAnswer.ListUsersAnswerResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/schemas.UserAnswerResponse"
+                    }
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "userAnswer.ShowUserAnswerResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.UserAnswerResponse"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "userAnswer.UpdateUserAnswerRequest": {
+            "type": "object",
+            "properties": {
+                "idAnswer1": {
+                    "type": "integer"
+                },
+                "idAnswer2": {
+                    "type": "integer"
+                },
+                "idAnswer3": {
+                    "type": "integer"
+                },
+                "idAnswer4": {
+                    "type": "integer"
+                },
+                "idQuestion": {
+                    "type": "integer"
+                }
+            }
+        },
+        "userAnswer.UpdateUserAnswerResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.UserAnswerResponse"
+                },
+                "message": {
                     "type": "string"
                 }
             }

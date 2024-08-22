@@ -15,7 +15,7 @@ import (
 // @Tags LettersAnswer
 // @Accept json
 // @Produce json
-// @Success 200 {object} ListLettersResponse
+// @Success 200 {object} ListLettersAnswerResponse
 // @Failure 500 {object} ErrorResponse
 // @Router /letterAnswers [get]
 func ListLettersAnswerHandler(ctx *gin.Context) {

@@ -17,7 +17,7 @@ import (
 // @Produce json
 // @Param id query string true "Question Identification"
 // @Param questionAnswer body UpdateQuestionAnswerRequest true "Question data to Update"
-// @Success 200 {object} UpdateQuestionResponse
+// @Success 200 {object} UpdateQuestionAnswerResponse
 // @Failure 400 {object} ErrorResponse
 // @Failure 404 {object} ErrorResponse
 // @Failure 500 {object} ErrorResponse
