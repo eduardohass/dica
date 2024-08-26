@@ -12,7 +12,7 @@ import (
 
 // @Summary Delete userAnswer
 // @Description Delete a job userAnswer
-// @Tags usersAnswer
+// @Tags UserAnswer
 // @Accept json
 // @Produce json
 // @Param id query string true "UserAnswer identification"

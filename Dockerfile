@@ -5,8 +5,8 @@ WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
-#RUN GOOS=linux CGO_ENABLED=0 go build -ldflags="-w -s" -o main main.go
+#RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
+RUN GOOS=linux CGO_ENABLED=0 go build -ldflags="-w -s" -o main main.go
 
 # Create the final image, running the API and exposing port 8080
 FROM alpine:latest

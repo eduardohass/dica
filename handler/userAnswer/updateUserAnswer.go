@@ -12,7 +12,7 @@ import (
 
 // @Summary Update UserAnswer
 // @Description Update a job UserAnswer
-// @Tags UsersAnswer
+// @Tags UserAnswer
 // @Accept json
 // @Produce json
 // @Param id query string true "UserAnswer Identification"

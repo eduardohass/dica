@@ -12,7 +12,7 @@ import (
 
 // @Summary Create userAnswer
 // @Description Create a new job userAnswer
-// @Tags UsersAnswer
+// @Tags UserAnswer
 // @Accept json
 // @Produce json
 // @Param request body CreateUserAnswerRequest true "Request body"

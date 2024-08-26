@@ -26,7 +26,7 @@ func DeleteQuestionAnswerHandler(ctx *gin.Context) {
 		sendError(ctx, http.StatusBadRequest, errParamIsRequired("id", "queryParameter").Error())
 		return
 	}
-	questionAnswer := schemas.Question{}
+	questionAnswer := schemas.QuestionAnswer{}
 
 	// Find questionAnswer
 	if err := db.First(&questionAnswer, id).Error; err != nil {
