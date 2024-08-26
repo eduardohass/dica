@@ -15,10 +15,10 @@ import (
 // @Tags UserQuestion
 // @Accept json
 // @Produce json
-// @Success 200 {object} ListUsersAnswerResponse
+// @Success 200 {object} ListUsersQuestionResponse
 // @Failure 500 {object} ErrorResponse
 // @Router /usersAnswer [get]
-func ListUsersAnswerHandler(ctx *gin.Context) {
+func ListUsersQuestionHandler(ctx *gin.Context) {
 	fmt.Println("DBG==List UsersQuestion ")
 	usersAnswer := []schemas.UserQuestion{}
 	fmt.Println("DBG==UsersQuestion: ", usersAnswer)

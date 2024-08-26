@@ -1486,7 +1486,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/userQuestion.ListUsersAnswerResponse"
+                            "$ref": "#/definitions/userQuestion.ListUsersQuestionResponse"
                         }
                     },
                     "500": {
@@ -2285,7 +2285,7 @@ const docTemplate = `{
                 }
             }
         },
-        "userQuestion.ListUsersAnswerResponse": {
+        "userQuestion.ListUsersQuestionResponse": {
             "type": "object",
             "properties": {
                 "data": {

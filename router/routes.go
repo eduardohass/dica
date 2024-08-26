@@ -63,7 +63,7 @@ func initializeRoutes(router *gin.Engine) {
 		v1.PUT("letterAnswer", handlerLetterAnswer.UpdateLetterAnswerHandler)
 		v1.DELETE("letterAnswer", handlerLetterAnswer.DeleteLetterAnswerHandler)
 		// UserQuestion
-		v1.GET("usersAnswer", handlerUserQuestion.ListUsersAnswerHandler)
+		v1.GET("usersAnswer", handlerUserQuestion.ListUsersQuestionHandler)
 		v1.GET("userQuestion", handlerUserQuestion.ShowUserAnswerHandler)
 		v1.POST("userQuestion", handlerUserQuestion.CreateUserAnswerHandler)
 		v1.PUT("userQuestion", handlerUserQuestion.UpdateUserAnswerHandler)
