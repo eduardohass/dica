@@ -580,7 +580,7 @@ paths:
             $ref: '#/definitions/userAnswer.ErrorResponse'
       summary: Update UserAnswer
       tags:
-      - UsersAnswer
+      - UserAnswer
   /UserAnswers:
     get:
       consumes:
@@ -599,7 +599,7 @@ paths:
             $ref: '#/definitions/userAnswer.ErrorResponse'
       summary: List UserAnswers
       tags:
-      - UsersAnswer
+      - UserAnswer
   /answer:
     delete:
       consumes:
@@ -1486,7 +1486,7 @@ paths:
             $ref: '#/definitions/userAnswer.ErrorResponse'
       summary: Delete userAnswer
       tags:
-      - usersAnswer
+      - UserAnswer
     get:
       consumes:
       - application/json
@@ -1543,5 +1543,5 @@ paths:
             $ref: '#/definitions/userAnswer.ErrorResponse'
       summary: Create userAnswer
       tags:
-      - UsersAnswer
+      - UserAnswer
 swagger: "2.0"

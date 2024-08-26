@@ -25,7 +25,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "UsersAnswer"
+                    "UserAnswer"
                 ],
                 "summary": "Update UserAnswer",
                 "parameters": [
@@ -84,7 +84,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "UsersAnswer"
+                    "UserAnswer"
                 ],
                 "summary": "List UserAnswers",
                 "responses": {
@@ -1451,7 +1451,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "UsersAnswer"
+                    "UserAnswer"
                 ],
                 "summary": "Create userAnswer",
                 "parameters": [
@@ -1495,7 +1495,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "usersAnswer"
+                    "UserAnswer"
                 ],
                 "summary": "Delete userAnswer",
                 "parameters": [

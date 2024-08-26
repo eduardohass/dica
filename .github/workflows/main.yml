@@ -80,7 +80,7 @@ jobs:
           context: .
           push: true
           # tags: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}:${{env.VERSION_TAG}}
-          tags: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}:0.0.4
+          tags: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}:0.0.5
           labels: ${{ steps.meta.outputs.labels }}
           platforms: ${{ matrix.platform }}
 

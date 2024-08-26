@@ -16,7 +16,7 @@ import (
 // @Accept json
 // @Produce json
 // @Success 200 {object} ListQuestionsAnswerResponse
-// @Failure 500 {object} ErrorResponseDBG==List Questions
+// @Failure 500 {object} ErrorResponse
 // @Router /questionAnswers [get]
 func ListQuestionsAnswerHandler(ctx *gin.Context) {
 	fmt.Println("DBG==List Questions Answer ")
