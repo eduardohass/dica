@@ -27,47 +27,47 @@ func initializeRoutes(router *gin.Engine) {
 	v1 := router.Group("/api/v1")
 	{
 		// Opening
+		v1.GET("openings", handlerOpening.ListOpeningsHandler)
 		v1.GET("opening", handlerOpening.ShowOpeningHandler)
 		v1.POST("opening", handlerOpening.CreateOpeningHandler)
 		v1.PUT("opening", handlerOpening.UpdateOpeningHandler)
 		v1.DELETE("opening", handlerOpening.DeleteOpeningHandler)
-		v1.GET("openings", handlerOpening.ListOpeningsHandler)
 		// Letter
+		v1.GET("letters", handlerLetter.ListLettersHandler)
 		v1.GET("letter", handlerLetter.ShowLetterHandler)
 		v1.POST("letter", handlerLetter.CreateLetterHandler)
 		v1.PUT("letter", handlerLetter.UpdateLetterHandler)
 		v1.DELETE("letter", handlerLetter.DeleteLetterHandler)
-		v1.GET("letters", handlerLetter.ListLettersHandler)
-		// // Question
+		// Question
+		v1.GET("questions", handlerQuestion.ListQuestionsHandler)
 		v1.GET("question", handlerQuestion.ShowQuestionHandler)
 		v1.POST("question", handlerQuestion.CreateQuestionHandler)
 		v1.PUT("question", handlerQuestion.UpdateQuestionHandler)
 		v1.DELETE("question", handlerQuestion.DeleteQuestionHandler)
-		v1.GET("questions", handlerQuestion.ListQuestionsHandler)
-		// // Answer
+		// Answer
+		v1.GET("answers", handlerAnswer.ListAnswersHandler)
 		v1.GET("answer", handlerAnswer.ShowAnswerHandler)
 		v1.POST("answer", handlerAnswer.CreateAnswerHandler)
 		v1.PUT("answer", handlerAnswer.UpdateAnswerHandler)
 		v1.DELETE("answer", handlerAnswer.DeleteAnswerHandler)
-		v1.GET("answers", handlerAnswer.ListAnswersHandler)
 		// QuestionAnswer
+		v1.GET("questionsAnswer", handlerQuestionAnswer.ListQuestionsAnswerHandler)
 		v1.GET("questionAnswer", handlerQuestionAnswer.ShowQuestionAnswerHandler)
 		v1.POST("questionAnswer", handlerQuestionAnswer.CreateQuestionAnswerHandler)
 		v1.PUT("questionAnswer", handlerQuestionAnswer.UpdateQuestionAnswerHandler)
 		v1.DELETE("questionAnswer", handlerQuestionAnswer.DeleteQuestionAnswerHandler)
-		v1.GET("questionsAnswer", handlerQuestionAnswer.ListQuestionsAnswerHandler)
 		// LetterAnswer
+		v1.GET("lettersAnswer", handlerLetterAnswer.ListLettersAnswerHandler)
 		v1.GET("letterAnswer", handlerLetterAnswer.ShowLetterAnswerHandler)
 		v1.POST("letterAnswer", handlerLetterAnswer.CreateLetterAnswerHandler)
 		v1.PUT("letterAnswer", handlerLetterAnswer.UpdateLetterAnswerHandler)
 		v1.DELETE("letterAnswer", handlerLetterAnswer.DeleteLetterAnswerHandler)
-		v1.GET("lettersAnswers", handlerLetterAnswer.ListLettersAnswerHandler)
 		// UserAnswer
+		v1.GET("usersAnswer", handlerUserAnswer.ListUsersAnswerHandler)
 		v1.GET("userAnswer", handlerUserAnswer.ShowUserAnswerHandler)
 		v1.POST("userAnswer", handlerUserAnswer.CreateUserAnswerHandler)
 		v1.PUT("userAnswer", handlerUserAnswer.UpdateUserAnswerHandler)
 		v1.DELETE("userAnswer", handlerUserAnswer.DeleteUserAnswerHandler)
-		v1.GET("usersAnswer", handlerUserAnswer.ListUsersAnswerHandler)
 	}
 	// Initialize Swagger
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
