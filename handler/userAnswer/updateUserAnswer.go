@@ -1,4 +1,4 @@
-package userAnswer
+package userQuestion
 
 import (
 	"fmt"
@@ -10,18 +10,18 @@ import (
 
 // @BasePath /api/v1
 
-// @Summary Update UserAnswer
-// @Description Update a job UserAnswer
-// @Tags UserAnswer
+// @Summary Update UserQuestion
+// @Description Update a job UserQuestion
+// @Tags UserQuestion
 // @Accept json
 // @Produce json
-// @Param id query string true "UserAnswer Identification"
-// @Param UserAnswer body UpdateUserAnswerRequest true "UserAnswer data to Update"
+// @Param id query string true "UserQuestion Identification"
+// @Param UserQuestion body UpdateUserAnswerRequest true "UserQuestion data to Update"
 // @Success 200 {object} UpdateUserAnswerResponse
 // @Failure 400 {object} ErrorResponse
 // @Failure 404 {object} ErrorResponse
 // @Failure 500 {object} ErrorResponse
-// @Router /userAnswer [put]
+// @Router /userQuestion [put]
 func UpdateUserAnswerHandler(ctx *gin.Context) {
 	request := UpdateUserAnswerRequest{}
 	ctx.BindJSON(&request)
@@ -38,34 +38,34 @@ func UpdateUserAnswerHandler(ctx *gin.Context) {
 		return
 	}
 
-	UserAnswer := schemas.UserAnswer{}
+	UserQuestion := schemas.UserQuestion{}
 
-	if err := db.First(&UserAnswer, id).Error; err != nil {
-		fmt.Println("DBG==Erro ao recuperar a UserAnswer")
-		sendError(ctx, http.StatusNotFound, "UserAnswer not found")
+	if err := db.First(&UserQuestion, id).Error; err != nil {
+		fmt.Println("DBG==Erro ao recuperar a UserQuestion")
+		sendError(ctx, http.StatusNotFound, "UserQuestion not found")
 		return
 	}
-	// Update UserAnswer
+	// Update UserQuestion
 	if request.IdQuestion > 0 {
-		UserAnswer.IdQuestion = request.IdQuestion
+		UserQuestion.IdQuestion = request.IdQuestion
 	}
 	if request.IdAnswer1 > 0 {
-		UserAnswer.IdAnswer1 = request.IdAnswer1
+		UserQuestion.IdAnswer1 = request.IdAnswer1
 	}
 	if request.IdAnswer2 > 0 {
-		UserAnswer.IdAnswer2 = request.IdAnswer2
+		UserQuestion.IdAnswer2 = request.IdAnswer2
 	}
 	if request.IdAnswer3 > 0 {
-		UserAnswer.IdAnswer3 = request.IdAnswer3
+		UserQuestion.IdAnswer3 = request.IdAnswer3
 	}
 	if request.IdAnswer4 > 0 {
-		UserAnswer.IdAnswer4 = request.IdAnswer4
+		UserQuestion.IdAnswer4 = request.IdAnswer4
 	}
-	// Save UserAnswer
-	if err := db.Save(&UserAnswer).Error; err != nil {
-		logger.Errorf("error updating UserAnswer: %v", err.Error())
-		sendError(ctx, http.StatusInternalServerError, "error update UserAnswer")
+	// Save UserQuestion
+	if err := db.Save(&UserQuestion).Error; err != nil {
+		logger.Errorf("error updating UserQuestion: %v", err.Error())
+		sendError(ctx, http.StatusInternalServerError, "error update UserQuestion")
 		return
 	}
-	sendSuccess(ctx, "update-UserAnswer", UserAnswer)
+	sendSuccess(ctx, "update-UserQuestion", UserQuestion)
 }

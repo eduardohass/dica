@@ -6,7 +6,7 @@ import (
 	"gorm.io/gorm"
 )
 
-type UserAnswer struct {
+type UserQuestion struct {
 	gorm.Model
 	IdQuestion int64
 	IdAnswer1  int64

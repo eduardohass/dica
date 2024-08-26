@@ -69,10 +69,10 @@ func InitializePostgres() (*gorm.DB, error) {
 		return nil, err
 	}
 
-	// Migrate the letter userAnswer
-	err = db.AutoMigrate(&schemas.UserAnswer{})
+	// Migrate the letter userQuestion
+	err = db.AutoMigrate(&schemas.UserQuestion{})
 	if err != nil {
-		logger.Errorf("postgres automigration error - userAnswer %v", err)
+		logger.Errorf("postgres automigration error - userQuestion %v", err)
 		return nil, err
 	}
 

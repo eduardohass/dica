@@ -1,4 +1,4 @@
-package userAnswer
+package userQuestion
 
 import (
 	"fmt"
@@ -13,7 +13,7 @@ var (
 )
 
 func InitializeHandler() {
-	fmt.Println("DBG==Inicializando o handler userAnswer")
+	fmt.Println("DBG==Inicializando o handler userQuestion")
 	logger = config.GetLogger("handler")
 	fmt.Println("DBG==logger: ", logger)
 	db = config.GetDatabase()

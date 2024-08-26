@@ -1,4 +1,4 @@
-package userAnswer
+package userQuestion
 
 import (
 	"net/http"
@@ -9,27 +9,27 @@ import (
 
 // @BasePath /api/v1
 
-// @Summary Show userAnswer
-// @Description Show a job userAnswer
-// @Tags UserAnswer
+// @Summary Show userQuestion
+// @Description Show a job userQuestion
+// @Tags UserQuestion
 // @Accept json
 // @Produce json
-// @Param id query string true "UserAnswer identification"
+// @Param id query string true "UserQuestion identification"
 // @Success 200 {object} ShowUserAnswerResponse
 // @Failure 400 {object} ErrorResponse
 // @Failure 404 {object} ErrorResponse
-// @Router /userAnswer [get]
+// @Router /userQuestion [get]
 func ShowUserAnswerHandler(ctx *gin.Context) {
 	id := ctx.Query("id")
 	if id == "" {
 		sendError(ctx, http.StatusBadRequest, errParamIsRequired("id", "queryParameter").Error())
 		return
 	}
-	userAnswer := schemas.UserAnswer{}
+	userQuestion := schemas.UserQuestion{}
 
-	if err := db.First(&userAnswer, id).Error; err != nil {
-		sendError(ctx, http.StatusNotFound, "userAnswer not found")
+	if err := db.First(&userQuestion, id).Error; err != nil {
+		sendError(ctx, http.StatusNotFound, "userQuestion not found")
 		return
 	}
-	sendSuccess(ctx, "show-userAnswer", userAnswer)
+	sendSuccess(ctx, "show-userQuestion", userQuestion)
 }

@@ -1282,9 +1282,9 @@ const docTemplate = `{
                 }
             }
         },
-        "/userAnswer": {
+        "/userQuestion": {
             "get": {
-                "description": "Show a job userAnswer",
+                "description": "Show a job userQuestion",
                 "consumes": [
                     "application/json"
                 ],
@@ -1292,13 +1292,13 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "UserAnswer"
+                    "UserQuestion"
                 ],
-                "summary": "Show userAnswer",
+                "summary": "Show userQuestion",
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "UserAnswer identification",
+                        "description": "UserQuestion identification",
                         "name": "id",
                         "in": "query",
                         "required": true
@@ -1308,25 +1308,25 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/userAnswer.ShowUserAnswerResponse"
+                            "$ref": "#/definitions/userQuestion.ShowUserAnswerResponse"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                            "$ref": "#/definitions/userQuestion.ErrorResponse"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                            "$ref": "#/definitions/userQuestion.ErrorResponse"
                         }
                     }
                 }
             },
             "put": {
-                "description": "Update a job UserAnswer",
+                "description": "Update a job UserQuestion",
                 "consumes": [
                     "application/json"
                 ],
@@ -1334,24 +1334,24 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "UserAnswer"
+                    "UserQuestion"
                 ],
-                "summary": "Update UserAnswer",
+                "summary": "Update UserQuestion",
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "UserAnswer Identification",
+                        "description": "UserQuestion Identification",
                         "name": "id",
                         "in": "query",
                         "required": true
                     },
                     {
-                        "description": "UserAnswer data to Update",
-                        "name": "UserAnswer",
+                        "description": "UserQuestion data to Update",
+                        "name": "UserQuestion",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/userAnswer.UpdateUserAnswerRequest"
+                            "$ref": "#/definitions/userQuestion.UpdateUserAnswerRequest"
                         }
                     }
                 ],
@@ -1359,31 +1359,31 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/userAnswer.UpdateUserAnswerResponse"
+                            "$ref": "#/definitions/userQuestion.UpdateUserAnswerResponse"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                            "$ref": "#/definitions/userQuestion.ErrorResponse"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                            "$ref": "#/definitions/userQuestion.ErrorResponse"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                            "$ref": "#/definitions/userQuestion.ErrorResponse"
                         }
                     }
                 }
             },
             "post": {
-                "description": "Create a new job userAnswer",
+                "description": "Create a new job userQuestion",
                 "consumes": [
                     "application/json"
                 ],
@@ -1391,9 +1391,9 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "UserAnswer"
+                    "UserQuestion"
                 ],
-                "summary": "Create userAnswer",
+                "summary": "Create userQuestion",
                 "parameters": [
                     {
                         "description": "Request body",
@@ -1401,7 +1401,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/userAnswer.CreateUserAnswerRequest"
+                            "$ref": "#/definitions/userQuestion.CreateUserAnswerRequest"
                         }
                     }
                 ],
@@ -1409,25 +1409,25 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/userAnswer.CreateUserAnswerResponse"
+                            "$ref": "#/definitions/userQuestion.CreateUserAnswerResponse"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                            "$ref": "#/definitions/userQuestion.ErrorResponse"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                            "$ref": "#/definitions/userQuestion.ErrorResponse"
                         }
                     }
                 }
             },
             "delete": {
-                "description": "Delete a job userAnswer",
+                "description": "Delete a job userQuestion",
                 "consumes": [
                     "application/json"
                 ],
@@ -1435,13 +1435,13 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "UserAnswer"
+                    "UserQuestion"
                 ],
-                "summary": "Delete userAnswer",
+                "summary": "Delete userQuestion",
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "UserAnswer identification",
+                        "description": "UserQuestion identification",
                         "name": "id",
                         "in": "query",
                         "required": true
@@ -1451,19 +1451,19 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/userAnswer.DeleteUserAnswerResponse"
+                            "$ref": "#/definitions/userQuestion.DeleteUserAnswerResponse"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                            "$ref": "#/definitions/userQuestion.ErrorResponse"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                            "$ref": "#/definitions/userQuestion.ErrorResponse"
                         }
                     }
                 }
@@ -1479,20 +1479,20 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "UserAnswer"
+                    "UserQuestion"
                 ],
                 "summary": "List usersAnswer",
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/userAnswer.ListUsersAnswerResponse"
+                            "$ref": "#/definitions/userQuestion.ListUsersAnswerResponse"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                            "$ref": "#/definitions/userQuestion.ErrorResponse"
                         }
                     }
                 }
@@ -2232,7 +2232,7 @@ const docTemplate = `{
                 }
             }
         },
-        "userAnswer.CreateUserAnswerRequest": {
+        "userQuestion.CreateUserAnswerRequest": {
             "type": "object",
             "properties": {
                 "idAnswer1": {
@@ -2252,7 +2252,7 @@ const docTemplate = `{
                 }
             }
         },
-        "userAnswer.CreateUserAnswerResponse": {
+        "userQuestion.CreateUserAnswerResponse": {
             "type": "object",
             "properties": {
                 "data": {
@@ -2263,7 +2263,7 @@ const docTemplate = `{
                 }
             }
         },
-        "userAnswer.DeleteUserAnswerResponse": {
+        "userQuestion.DeleteUserAnswerResponse": {
             "type": "object",
             "properties": {
                 "data": {
@@ -2274,7 +2274,7 @@ const docTemplate = `{
                 }
             }
         },
-        "userAnswer.ErrorResponse": {
+        "userQuestion.ErrorResponse": {
             "type": "object",
             "properties": {
                 "errorCode": {
@@ -2285,7 +2285,7 @@ const docTemplate = `{
                 }
             }
         },
-        "userAnswer.ListUsersAnswerResponse": {
+        "userQuestion.ListUsersAnswerResponse": {
             "type": "object",
             "properties": {
                 "data": {
@@ -2299,7 +2299,7 @@ const docTemplate = `{
                 }
             }
         },
-        "userAnswer.ShowUserAnswerResponse": {
+        "userQuestion.ShowUserAnswerResponse": {
             "type": "object",
             "properties": {
                 "data": {
@@ -2310,7 +2310,7 @@ const docTemplate = `{
                 }
             }
         },
-        "userAnswer.UpdateUserAnswerRequest": {
+        "userQuestion.UpdateUserAnswerRequest": {
             "type": "object",
             "properties": {
                 "idAnswer1": {
@@ -2330,7 +2330,7 @@ const docTemplate = `{
                 }
             }
         },
-        "userAnswer.UpdateUserAnswerResponse": {
+        "userQuestion.UpdateUserAnswerResponse": {
             "type": "object",
             "properties": {
                 "data": {

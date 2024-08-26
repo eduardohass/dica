@@ -469,7 +469,7 @@ definitions:
       updatedAt:
         type: string
     type: object
-  userAnswer.CreateUserAnswerRequest:
+  userQuestion.CreateUserAnswerRequest:
     properties:
       idAnswer1:
         type: integer
@@ -482,28 +482,28 @@ definitions:
       idQuestion:
         type: integer
     type: object
-  userAnswer.CreateUserAnswerResponse:
+  userQuestion.CreateUserAnswerResponse:
     properties:
       data:
         $ref: '#/definitions/schemas.UserAnswerResponse'
       message:
         type: string
     type: object
-  userAnswer.DeleteUserAnswerResponse:
+  userQuestion.DeleteUserAnswerResponse:
     properties:
       data:
         $ref: '#/definitions/schemas.UserAnswerResponse'
       message:
         type: string
     type: object
-  userAnswer.ErrorResponse:
+  userQuestion.ErrorResponse:
     properties:
       errorCode:
         type: string
       message:
         type: string
     type: object
-  userAnswer.ListUsersAnswerResponse:
+  userQuestion.ListUsersAnswerResponse:
     properties:
       data:
         items:
@@ -512,14 +512,14 @@ definitions:
       message:
         type: string
     type: object
-  userAnswer.ShowUserAnswerResponse:
+  userQuestion.ShowUserAnswerResponse:
     properties:
       data:
         $ref: '#/definitions/schemas.UserAnswerResponse'
       message:
         type: string
     type: object
-  userAnswer.UpdateUserAnswerRequest:
+  userQuestion.UpdateUserAnswerRequest:
     properties:
       idAnswer1:
         type: integer
@@ -532,7 +532,7 @@ definitions:
       idQuestion:
         type: integer
     type: object
-  userAnswer.UpdateUserAnswerResponse:
+  userQuestion.UpdateUserAnswerResponse:
     properties:
       data:
         $ref: '#/definitions/schemas.UserAnswerResponse'
@@ -1381,13 +1381,13 @@ paths:
       summary: List questionsAnswer
       tags:
       - QuestionsAnswer
-  /userAnswer:
+  /userQuestion:
     delete:
       consumes:
       - application/json
-      description: Delete a job userAnswer
+      description: Delete a job userQuestion
       parameters:
-      - description: UserAnswer identification
+      - description: UserQuestion identification
         in: query
         name: id
         required: true
@@ -1398,24 +1398,24 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/userAnswer.DeleteUserAnswerResponse'
+            $ref: '#/definitions/userQuestion.DeleteUserAnswerResponse'
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/userAnswer.ErrorResponse'
+            $ref: '#/definitions/userQuestion.ErrorResponse'
         "404":
           description: Not Found
           schema:
-            $ref: '#/definitions/userAnswer.ErrorResponse'
-      summary: Delete userAnswer
+            $ref: '#/definitions/userQuestion.ErrorResponse'
+      summary: Delete userQuestion
       tags:
-      - UserAnswer
+      - UserQuestion
     get:
       consumes:
       - application/json
-      description: Show a job userAnswer
+      description: Show a job userQuestion
       parameters:
-      - description: UserAnswer identification
+      - description: UserQuestion identification
         in: query
         name: id
         required: true
@@ -1426,85 +1426,85 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/userAnswer.ShowUserAnswerResponse'
+            $ref: '#/definitions/userQuestion.ShowUserAnswerResponse'
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/userAnswer.ErrorResponse'
+            $ref: '#/definitions/userQuestion.ErrorResponse'
         "404":
           description: Not Found
           schema:
-            $ref: '#/definitions/userAnswer.ErrorResponse'
-      summary: Show userAnswer
+            $ref: '#/definitions/userQuestion.ErrorResponse'
+      summary: Show userQuestion
       tags:
-      - UserAnswer
+      - UserQuestion
     post:
       consumes:
       - application/json
-      description: Create a new job userAnswer
+      description: Create a new job userQuestion
       parameters:
       - description: Request body
         in: body
         name: request
         required: true
         schema:
-          $ref: '#/definitions/userAnswer.CreateUserAnswerRequest'
+          $ref: '#/definitions/userQuestion.CreateUserAnswerRequest'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/userAnswer.CreateUserAnswerResponse'
+            $ref: '#/definitions/userQuestion.CreateUserAnswerResponse'
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/userAnswer.ErrorResponse'
+            $ref: '#/definitions/userQuestion.ErrorResponse'
         "500":
           description: Internal Server Error
           schema:
-            $ref: '#/definitions/userAnswer.ErrorResponse'
-      summary: Create userAnswer
+            $ref: '#/definitions/userQuestion.ErrorResponse'
+      summary: Create userQuestion
       tags:
-      - UserAnswer
+      - UserQuestion
     put:
       consumes:
       - application/json
-      description: Update a job UserAnswer
+      description: Update a job UserQuestion
       parameters:
-      - description: UserAnswer Identification
+      - description: UserQuestion Identification
         in: query
         name: id
         required: true
         type: string
-      - description: UserAnswer data to Update
+      - description: UserQuestion data to Update
         in: body
-        name: UserAnswer
+        name: UserQuestion
         required: true
         schema:
-          $ref: '#/definitions/userAnswer.UpdateUserAnswerRequest'
+          $ref: '#/definitions/userQuestion.UpdateUserAnswerRequest'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/userAnswer.UpdateUserAnswerResponse'
+            $ref: '#/definitions/userQuestion.UpdateUserAnswerResponse'
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/userAnswer.ErrorResponse'
+            $ref: '#/definitions/userQuestion.ErrorResponse'
         "404":
           description: Not Found
           schema:
-            $ref: '#/definitions/userAnswer.ErrorResponse'
+            $ref: '#/definitions/userQuestion.ErrorResponse'
         "500":
           description: Internal Server Error
           schema:
-            $ref: '#/definitions/userAnswer.ErrorResponse'
-      summary: Update UserAnswer
+            $ref: '#/definitions/userQuestion.ErrorResponse'
+      summary: Update UserQuestion
       tags:
-      - UserAnswer
+      - UserQuestion
   /usersAnswer:
     get:
       consumes:
@@ -1516,12 +1516,12 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/userAnswer.ListUsersAnswerResponse'
+            $ref: '#/definitions/userQuestion.ListUsersAnswerResponse'
         "500":
           description: Internal Server Error
           schema:
-            $ref: '#/definitions/userAnswer.ErrorResponse'
+            $ref: '#/definitions/userQuestion.ErrorResponse'
       summary: List usersAnswer
       tags:
-      - UserAnswer
+      - UserQuestion
 swagger: "2.0"

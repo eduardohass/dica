@@ -19,7 +19,7 @@ import (
 // @Failure 500 {object} ErrorResponse
 // @Router /lettersAnswer [get]
 func ListLettersAnswerHandler(ctx *gin.Context) {
-	fmt.Println("DBG==List LettersAnswer ")
+	fmt.Println("DBG==List Letters Answer ")
 	lettersAnswer := []schemas.LetterAnswer{}
 	fmt.Println("DBG==lettersAnswer: ", lettersAnswer)
 	if err := db.Find(&lettersAnswer).Error; err != nil {
