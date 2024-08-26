@@ -1,4 +1,4 @@
-package letterAnswer
+package lettersAnswer
 
 import (
 	"net/http"
@@ -9,8 +9,8 @@ import (
 
 // @BasePath /api/v1
 
-// @Summary Show letterAnswer
-// @Description Show a job letterAnswer
+// @Summary Show lettersAnswer
+// @Description Show a job lettersAnswer
 // @Tags LettersAnswer
 // @Accept json
 // @Produce json
@@ -18,18 +18,18 @@ import (
 // @Success 200 {object} ShowLetterAnswerResponse
 // @Failure 400 {object} ErrorResponse
 // @Failure 404 {object} ErrorResponse
-// @Router /letterAnswer [get]
+// @Router /lettersAnswer [get]
 func ShowLetterAnswerHandler(ctx *gin.Context) {
 	id := ctx.Query("id")
 	if id == "" {
 		sendError(ctx, http.StatusBadRequest, errParamIsRequired("id", "queryParameter").Error())
 		return
 	}
-	letterAnswer := schemas.LetterAnswer{}
+	lettersAnswer := schemas.LetterAnswer{}
 
-	if err := db.First(&letterAnswer, id).Error; err != nil {
-		sendError(ctx, http.StatusNotFound, "letterAnswer not found")
+	if err := db.First(&lettersAnswer, id).Error; err != nil {
+		sendError(ctx, http.StatusNotFound, "lettersAnswer not found")
 		return
 	}
-	sendSuccess(ctx, "show-letterAnswer", letterAnswer)
+	sendSuccess(ctx, "show-lettersAnswer", lettersAnswer)
 }

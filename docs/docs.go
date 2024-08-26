@@ -15,94 +15,6 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/UserAnswer": {
-            "put": {
-                "description": "Update a job UserAnswer",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "UserAnswer"
-                ],
-                "summary": "Update UserAnswer",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "UserAnswer Identification",
-                        "name": "id",
-                        "in": "query",
-                        "required": true
-                    },
-                    {
-                        "description": "UserAnswer data to Update",
-                        "name": "UserAnswer",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/userAnswer.UpdateUserAnswerRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/userAnswer.UpdateUserAnswerResponse"
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "schema": {
-                            "$ref": "#/definitions/userAnswer.ErrorResponse"
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "schema": {
-                            "$ref": "#/definitions/userAnswer.ErrorResponse"
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "schema": {
-                            "$ref": "#/definitions/userAnswer.ErrorResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/UserAnswers": {
-            "get": {
-                "description": "List all job UserAnswers",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "UserAnswer"
-                ],
-                "summary": "List UserAnswers",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/userAnswer.ListUsersAnswerResponse"
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "schema": {
-                            "$ref": "#/definitions/userAnswer.ErrorResponse"
-                        }
-                    }
-                }
-            }
-        },
         "/answer": {
             "get": {
                 "description": "Show a job answer",
@@ -506,222 +418,6 @@ const docTemplate = `{
                 }
             }
         },
-        "/letterAnswer": {
-            "get": {
-                "description": "Show a job letterAnswer",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "LettersAnswer"
-                ],
-                "summary": "Show letterAnswer",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Letter identification",
-                        "name": "id",
-                        "in": "query",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/letterAnswer.ShowLetterAnswerResponse"
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "schema": {
-                            "$ref": "#/definitions/letterAnswer.ErrorResponse"
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "schema": {
-                            "$ref": "#/definitions/letterAnswer.ErrorResponse"
-                        }
-                    }
-                }
-            },
-            "put": {
-                "description": "Update a job letterAnswer",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "LettersAnswer"
-                ],
-                "summary": "Update letterAnswer",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Letter Identification",
-                        "name": "id",
-                        "in": "query",
-                        "required": true
-                    },
-                    {
-                        "description": "Letter data to Update",
-                        "name": "letterAnswer",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/letterAnswer.UpdateLetterAnswerRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/letterAnswer.UpdateLetterAnswerResponse"
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "schema": {
-                            "$ref": "#/definitions/letterAnswer.ErrorResponse"
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "schema": {
-                            "$ref": "#/definitions/letterAnswer.ErrorResponse"
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "schema": {
-                            "$ref": "#/definitions/letterAnswer.ErrorResponse"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "description": "Create a new job letterAnswer",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "LettersAnswer"
-                ],
-                "summary": "Create letterAnswer",
-                "parameters": [
-                    {
-                        "description": "Request body",
-                        "name": "request",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/letterAnswer.CreateLetterAnswerRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/letterAnswer.CreateLetterAnswerResponse"
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "schema": {
-                            "$ref": "#/definitions/letterAnswer.ErrorResponse"
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "schema": {
-                            "$ref": "#/definitions/letterAnswer.ErrorResponse"
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "description": "Delete a job letterAnswer",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "LettersAnswer"
-                ],
-                "summary": "Delete letterAnswer",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Letter identification",
-                        "name": "id",
-                        "in": "query",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/letterAnswer.DeleteLetterAnswerResponse"
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "schema": {
-                            "$ref": "#/definitions/letterAnswer.ErrorResponse"
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "schema": {
-                            "$ref": "#/definitions/letterAnswer.ErrorResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/letterAnswers": {
-            "get": {
-                "description": "List all job letterAnswers",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "LettersAnswer"
-                ],
-                "summary": "List letterAnswers",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/letterAnswer.ListLettersAnswerResponse"
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "schema": {
-                            "$ref": "#/definitions/letterAnswer.ErrorResponse"
-                        }
-                    }
-                }
-            }
-        },
         "/letters": {
             "get": {
                 "description": "List all job letters",
@@ -746,6 +442,193 @@ const docTemplate = `{
                         "description": "Internal Server Error",
                         "schema": {
                             "$ref": "#/definitions/letter.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/lettersAnswer": {
+            "get": {
+                "description": "Show a job lettersAnswer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "LettersAnswer"
+                ],
+                "summary": "Show lettersAnswer",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Letter identification",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/lettersAnswer.ShowLetterAnswerResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lettersAnswer.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lettersAnswer.ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update a job lettersAnswer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "LettersAnswer"
+                ],
+                "summary": "Update lettersAnswer",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Letter Identification",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "description": "Letter data to Update",
+                        "name": "lettersAnswer",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/lettersAnswer.UpdateLetterAnswerRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/lettersAnswer.UpdateLetterAnswerResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lettersAnswer.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lettersAnswer.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lettersAnswer.ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a new job lettersAnswer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "LettersAnswer"
+                ],
+                "summary": "Create lettersAnswer",
+                "parameters": [
+                    {
+                        "description": "Request body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/lettersAnswer.CreateLetterAnswerRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/lettersAnswer.CreateLetterAnswerResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lettersAnswer.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lettersAnswer.ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete a job lettersAnswer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "LettersAnswer"
+                ],
+                "summary": "Delete lettersAnswer",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Letter identification",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/lettersAnswer.DeleteLetterAnswerResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lettersAnswer.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lettersAnswer.ErrorResponse"
                         }
                     }
                 }
@@ -1341,35 +1224,6 @@ const docTemplate = `{
                 }
             }
         },
-        "/questionAnswers": {
-            "get": {
-                "description": "List all job questionAnswers",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "QuestionsAnswer"
-                ],
-                "summary": "List questionAnswers",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/questionAnswer.ListQuestionsAnswerResponse"
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "schema": {
-                            "$ref": "#/definitions/questionAnswer.ErrorResponse"
-                        }
-                    }
-                }
-            }
-        },
         "/questions": {
             "get": {
                 "description": "List all job questions",
@@ -1394,6 +1248,35 @@ const docTemplate = `{
                         "description": "Internal Server Error",
                         "schema": {
                             "$ref": "#/definitions/question.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/questionsAnswer": {
+            "get": {
+                "description": "List all job questionsAnswer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "QuestionsAnswer"
+                ],
+                "summary": "List questionsAnswer",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/questionAnswer.ListQuestionsAnswerResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/questionAnswer.ErrorResponse"
                         }
                     }
                 }
@@ -1436,6 +1319,63 @@ const docTemplate = `{
                     },
                     "404": {
                         "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update a job UserAnswer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "UserAnswer"
+                ],
+                "summary": "Update UserAnswer",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "UserAnswer Identification",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "description": "UserAnswer data to Update",
+                        "name": "UserAnswer",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.UpdateUserAnswerRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.UpdateUserAnswerResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
                         "schema": {
                             "$ref": "#/definitions/userAnswer.ErrorResponse"
                         }
@@ -1522,6 +1462,35 @@ const docTemplate = `{
                     },
                     "404": {
                         "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/usersAnswer": {
+            "get": {
+                "description": "List all job usersAnswer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "UserAnswer"
+                ],
+                "summary": "List usersAnswer",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/userAnswer.ListUsersAnswerResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
                         "schema": {
                             "$ref": "#/definitions/userAnswer.ErrorResponse"
                         }
@@ -1701,7 +1670,7 @@ const docTemplate = `{
                 }
             }
         },
-        "letterAnswer.CreateLetterAnswerRequest": {
+        "lettersAnswer.CreateLetterAnswerRequest": {
             "type": "object",
             "properties": {
                 "idAnswer": {
@@ -1712,7 +1681,7 @@ const docTemplate = `{
                 }
             }
         },
-        "letterAnswer.CreateLetterAnswerResponse": {
+        "lettersAnswer.CreateLetterAnswerResponse": {
             "type": "object",
             "properties": {
                 "data": {
@@ -1723,7 +1692,7 @@ const docTemplate = `{
                 }
             }
         },
-        "letterAnswer.DeleteLetterAnswerResponse": {
+        "lettersAnswer.DeleteLetterAnswerResponse": {
             "type": "object",
             "properties": {
                 "data": {
@@ -1734,7 +1703,7 @@ const docTemplate = `{
                 }
             }
         },
-        "letterAnswer.ErrorResponse": {
+        "lettersAnswer.ErrorResponse": {
             "type": "object",
             "properties": {
                 "errorCode": {
@@ -1745,7 +1714,7 @@ const docTemplate = `{
                 }
             }
         },
-        "letterAnswer.ListLettersAnswerResponse": {
+        "lettersAnswer.ListLettersAnswerResponse": {
             "type": "object",
             "properties": {
                 "data": {
@@ -1759,7 +1728,7 @@ const docTemplate = `{
                 }
             }
         },
-        "letterAnswer.ShowLetterAnswerResponse": {
+        "lettersAnswer.ShowLetterAnswerResponse": {
             "type": "object",
             "properties": {
                 "data": {
@@ -1770,7 +1739,7 @@ const docTemplate = `{
                 }
             }
         },
-        "letterAnswer.UpdateLetterAnswerRequest": {
+        "lettersAnswer.UpdateLetterAnswerRequest": {
             "type": "object",
             "properties": {
                 "idAnswer": {
@@ -1781,7 +1750,7 @@ const docTemplate = `{
                 }
             }
         },
-        "letterAnswer.UpdateLetterAnswerResponse": {
+        "lettersAnswer.UpdateLetterAnswerResponse": {
             "type": "object",
             "properties": {
                 "data": {

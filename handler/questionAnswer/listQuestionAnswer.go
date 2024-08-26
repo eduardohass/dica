@@ -10,22 +10,22 @@ import (
 
 // @BasePath /api/v1
 
-// @Summary List questionAnswers
-// @Description List all job questionAnswers
+// @Summary List questionsAnswer
+// @Description List all job questionsAnswer
 // @Tags QuestionsAnswer
 // @Accept json
 // @Produce json
 // @Success 200 {object} ListQuestionsAnswerResponse
 // @Failure 500 {object} ErrorResponse
-// @Router /questionAnswers [get]
+// @Router /questionsAnswer [get]
 func ListQuestionsAnswerHandler(ctx *gin.Context) {
 	fmt.Println("DBG==List Questions Answer ")
-	questionAnswers := []schemas.QuestionAnswer{}
-	fmt.Println("DBG==questionAnswers: ", questionAnswers)
-	if err := db.Find(&questionAnswers).Error; err != nil {
-		fmt.Println("DBG==Encontrou um erro ao listar as questionAnswers")
-		sendError(ctx, http.StatusInternalServerError, "error listing questionAnswers")
+	questionsAnswer := []schemas.QuestionAnswer{}
+	fmt.Println("DBG==questionsAnswer: ", questionsAnswer)
+	if err := db.Find(&questionsAnswer).Error; err != nil {
+		fmt.Println("DBG==Encontrou um erro ao listar as questionsAnswer")
+		sendError(ctx, http.StatusInternalServerError, "error listing questionsAnswer")
 		return
 	}
-	sendSuccess(ctx, "list-questionAnswers", questionAnswers)
+	sendSuccess(ctx, "list-questionsAnswer", questionsAnswer)
 }

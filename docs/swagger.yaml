@@ -107,35 +107,35 @@ definitions:
       message:
         type: string
     type: object
-  letterAnswer.CreateLetterAnswerRequest:
+  lettersAnswer.CreateLetterAnswerRequest:
     properties:
       idAnswer:
         type: integer
       idLetter:
         type: integer
     type: object
-  letterAnswer.CreateLetterAnswerResponse:
+  lettersAnswer.CreateLetterAnswerResponse:
     properties:
       data:
         $ref: '#/definitions/schemas.LetterAnswerResponse'
       message:
         type: string
     type: object
-  letterAnswer.DeleteLetterAnswerResponse:
+  lettersAnswer.DeleteLetterAnswerResponse:
     properties:
       data:
         $ref: '#/definitions/schemas.LetterAnswerResponse'
       message:
         type: string
     type: object
-  letterAnswer.ErrorResponse:
+  lettersAnswer.ErrorResponse:
     properties:
       errorCode:
         type: string
       message:
         type: string
     type: object
-  letterAnswer.ListLettersAnswerResponse:
+  lettersAnswer.ListLettersAnswerResponse:
     properties:
       data:
         items:
@@ -144,21 +144,21 @@ definitions:
       message:
         type: string
     type: object
-  letterAnswer.ShowLetterAnswerResponse:
+  lettersAnswer.ShowLetterAnswerResponse:
     properties:
       data:
         $ref: '#/definitions/schemas.LetterAnswerResponse'
       message:
         type: string
     type: object
-  letterAnswer.UpdateLetterAnswerRequest:
+  lettersAnswer.UpdateLetterAnswerRequest:
     properties:
       idAnswer:
         type: integer
       idLetter:
         type: integer
     type: object
-  letterAnswer.UpdateLetterAnswerResponse:
+  lettersAnswer.UpdateLetterAnswerResponse:
     properties:
       data:
         $ref: '#/definitions/schemas.LetterAnswerResponse'
@@ -542,64 +542,6 @@ definitions:
 info:
   contact: {}
 paths:
-  /UserAnswer:
-    put:
-      consumes:
-      - application/json
-      description: Update a job UserAnswer
-      parameters:
-      - description: UserAnswer Identification
-        in: query
-        name: id
-        required: true
-        type: string
-      - description: UserAnswer data to Update
-        in: body
-        name: UserAnswer
-        required: true
-        schema:
-          $ref: '#/definitions/userAnswer.UpdateUserAnswerRequest'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/userAnswer.UpdateUserAnswerResponse'
-        "400":
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/userAnswer.ErrorResponse'
-        "404":
-          description: Not Found
-          schema:
-            $ref: '#/definitions/userAnswer.ErrorResponse'
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/userAnswer.ErrorResponse'
-      summary: Update UserAnswer
-      tags:
-      - UserAnswer
-  /UserAnswers:
-    get:
-      consumes:
-      - application/json
-      description: List all job UserAnswers
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/userAnswer.ListUsersAnswerResponse'
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/userAnswer.ErrorResponse'
-      summary: List UserAnswers
-      tags:
-      - UserAnswer
   /answer:
     delete:
       consumes:
@@ -867,149 +809,6 @@ paths:
       summary: Update letter
       tags:
       - Letters
-  /letterAnswer:
-    delete:
-      consumes:
-      - application/json
-      description: Delete a job letterAnswer
-      parameters:
-      - description: Letter identification
-        in: query
-        name: id
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/letterAnswer.DeleteLetterAnswerResponse'
-        "400":
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/letterAnswer.ErrorResponse'
-        "404":
-          description: Not Found
-          schema:
-            $ref: '#/definitions/letterAnswer.ErrorResponse'
-      summary: Delete letterAnswer
-      tags:
-      - LettersAnswer
-    get:
-      consumes:
-      - application/json
-      description: Show a job letterAnswer
-      parameters:
-      - description: Letter identification
-        in: query
-        name: id
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/letterAnswer.ShowLetterAnswerResponse'
-        "400":
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/letterAnswer.ErrorResponse'
-        "404":
-          description: Not Found
-          schema:
-            $ref: '#/definitions/letterAnswer.ErrorResponse'
-      summary: Show letterAnswer
-      tags:
-      - LettersAnswer
-    post:
-      consumes:
-      - application/json
-      description: Create a new job letterAnswer
-      parameters:
-      - description: Request body
-        in: body
-        name: request
-        required: true
-        schema:
-          $ref: '#/definitions/letterAnswer.CreateLetterAnswerRequest'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/letterAnswer.CreateLetterAnswerResponse'
-        "400":
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/letterAnswer.ErrorResponse'
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/letterAnswer.ErrorResponse'
-      summary: Create letterAnswer
-      tags:
-      - LettersAnswer
-    put:
-      consumes:
-      - application/json
-      description: Update a job letterAnswer
-      parameters:
-      - description: Letter Identification
-        in: query
-        name: id
-        required: true
-        type: string
-      - description: Letter data to Update
-        in: body
-        name: letterAnswer
-        required: true
-        schema:
-          $ref: '#/definitions/letterAnswer.UpdateLetterAnswerRequest'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/letterAnswer.UpdateLetterAnswerResponse'
-        "400":
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/letterAnswer.ErrorResponse'
-        "404":
-          description: Not Found
-          schema:
-            $ref: '#/definitions/letterAnswer.ErrorResponse'
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/letterAnswer.ErrorResponse'
-      summary: Update letterAnswer
-      tags:
-      - LettersAnswer
-  /letterAnswers:
-    get:
-      consumes:
-      - application/json
-      description: List all job letterAnswers
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/letterAnswer.ListLettersAnswerResponse'
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/letterAnswer.ErrorResponse'
-      summary: List letterAnswers
-      tags:
-      - LettersAnswer
   /letters:
     get:
       consumes:
@@ -1029,6 +828,130 @@ paths:
       summary: List letters
       tags:
       - Letters
+  /lettersAnswer:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a job lettersAnswer
+      parameters:
+      - description: Letter identification
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/lettersAnswer.DeleteLetterAnswerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/lettersAnswer.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/lettersAnswer.ErrorResponse'
+      summary: Delete lettersAnswer
+      tags:
+      - LettersAnswer
+    get:
+      consumes:
+      - application/json
+      description: Show a job lettersAnswer
+      parameters:
+      - description: Letter identification
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/lettersAnswer.ShowLetterAnswerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/lettersAnswer.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/lettersAnswer.ErrorResponse'
+      summary: Show lettersAnswer
+      tags:
+      - LettersAnswer
+    post:
+      consumes:
+      - application/json
+      description: Create a new job lettersAnswer
+      parameters:
+      - description: Request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/lettersAnswer.CreateLetterAnswerRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/lettersAnswer.CreateLetterAnswerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/lettersAnswer.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/lettersAnswer.ErrorResponse'
+      summary: Create lettersAnswer
+      tags:
+      - LettersAnswer
+    put:
+      consumes:
+      - application/json
+      description: Update a job lettersAnswer
+      parameters:
+      - description: Letter Identification
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: Letter data to Update
+        in: body
+        name: lettersAnswer
+        required: true
+        schema:
+          $ref: '#/definitions/lettersAnswer.UpdateLetterAnswerRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/lettersAnswer.UpdateLetterAnswerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/lettersAnswer.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/lettersAnswer.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/lettersAnswer.ErrorResponse'
+      summary: Update lettersAnswer
+      tags:
+      - LettersAnswer
   /opening:
     delete:
       consumes:
@@ -1420,25 +1343,6 @@ paths:
       summary: Update questionAnswer
       tags:
       - QuestionsAnswer
-  /questionAnswers:
-    get:
-      consumes:
-      - application/json
-      description: List all job questionAnswers
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/questionAnswer.ListQuestionsAnswerResponse'
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/questionAnswer.ErrorResponse'
-      summary: List questionAnswers
-      tags:
-      - QuestionsAnswer
   /questions:
     get:
       consumes:
@@ -1458,6 +1362,25 @@ paths:
       summary: List questions
       tags:
       - Questions
+  /questionsAnswer:
+    get:
+      consumes:
+      - application/json
+      description: List all job questionsAnswer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/questionAnswer.ListQuestionsAnswerResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/questionAnswer.ErrorResponse'
+      summary: List questionsAnswer
+      tags:
+      - QuestionsAnswer
   /userAnswer:
     delete:
       consumes:
@@ -1542,6 +1465,63 @@ paths:
           schema:
             $ref: '#/definitions/userAnswer.ErrorResponse'
       summary: Create userAnswer
+      tags:
+      - UserAnswer
+    put:
+      consumes:
+      - application/json
+      description: Update a job UserAnswer
+      parameters:
+      - description: UserAnswer Identification
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: UserAnswer data to Update
+        in: body
+        name: UserAnswer
+        required: true
+        schema:
+          $ref: '#/definitions/userAnswer.UpdateUserAnswerRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/userAnswer.UpdateUserAnswerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/userAnswer.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/userAnswer.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/userAnswer.ErrorResponse'
+      summary: Update UserAnswer
+      tags:
+      - UserAnswer
+  /usersAnswer:
+    get:
+      consumes:
+      - application/json
+      description: List all job usersAnswer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/userAnswer.ListUsersAnswerResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/userAnswer.ErrorResponse'
+      summary: List usersAnswer
       tags:
       - UserAnswer
 swagger: "2.0"

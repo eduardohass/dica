@@ -1,4 +1,4 @@
-package letterAnswer
+package lettersAnswer
 
 import (
 	"fmt"
@@ -10,18 +10,18 @@ import (
 
 // @BasePath /api/v1
 
-// @Summary Update letterAnswer
-// @Description Update a job letterAnswer
+// @Summary Update lettersAnswer
+// @Description Update a job lettersAnswer
 // @Tags LettersAnswer
 // @Accept json
 // @Produce json
 // @Param id query string true "Letter Identification"
-// @Param letterAnswer body UpdateLetterAnswerRequest true "Letter data to Update"
+// @Param lettersAnswer body UpdateLetterAnswerRequest true "Letter data to Update"
 // @Success 200 {object} UpdateLetterAnswerResponse
 // @Failure 400 {object} ErrorResponse
 // @Failure 404 {object} ErrorResponse
 // @Failure 500 {object} ErrorResponse
-// @Router /letterAnswer [put]
+// @Router /lettersAnswer [put]
 func UpdateLetterAnswerHandler(ctx *gin.Context) {
 	request := UpdateLetterAnswerRequest{}
 	ctx.BindJSON(&request)
@@ -38,25 +38,25 @@ func UpdateLetterAnswerHandler(ctx *gin.Context) {
 		return
 	}
 
-	letterAnswer := schemas.LetterAnswer{}
+	lettersAnswer := schemas.LetterAnswer{}
 
-	if err := db.First(&letterAnswer, id).Error; err != nil {
-		fmt.Println("DBG==Erro ao recuperar a letterAnswer")
-		sendError(ctx, http.StatusNotFound, "letterAnswer not found")
+	if err := db.First(&lettersAnswer, id).Error; err != nil {
+		fmt.Println("DBG==Erro ao recuperar a lettersAnswer")
+		sendError(ctx, http.StatusNotFound, "lettersAnswer not found")
 		return
 	}
-	// Update letterAnswer
+	// Update lettersAnswer
 	if request.IdLetter > 0 {
-		letterAnswer.IdLetter = request.IdLetter
+		lettersAnswer.IdLetter = request.IdLetter
 	}
 	if request.IdAnswer > 0 {
-		letterAnswer.IdAnswer = request.IdAnswer
+		lettersAnswer.IdAnswer = request.IdAnswer
 	}
-	// Save letterAnswer
-	if err := db.Save(&letterAnswer).Error; err != nil {
-		logger.Errorf("error updating letterAnswer: %v", err.Error())
-		sendError(ctx, http.StatusInternalServerError, "error update letterAnswer")
+	// Save lettersAnswer
+	if err := db.Save(&lettersAnswer).Error; err != nil {
+		logger.Errorf("error updating lettersAnswer: %v", err.Error())
+		sendError(ctx, http.StatusInternalServerError, "error update lettersAnswer")
 		return
 	}
-	sendSuccess(ctx, "update-letterAnswer", letterAnswer)
+	sendSuccess(ctx, "update-lettersAnswer", lettersAnswer)
 }

@@ -1,4 +1,4 @@
-package letterAnswer
+package lettersAnswer
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ func errParamIsRequired(name, typ string) error {
 	return fmt.Errorf("param: %s (type: %s) is required", name, typ)
 }
 
-// Create letterAnswer
+// Create lettersAnswer
 type CreateLetterAnswerRequest struct {
 	IdLetter int64 `json:"idLetter"`
 	IdAnswer int64 `json:"idAnswer"`
@@ -28,7 +28,7 @@ func (r *CreateLetterAnswerRequest) Validate() error {
 	return nil
 }
 
-// Update letterAnswer
+// Update lettersAnswer
 type UpdateLetterAnswerRequest struct {
 	IdLetter int64 `json:"idLetter"`
 	IdAnswer int64 `json:"idAnswer"`

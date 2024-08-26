@@ -1,4 +1,4 @@
-package letterAnswer
+package lettersAnswer
 
 import (
 	"fmt"
@@ -10,22 +10,22 @@ import (
 
 // @BasePath /api/v1
 
-// @Summary List letterAnswers
-// @Description List all job letterAnswers
+// @Summary List lettersAnswer
+// @Description List all job lettersAnswer
 // @Tags LettersAnswer
 // @Accept json
 // @Produce json
 // @Success 200 {object} ListLettersAnswerResponse
 // @Failure 500 {object} ErrorResponse
-// @Router /letterAnswers [get]
+// @Router /lettersAnswer [get]
 func ListLettersAnswerHandler(ctx *gin.Context) {
 	fmt.Println("DBG==List LettersAnswer ")
-	letterAnswers := []schemas.LetterAnswer{}
-	fmt.Println("DBG==letterAnswers: ", letterAnswers)
-	if err := db.Find(&letterAnswers).Error; err != nil {
-		fmt.Println("DBG==Encontrou um erro ao listar as letterAnswers")
-		sendError(ctx, http.StatusInternalServerError, "error listing letterAnswers")
+	lettersAnswer := []schemas.LetterAnswer{}
+	fmt.Println("DBG==lettersAnswer: ", lettersAnswer)
+	if err := db.Find(&lettersAnswer).Error; err != nil {
+		fmt.Println("DBG==Encontrou um erro ao listar as lettersAnswer")
+		sendError(ctx, http.StatusInternalServerError, "error listing lettersAnswer")
 		return
 	}
-	sendSuccess(ctx, "list-letterAnswers", letterAnswers)
+	sendSuccess(ctx, "list-lettersAnswer", lettersAnswer)
 }

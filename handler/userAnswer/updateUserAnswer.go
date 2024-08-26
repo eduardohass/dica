@@ -21,7 +21,7 @@ import (
 // @Failure 400 {object} ErrorResponse
 // @Failure 404 {object} ErrorResponse
 // @Failure 500 {object} ErrorResponse
-// @Router /UserAnswer [put]
+// @Router /userAnswer [put]
 func UpdateUserAnswerHandler(ctx *gin.Context) {
 	request := UpdateUserAnswerRequest{}
 	ctx.BindJSON(&request)

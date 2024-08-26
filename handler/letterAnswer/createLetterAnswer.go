@@ -1,4 +1,4 @@
-package letterAnswer
+package lettersAnswer
 
 import (
 	"fmt"
@@ -10,8 +10,8 @@ import (
 
 // @BasePath /api/v1
 
-// @Summary Create letterAnswer
-// @Description Create a new job letterAnswer
+// @Summary Create lettersAnswer
+// @Description Create a new job lettersAnswer
 // @Tags LettersAnswer
 // @Accept json
 // @Produce json
@@ -19,8 +19,8 @@ import (
 // @Success 200 {object} CreateLetterAnswerResponse
 // @Failure 400 {object} ErrorResponse
 // @Failure 500 {object} ErrorResponse
-// @Router /letterAnswer [post]
-func CreateLetterHandler(ctx *gin.Context) {
+// @Router /lettersAnswer [post]
+func CreateLetterAnswerHandler(ctx *gin.Context) {
 	request := CreateLetterAnswerRequest{}
 
 	ctx.BindJSON(&request)
@@ -34,21 +34,21 @@ func CreateLetterHandler(ctx *gin.Context) {
 		return
 	}
 
-	fmt.Println("CreateLetter - Depois da validação")
+	fmt.Println("CreateLetterAnswer - Depois da validação")
 
-	letterAnswer := schemas.LetterAnswer{
+	lettersAnswer := schemas.LetterAnswer{
 		IdLetter: request.IdLetter,
 		IdAnswer: request.IdAnswer,
 	}
-	fmt.Println("DBG==depois de popular a instancia de letterAnswer")
+	fmt.Println("DBG==depois de popular a instancia de lettersAnswer")
 
-	if err := db.Create(&letterAnswer).Error; err != nil {
+	if err := db.Create(&lettersAnswer).Error; err != nil {
 		fmt.Println("DBG==entrou no metodo de erro quando foi salvar no DB")
-		logger.Errorf("error creating letterAnswer: %v", err.Error())
-		sendError(ctx, http.StatusInternalServerError, "error creating letterAnswer on database")
+		logger.Errorf("error creating lettersAnswer: %v", err.Error())
+		sendError(ctx, http.StatusInternalServerError, "error creating lettersAnswer on database")
 		return
 	}
 	fmt.Println("DBG==Depois de gravar no DB")
 
-	sendSuccess(ctx, "create-letterAnswer", letterAnswer)
+	sendSuccess(ctx, "create-lettersAnswer", lettersAnswer)
 }

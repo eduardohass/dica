@@ -1,4 +1,4 @@
-package letterAnswer
+package lettersAnswer
 
 import (
 	"fmt"
@@ -10,8 +10,8 @@ import (
 
 // @BasePath /api/v1
 
-// @Summary Delete letterAnswer
-// @Description Delete a job letterAnswer
+// @Summary Delete lettersAnswer
+// @Description Delete a job lettersAnswer
 // @Tags LettersAnswer
 // @Accept json
 // @Produce json
@@ -19,25 +19,25 @@ import (
 // @Success 200 {object} DeleteLetterAnswerResponse
 // @Failure 400 {object} ErrorResponse
 // @Failure 404 {object} ErrorResponse
-// @Router /letterAnswer [delete]
+// @Router /lettersAnswer [delete]
 func DeleteLetterAnswerHandler(ctx *gin.Context) {
 	id := ctx.Query("id")
 	if id == "" {
 		sendError(ctx, http.StatusBadRequest, errParamIsRequired("id", "queryParameter").Error())
 		return
 	}
-	letterAnswer := schemas.LetterAnswer{}
+	lettersAnswer := schemas.LetterAnswer{}
 
-	// Find letterAnswer
-	if err := db.First(&letterAnswer, id).Error; err != nil {
-		sendError(ctx, http.StatusNotFound, fmt.Sprintf("letterAnswer with id: %s not found", id))
+	// Find lettersAnswer
+	if err := db.First(&lettersAnswer, id).Error; err != nil {
+		sendError(ctx, http.StatusNotFound, fmt.Sprintf("lettersAnswer with id: %s not found", id))
 		return
 	}
 
-	// Delete letterAnswer
-	if err := db.Delete(&letterAnswer).Error; err != nil {
-		sendError(ctx, http.StatusInternalServerError, fmt.Sprintf("error deleting letterAnswer with id: %s", id))
+	// Delete lettersAnswer
+	if err := db.Delete(&lettersAnswer).Error; err != nil {
+		sendError(ctx, http.StatusInternalServerError, fmt.Sprintf("error deleting lettersAnswer with id: %s", id))
 		return
 	}
-	sendSuccess(ctx, "delete-letterAnswer", letterAnswer)
+	sendSuccess(ctx, "delete-lettersAnswer", lettersAnswer)
 }
