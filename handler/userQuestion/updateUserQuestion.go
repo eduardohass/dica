@@ -16,14 +16,14 @@ import (
 // @Accept json
 // @Produce json
 // @Param id query string true "UserQuestion Identification"
-// @Param UserQuestion body UpdateUserAnswerRequest true "UserQuestion data to Update"
-// @Success 200 {object} UpdateUserAnswerResponse
+// @Param UserQuestion body UpdateUserQuestionRequest true "UserQuestion data to Update"
+// @Success 200 {object} UpdateUserQuestionResponse
 // @Failure 400 {object} ErrorResponse
 // @Failure 404 {object} ErrorResponse
 // @Failure 500 {object} ErrorResponse
 // @Router /userQuestion [put]
-func UpdateUserAnswerHandler(ctx *gin.Context) {
-	request := UpdateUserAnswerRequest{}
+func UpdateUserQuestionHandler(ctx *gin.Context) {
+	request := UpdateUserQuestionRequest{}
 	ctx.BindJSON(&request)
 	if err := request.Validate(); err != nil {
 		logger.Errorf("validation error: %v", err.Error())

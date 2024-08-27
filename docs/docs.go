@@ -1308,7 +1308,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/userQuestion.ShowUserAnswerResponse"
+                            "$ref": "#/definitions/userQuestion.ShowUserQuestionResponse"
                         }
                     },
                     "400": {
@@ -1351,7 +1351,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/userQuestion.UpdateUserAnswerRequest"
+                            "$ref": "#/definitions/userQuestion.UpdateUserQuestionRequest"
                         }
                     }
                 ],
@@ -1359,7 +1359,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/userQuestion.UpdateUserAnswerResponse"
+                            "$ref": "#/definitions/userQuestion.UpdateUserQuestionResponse"
                         }
                     },
                     "400": {
@@ -1401,7 +1401,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/userQuestion.CreateUserAnswerRequest"
+                            "$ref": "#/definitions/userQuestion.CreateUserQuestionRequest"
                         }
                     }
                 ],
@@ -1409,7 +1409,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/userQuestion.CreateUserAnswerResponse"
+                            "$ref": "#/definitions/userQuestion.CreateUserQuestionResponse"
                         }
                     },
                     "400": {
@@ -1451,7 +1451,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/userQuestion.DeleteUserAnswerResponse"
+                            "$ref": "#/definitions/userQuestion.DeleteUserQuestionResponse"
                         }
                     },
                     "400": {
@@ -1469,9 +1469,9 @@ const docTemplate = `{
                 }
             }
         },
-        "/usersAnswer": {
+        "/usersQuestion": {
             "get": {
-                "description": "List all job usersAnswer",
+                "description": "List all job usersQuestion",
                 "consumes": [
                     "application/json"
                 ],
@@ -1481,7 +1481,7 @@ const docTemplate = `{
                 "tags": [
                     "UserQuestion"
                 ],
-                "summary": "List usersAnswer",
+                "summary": "List usersQuestion",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -2203,7 +2203,7 @@ const docTemplate = `{
                 }
             }
         },
-        "schemas.UserAnswerResponse": {
+        "schemas.UserQuestionResponse": {
             "type": "object",
             "properties": {
                 "IdQuestion": {
@@ -2232,7 +2232,7 @@ const docTemplate = `{
                 }
             }
         },
-        "userQuestion.CreateUserAnswerRequest": {
+        "userQuestion.CreateUserQuestionRequest": {
             "type": "object",
             "properties": {
                 "idAnswer1": {
@@ -2252,22 +2252,22 @@ const docTemplate = `{
                 }
             }
         },
-        "userQuestion.CreateUserAnswerResponse": {
+        "userQuestion.CreateUserQuestionResponse": {
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/schemas.UserAnswerResponse"
+                    "$ref": "#/definitions/schemas.UserQuestionResponse"
                 },
                 "message": {
                     "type": "string"
                 }
             }
         },
-        "userQuestion.DeleteUserAnswerResponse": {
+        "userQuestion.DeleteUserQuestionResponse": {
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/schemas.UserAnswerResponse"
+                    "$ref": "#/definitions/schemas.UserQuestionResponse"
                 },
                 "message": {
                     "type": "string"
@@ -2291,7 +2291,7 @@ const docTemplate = `{
                 "data": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/schemas.UserAnswerResponse"
+                        "$ref": "#/definitions/schemas.UserQuestionResponse"
                     }
                 },
                 "message": {
@@ -2299,18 +2299,18 @@ const docTemplate = `{
                 }
             }
         },
-        "userQuestion.ShowUserAnswerResponse": {
+        "userQuestion.ShowUserQuestionResponse": {
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/schemas.UserAnswerResponse"
+                    "$ref": "#/definitions/schemas.UserQuestionResponse"
                 },
                 "message": {
                     "type": "string"
                 }
             }
         },
-        "userQuestion.UpdateUserAnswerRequest": {
+        "userQuestion.UpdateUserQuestionRequest": {
             "type": "object",
             "properties": {
                 "idAnswer1": {
@@ -2330,11 +2330,11 @@ const docTemplate = `{
                 }
             }
         },
-        "userQuestion.UpdateUserAnswerResponse": {
+        "userQuestion.UpdateUserQuestionResponse": {
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/schemas.UserAnswerResponse"
+                    "$ref": "#/definitions/schemas.UserQuestionResponse"
                 },
                 "message": {
                     "type": "string"

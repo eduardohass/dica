@@ -15,7 +15,7 @@ type UserQuestion struct {
 	IdAnswer4  int64
 }
 
-type UserAnswerResponse struct {
+type UserQuestionResponse struct {
 	IdQuestion uint      `json:"IdQuestion"`
 	IdAnswer1  uint      `json:"idAnswer1"`
 	IdAnswer2  uint      `json:"idAnswer2"`

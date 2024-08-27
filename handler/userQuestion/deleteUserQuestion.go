@@ -16,11 +16,11 @@ import (
 // @Accept json
 // @Produce json
 // @Param id query string true "UserQuestion identification"
-// @Success 200 {object} DeleteUserAnswerResponse
+// @Success 200 {object} DeleteUserQuestionResponse
 // @Failure 400 {object} ErrorResponse
 // @Failure 404 {object} ErrorResponse
 // @Router /userQuestion [delete]
-func DeleteUserAnswerHandler(ctx *gin.Context) {
+func DeleteUserQuestionHandler(ctx *gin.Context) {
 	id := ctx.Query("id")
 	if id == "" {
 		sendError(ctx, http.StatusBadRequest, errParamIsRequired("id", "queryParameter").Error())

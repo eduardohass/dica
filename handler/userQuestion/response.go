@@ -29,24 +29,24 @@ type ErrorResponse struct {
 	ErrorCode string `json:"errorCode"`
 }
 
-type CreateUserAnswerResponse struct {
-	Message string                     `json:"message"`
-	Data    schemas.UserAnswerResponse `json:"data"`
+type CreateUserQuestionResponse struct {
+	Message string                       `json:"message"`
+	Data    schemas.UserQuestionResponse `json:"data"`
 }
 
-type DeleteUserAnswerResponse struct {
-	Message string                     `json:"message"`
-	Data    schemas.UserAnswerResponse `json:"data"`
+type DeleteUserQuestionResponse struct {
+	Message string                       `json:"message"`
+	Data    schemas.UserQuestionResponse `json:"data"`
 }
-type ShowUserAnswerResponse struct {
-	Message string                     `json:"message"`
-	Data    schemas.UserAnswerResponse `json:"data"`
+type ShowUserQuestionResponse struct {
+	Message string                       `json:"message"`
+	Data    schemas.UserQuestionResponse `json:"data"`
 }
 type ListUsersQuestionResponse struct {
-	Message string                       `json:"message"`
-	Data    []schemas.UserAnswerResponse `json:"data"`
+	Message string                         `json:"message"`
+	Data    []schemas.UserQuestionResponse `json:"data"`
 }
-type UpdateUserAnswerResponse struct {
-	Message string                     `json:"message"`
-	Data    schemas.UserAnswerResponse `json:"data"`
+type UpdateUserQuestionResponse struct {
+	Message string                       `json:"message"`
+	Data    schemas.UserQuestionResponse `json:"data"`
 }

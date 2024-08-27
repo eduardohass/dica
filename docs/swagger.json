@@ -1297,7 +1297,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/userQuestion.ShowUserAnswerResponse"
+                            "$ref": "#/definitions/userQuestion.ShowUserQuestionResponse"
                         }
                     },
                     "400": {
@@ -1340,7 +1340,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/userQuestion.UpdateUserAnswerRequest"
+                            "$ref": "#/definitions/userQuestion.UpdateUserQuestionRequest"
                         }
                     }
                 ],
@@ -1348,7 +1348,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/userQuestion.UpdateUserAnswerResponse"
+                            "$ref": "#/definitions/userQuestion.UpdateUserQuestionResponse"
                         }
                     },
                     "400": {
@@ -1390,7 +1390,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/userQuestion.CreateUserAnswerRequest"
+                            "$ref": "#/definitions/userQuestion.CreateUserQuestionRequest"
                         }
                     }
                 ],
@@ -1398,7 +1398,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/userQuestion.CreateUserAnswerResponse"
+                            "$ref": "#/definitions/userQuestion.CreateUserQuestionResponse"
                         }
                     },
                     "400": {
@@ -1440,7 +1440,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/userQuestion.DeleteUserAnswerResponse"
+                            "$ref": "#/definitions/userQuestion.DeleteUserQuestionResponse"
                         }
                     },
                     "400": {
@@ -1458,9 +1458,9 @@
                 }
             }
         },
-        "/usersAnswer": {
+        "/usersQuestion": {
             "get": {
-                "description": "List all job usersAnswer",
+                "description": "List all job usersQuestion",
                 "consumes": [
                     "application/json"
                 ],
@@ -1470,7 +1470,7 @@
                 "tags": [
                     "UserQuestion"
                 ],
-                "summary": "List usersAnswer",
+                "summary": "List usersQuestion",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -2192,7 +2192,7 @@
                 }
             }
         },
-        "schemas.UserAnswerResponse": {
+        "schemas.UserQuestionResponse": {
             "type": "object",
             "properties": {
                 "IdQuestion": {
@@ -2221,7 +2221,7 @@
                 }
             }
         },
-        "userQuestion.CreateUserAnswerRequest": {
+        "userQuestion.CreateUserQuestionRequest": {
             "type": "object",
             "properties": {
                 "idAnswer1": {
@@ -2241,22 +2241,22 @@
                 }
             }
         },
-        "userQuestion.CreateUserAnswerResponse": {
+        "userQuestion.CreateUserQuestionResponse": {
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/schemas.UserAnswerResponse"
+                    "$ref": "#/definitions/schemas.UserQuestionResponse"
                 },
                 "message": {
                     "type": "string"
                 }
             }
         },
-        "userQuestion.DeleteUserAnswerResponse": {
+        "userQuestion.DeleteUserQuestionResponse": {
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/schemas.UserAnswerResponse"
+                    "$ref": "#/definitions/schemas.UserQuestionResponse"
                 },
                 "message": {
                     "type": "string"
@@ -2280,7 +2280,7 @@
                 "data": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/schemas.UserAnswerResponse"
+                        "$ref": "#/definitions/schemas.UserQuestionResponse"
                     }
                 },
                 "message": {
@@ -2288,18 +2288,18 @@
                 }
             }
         },
-        "userQuestion.ShowUserAnswerResponse": {
+        "userQuestion.ShowUserQuestionResponse": {
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/schemas.UserAnswerResponse"
+                    "$ref": "#/definitions/schemas.UserQuestionResponse"
                 },
                 "message": {
                     "type": "string"
                 }
             }
         },
-        "userQuestion.UpdateUserAnswerRequest": {
+        "userQuestion.UpdateUserQuestionRequest": {
             "type": "object",
             "properties": {
                 "idAnswer1": {
@@ -2319,11 +2319,11 @@
                 }
             }
         },
-        "userQuestion.UpdateUserAnswerResponse": {
+        "userQuestion.UpdateUserQuestionResponse": {
             "type": "object",
             "properties": {
                 "data": {
-                    "$ref": "#/definitions/schemas.UserAnswerResponse"
+                    "$ref": "#/definitions/schemas.UserQuestionResponse"
                 },
                 "message": {
                     "type": "string"

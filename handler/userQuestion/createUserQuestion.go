@@ -15,26 +15,26 @@ import (
 // @Tags UserQuestion
 // @Accept json
 // @Produce json
-// @Param request body CreateUserAnswerRequest true "Request body"
-// @Success 200 {object} CreateUserAnswerResponse
+// @Param request body CreateUserQuestionRequest true "Request body"
+// @Success 200 {object} CreateUserQuestionResponse
 // @Failure 400 {object} ErrorResponse
 // @Failure 500 {object} ErrorResponse
 // @Router /userQuestion [post]
-func CreateUserAnswerHandler(ctx *gin.Context) {
-	request := CreateUserAnswerRequest{}
+func CreateUserQuestionHandler(ctx *gin.Context) {
+	request := CreateUserQuestionRequest{}
 
 	ctx.BindJSON(&request)
 
-	fmt.Println("CreateUserAnswer - Antes da validação")
+	fmt.Println("CreateUserQuestion - Antes da validação")
 
 	if err := request.Validate(); err != nil {
-		fmt.Println("CreateUserAnswer - Caiu no erro")
+		fmt.Println("CreateUserQuestion - Caiu no erro")
 		logger.Errorf("validation error: %v", err.Error())
 		sendError(ctx, http.StatusBadRequest, err.Error())
 		return
 	}
 
-	fmt.Println("CreateUserAnswer - Depois da validação")
+	fmt.Println("CreateUserQuestion - Depois da validação")
 
 	userQuestion := schemas.UserQuestion{
 		IdQuestion: request.IdQuestion,

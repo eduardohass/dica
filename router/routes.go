@@ -63,11 +63,11 @@ func initializeRoutes(router *gin.Engine) {
 		v1.PUT("letterAnswer", handlerLetterAnswer.UpdateLetterAnswerHandler)
 		v1.DELETE("letterAnswer", handlerLetterAnswer.DeleteLetterAnswerHandler)
 		// UserQuestion
-		v1.GET("usersAnswer", handlerUserQuestion.ListUsersQuestionHandler)
-		v1.GET("userQuestion", handlerUserQuestion.ShowUserAnswerHandler)
-		v1.POST("userQuestion", handlerUserQuestion.CreateUserAnswerHandler)
-		v1.PUT("userQuestion", handlerUserQuestion.UpdateUserAnswerHandler)
-		v1.DELETE("userQuestion", handlerUserQuestion.DeleteUserAnswerHandler)
+		v1.GET("usersQuestion", handlerUserQuestion.ListUsersQuestionHandler)
+		v1.GET("userQuestion", handlerUserQuestion.ShowUserQuestionHandler)
+		v1.POST("userQuestion", handlerUserQuestion.CreateUserQuestionHandler)
+		v1.PUT("userQuestion", handlerUserQuestion.UpdateUserQuestionHandler)
+		v1.DELETE("userQuestion", handlerUserQuestion.DeleteUserQuestionHandler)
 	}
 	// Initialize Swagger
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))

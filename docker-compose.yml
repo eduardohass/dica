@@ -60,7 +60,7 @@ services:
       postgres:
         condition: service_healthy
     build: .
-    image: dica:0.0.6
+    image: dica:0.0.8
     pull_policy: always
     ports:
       - "8080:8080"

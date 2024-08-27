@@ -9,7 +9,7 @@ func errParamIsRequired(name, typ string) error {
 }
 
 // Create userQuestion
-type CreateUserAnswerRequest struct {
+type CreateUserQuestionRequest struct {
 	IdQuestion int64 `json:"idQuestion"`
 	IdAnswer1  int64 `json:"idAnswer1"`
 	IdAnswer2  int64 `json:"idAnswer2"`
@@ -17,7 +17,7 @@ type CreateUserAnswerRequest struct {
 	IdAnswer4  int64 `json:"idAnswer4"`
 }
 
-func (r *CreateUserAnswerRequest) Validate() error {
+func (r *CreateUserQuestionRequest) Validate() error {
 	if r.IdQuestion <= 0 && r.IdQuestion <= 0 {
 		return fmt.Errorf("request body is empty or malformed")
 	}
@@ -38,7 +38,7 @@ func (r *CreateUserAnswerRequest) Validate() error {
 }
 
 // Update userQuestion
-type UpdateUserAnswerRequest struct {
+type UpdateUserQuestionRequest struct {
 	IdQuestion int64 `json:"idQuestion"`
 	IdAnswer1  int64 `json:"idAnswer1"`
 	IdAnswer2  int64 `json:"idAnswer2"`
@@ -46,7 +46,7 @@ type UpdateUserAnswerRequest struct {
 	IdAnswer4  int64 `json:"idAnswer4"`
 }
 
-func (r *UpdateUserAnswerRequest) Validate() error {
+func (r *UpdateUserQuestionRequest) Validate() error {
 	// if any field is provided, validation is truthy
 	if r.IdQuestion > 0 || r.IdAnswer1 > 0 || r.IdAnswer2 > 0 || r.IdAnswer3 > 0 || r.IdAnswer4 > 0 {
 		return nil

@@ -15,11 +15,11 @@ import (
 // @Accept json
 // @Produce json
 // @Param id query string true "UserQuestion identification"
-// @Success 200 {object} ShowUserAnswerResponse
+// @Success 200 {object} ShowUserQuestionResponse
 // @Failure 400 {object} ErrorResponse
 // @Failure 404 {object} ErrorResponse
 // @Router /userQuestion [get]
-func ShowUserAnswerHandler(ctx *gin.Context) {
+func ShowUserQuestionHandler(ctx *gin.Context) {
 	id := ctx.Query("id")
 	if id == "" {
 		sendError(ctx, http.StatusBadRequest, errParamIsRequired("id", "queryParameter").Error())

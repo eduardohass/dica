@@ -450,7 +450,7 @@ definitions:
       updatedAt:
         type: string
     type: object
-  schemas.UserAnswerResponse:
+  schemas.UserQuestionResponse:
     properties:
       IdQuestion:
         type: integer
@@ -469,7 +469,7 @@ definitions:
       updatedAt:
         type: string
     type: object
-  userQuestion.CreateUserAnswerRequest:
+  userQuestion.CreateUserQuestionRequest:
     properties:
       idAnswer1:
         type: integer
@@ -482,17 +482,17 @@ definitions:
       idQuestion:
         type: integer
     type: object
-  userQuestion.CreateUserAnswerResponse:
+  userQuestion.CreateUserQuestionResponse:
     properties:
       data:
-        $ref: '#/definitions/schemas.UserAnswerResponse'
+        $ref: '#/definitions/schemas.UserQuestionResponse'
       message:
         type: string
     type: object
-  userQuestion.DeleteUserAnswerResponse:
+  userQuestion.DeleteUserQuestionResponse:
     properties:
       data:
-        $ref: '#/definitions/schemas.UserAnswerResponse'
+        $ref: '#/definitions/schemas.UserQuestionResponse'
       message:
         type: string
     type: object
@@ -507,19 +507,19 @@ definitions:
     properties:
       data:
         items:
-          $ref: '#/definitions/schemas.UserAnswerResponse'
+          $ref: '#/definitions/schemas.UserQuestionResponse'
         type: array
       message:
         type: string
     type: object
-  userQuestion.ShowUserAnswerResponse:
+  userQuestion.ShowUserQuestionResponse:
     properties:
       data:
-        $ref: '#/definitions/schemas.UserAnswerResponse'
+        $ref: '#/definitions/schemas.UserQuestionResponse'
       message:
         type: string
     type: object
-  userQuestion.UpdateUserAnswerRequest:
+  userQuestion.UpdateUserQuestionRequest:
     properties:
       idAnswer1:
         type: integer
@@ -532,10 +532,10 @@ definitions:
       idQuestion:
         type: integer
     type: object
-  userQuestion.UpdateUserAnswerResponse:
+  userQuestion.UpdateUserQuestionResponse:
     properties:
       data:
-        $ref: '#/definitions/schemas.UserAnswerResponse'
+        $ref: '#/definitions/schemas.UserQuestionResponse'
       message:
         type: string
     type: object
@@ -1398,7 +1398,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/userQuestion.DeleteUserAnswerResponse'
+            $ref: '#/definitions/userQuestion.DeleteUserQuestionResponse'
         "400":
           description: Bad Request
           schema:
@@ -1426,7 +1426,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/userQuestion.ShowUserAnswerResponse'
+            $ref: '#/definitions/userQuestion.ShowUserQuestionResponse'
         "400":
           description: Bad Request
           schema:
@@ -1448,14 +1448,14 @@ paths:
         name: request
         required: true
         schema:
-          $ref: '#/definitions/userQuestion.CreateUserAnswerRequest'
+          $ref: '#/definitions/userQuestion.CreateUserQuestionRequest'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/userQuestion.CreateUserAnswerResponse'
+            $ref: '#/definitions/userQuestion.CreateUserQuestionResponse'
         "400":
           description: Bad Request
           schema:
@@ -1482,14 +1482,14 @@ paths:
         name: UserQuestion
         required: true
         schema:
-          $ref: '#/definitions/userQuestion.UpdateUserAnswerRequest'
+          $ref: '#/definitions/userQuestion.UpdateUserQuestionRequest'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/userQuestion.UpdateUserAnswerResponse'
+            $ref: '#/definitions/userQuestion.UpdateUserQuestionResponse'
         "400":
           description: Bad Request
           schema:
@@ -1505,11 +1505,11 @@ paths:
       summary: Update UserQuestion
       tags:
       - UserQuestion
-  /usersAnswer:
+  /usersQuestion:
     get:
       consumes:
       - application/json
-      description: List all job usersAnswer
+      description: List all job usersQuestion
       produces:
       - application/json
       responses:
@@ -1521,7 +1521,7 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/userQuestion.ErrorResponse'
-      summary: List usersAnswer
+      summary: List usersQuestion
       tags:
       - UserQuestion
 swagger: "2.0"
