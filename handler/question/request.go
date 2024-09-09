@@ -10,13 +10,19 @@ func errParamIsRequired(name, typ string) error {
 
 // Create question
 type CreateQuestionRequest struct {
-	Question string `json:"question"`
+	IdQuestion int    `json:"idquestion"`
+	OptionD    string `json:"optiond"`
+	OptionI    string `json:"optioni"`
+	OptionC    string `json:"optionc"`
+	OptionA    string `json:"optiona"`
 }
 
 func (r *CreateQuestionRequest) Validate() error {
-	fmt.Println(r.Question)
-	if r.Question == "" {
-		return errParamIsRequired("question", "string")
+	if r.IdQuestion == 0 {
+		return errParamIsRequired("idquestion", "int")
+	}
+	if r.OptionD == "" && r.OptionI == "" && r.OptionC == "" && r.OptionA == "" {
+		return errParamIsRequired("option", "string")
 	}
 	fmt.Println("DBG==passou pelas validações sem erro")
 	return nil
@@ -24,12 +30,16 @@ func (r *CreateQuestionRequest) Validate() error {
 
 // Update question
 type UpdateQuestionRequest struct {
-	Question string `json:"question"`
+	IdQuestion int    `json:"idquestion"`
+	OptionD    string `json:"optiond"`
+	OptionI    string `json:"optioni"`
+	OptionC    string `json:"optionc"`
+	OptionA    string `json:"optiona"`
 }
 
 func (r *UpdateQuestionRequest) Validate() error {
 	// if any field is provided, validation is truthy
-	if r.Question != "" {
+	if r.IdQuestion != 0 && r.OptionD != "" && r.OptionI != "" && r.OptionC != "" && r.OptionA != "" {
 		return nil
 	}
 	// if none of the fields were provided, return false

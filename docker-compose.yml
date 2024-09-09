@@ -60,7 +60,7 @@ services:
       postgres:
         condition: service_healthy
     build: .
-    image: dica:0.0.8
+    image: dica:0.0.11
     pull_policy: always
     ports:
       - "8080:8080"
@@ -70,7 +70,7 @@ services:
       # GIN_MODE: release
       DB_HOST: postgres
       DB_USER: postgres
-      DB_PASSWORD: changeme
+      DB_PASSWORD: postgres
       DB_NAME: dica
       DB_PORT: 5432
     links: 
@@ -78,7 +78,7 @@ services:
   
   pgadmin:
     container_name: pgadmin
-    image: dpage/pgadmin4
+    image: dpage/pgadmin4:8.11.0
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}

@@ -9,7 +9,7 @@ COPY . .
 RUN GOOS=linux CGO_ENABLED=0 go build -ldflags="-w -s" -o main main.go
 
 # Create the final image, running the API and exposing port 8080
-FROM alpine:latest
+FROM scratch
 WORKDIR /root/
 COPY --from=builder /app/main .
 # ENV CON_STR $CON_STR

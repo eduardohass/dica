@@ -37,7 +37,11 @@ func CreateQuestionHandler(ctx *gin.Context) {
 	fmt.Println("CreateQuestion - Depois da validação")
 
 	question := schemas.Question{
-		Question: request.Question,
+		IdQuestion: request.IdQuestion,
+		OptionD:    request.OptionD,
+		OptionI:    request.OptionI,
+		OptionC:    request.OptionC,
+		OptionA:    request.OptionA,
 	}
 	fmt.Println("DBG==depois de popular a instancia de question")
 

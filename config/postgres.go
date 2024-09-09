@@ -34,45 +34,10 @@ func InitializePostgres() (*gorm.DB, error) {
 		return nil, err
 	}
 
-	// Migrate the opening schema
-	err = db.AutoMigrate(&schemas.Opening{})
-	if err != nil {
-		logger.Errorf("postgres automigration error - opening %v", err)
-		return nil, err
-	}
-
-	// Migrate the letter schema
-	err = db.AutoMigrate(&schemas.Letter{})
-	if err != nil {
-		logger.Errorf("postgres automigration error - letter %v", err)
-		return nil, err
-	}
-
-	// Migrate the lettersAnswer schema
-	err = db.AutoMigrate(&schemas.LetterAnswer{})
-	if err != nil {
-		logger.Errorf("postgres automigration error - lettersAnswer %v", err)
-		return nil, err
-	}
-
 	// Migrate the question schema
 	err = db.AutoMigrate(&schemas.Question{})
 	if err != nil {
 		logger.Errorf("postgres automigration error - question %v", err)
-		return nil, err
-	}
-
-	// Migrate the questionAnswer schema
-	err = db.AutoMigrate(&schemas.QuestionAnswer{})
-	if err != nil {
-		logger.Errorf("postgres automigration error - questionAnswer %v", err)
-		return nil, err
-	}
-
-	// Migrate the letter userQuestion
-	err = db.AutoMigrate(&schemas.UserQuestion{})
-	if err != nil {
-		logger.Errorf("postgres automigration error - userQuestion %v", err)
 		return nil, err
 	}
 
