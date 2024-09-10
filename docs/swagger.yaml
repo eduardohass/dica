@@ -1,8 +1,20 @@
 definitions:
   answer.CreateAnswerRequest:
     properties:
-      answer:
-        type: string
+      idanswer:
+        type: integer
+      idquestion:
+        type: integer
+      iduser:
+        type: integer
+      optiona:
+        type: boolean
+      optionc:
+        type: boolean
+      optiond:
+        type: boolean
+      optioni:
+        type: boolean
     type: object
   answer.CreateAnswerResponse:
     properties:
@@ -43,8 +55,20 @@ definitions:
     type: object
   answer.UpdateAnswerRequest:
     properties:
-      answer:
-        type: string
+      idanswer:
+        type: integer
+      idquestion:
+        type: integer
+      iduser:
+        type: integer
+      optiona:
+        type: boolean
+      optionc:
+        type: boolean
+      optiond:
+        type: boolean
+      optioni:
+        type: boolean
     type: object
   answer.UpdateAnswerResponse:
     properties:
@@ -64,8 +88,6 @@ definitions:
       optiond:
         type: string
       optioni:
-        type: string
-      question:
         type: string
     type: object
   question.CreateQuestionResponse:
@@ -117,8 +139,6 @@ definitions:
         type: string
       optioni:
         type: string
-      question:
-        type: string
     type: object
   question.UpdateQuestionResponse:
     properties:
@@ -129,14 +149,24 @@ definitions:
     type: object
   schemas.AnswerResponse:
     properties:
-      answer:
-        type: string
       createdAt:
         type: string
       deletedAt:
         type: string
-      id:
+      idanswer:
         type: integer
+      idquestion:
+        type: integer
+      iduser:
+        type: integer
+      optiona:
+        type: boolean
+      optionc:
+        type: boolean
+      optiond:
+        type: boolean
+      optioni:
+        type: boolean
       updatedAt:
         type: string
     type: object
@@ -170,7 +200,7 @@ paths:
       parameters:
       - description: Answer identification
         in: query
-        name: id
+        name: idAnswer
         required: true
         type: string
       produces:
@@ -198,7 +228,7 @@ paths:
       parameters:
       - description: Answer identification
         in: query
-        name: id
+        name: idAnswer
         required: true
         type: string
       produces:
@@ -255,7 +285,7 @@ paths:
       parameters:
       - description: Answer Identification
         in: query
-        name: id
+        name: idAnswer
         required: true
         type: string
       - description: Answer data to Update

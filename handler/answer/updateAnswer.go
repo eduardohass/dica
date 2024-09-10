@@ -15,7 +15,7 @@ import (
 // @Tags Answers
 // @Accept json
 // @Produce json
-// @Param id query string true "Answer Identification"
+// @Param idAnswer query string true "Answer Identification"
 // @Param answer body UpdateAnswerRequest true "Answer data to Update"
 // @Success 200 {object} UpdateAnswerResponse
 // @Failure 400 {object} ErrorResponse
@@ -31,24 +31,35 @@ func UpdateAnswerHandler(ctx *gin.Context) {
 		return
 	}
 
-	id := ctx.Query("id")
-	if id == "" {
-		fmt.Println("DBG==ID é vazio")
-		sendError(ctx, http.StatusBadRequest, errParamIsRequired("id", "queryParameter").Error())
+	idAnswer := ctx.Query("idAnswer")
+	if idAnswer == "" {
+		fmt.Println("DBG==idAnswer é vazio")
+		sendError(ctx, http.StatusBadRequest, errParamIsRequired("idAnswer", "queryParameter").Error())
 		return
 	}
 
 	answer := schemas.Answer{}
 
-	if err := db.First(&answer, id).Error; err != nil {
+	if err := db.First(&answer, idAnswer).Error; err != nil {
 		fmt.Println("DBG==Erro ao recuperar a answer")
 		sendError(ctx, http.StatusNotFound, "answer not found")
 		return
 	}
 	// Update answer
-	if request.Answer != "" {
-		answer.Answer = request.Answer
+	if request.IdAnswer != 0 {
+		answer.IdAnswer = request.IdAnswer
 	}
+	if request.IdUser != 0 {
+		answer.IdUser = request.IdUser
+	}
+	if request.IdQuestion != 0 {
+		answer.IdQuestion = request.IdQuestion
+	}
+	answer.OptionD = request.OptionD
+	answer.OptionI = request.OptionI
+	answer.OptionC = request.OptionC
+	answer.OptionA = request.OptionA
+
 	// Save answer
 	if err := db.Save(&answer).Error; err != nil {
 		logger.Errorf("error updating answer: %v", err.Error())

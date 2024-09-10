@@ -32,7 +32,7 @@ const docTemplate = `{
                     {
                         "type": "string",
                         "description": "Answer identification",
-                        "name": "id",
+                        "name": "idAnswer",
                         "in": "query",
                         "required": true
                     }
@@ -74,7 +74,7 @@ const docTemplate = `{
                     {
                         "type": "string",
                         "description": "Answer Identification",
-                        "name": "id",
+                        "name": "idAnswer",
                         "in": "query",
                         "required": true
                     },
@@ -175,7 +175,7 @@ const docTemplate = `{
                     {
                         "type": "string",
                         "description": "Answer identification",
-                        "name": "id",
+                        "name": "idAnswer",
                         "in": "query",
                         "required": true
                     }
@@ -452,8 +452,26 @@ const docTemplate = `{
         "answer.CreateAnswerRequest": {
             "type": "object",
             "properties": {
-                "answer": {
-                    "type": "string"
+                "idanswer": {
+                    "type": "integer"
+                },
+                "idquestion": {
+                    "type": "integer"
+                },
+                "iduser": {
+                    "type": "integer"
+                },
+                "optiona": {
+                    "type": "boolean"
+                },
+                "optionc": {
+                    "type": "boolean"
+                },
+                "optiond": {
+                    "type": "boolean"
+                },
+                "optioni": {
+                    "type": "boolean"
                 }
             }
         },
@@ -518,8 +536,26 @@ const docTemplate = `{
         "answer.UpdateAnswerRequest": {
             "type": "object",
             "properties": {
-                "answer": {
-                    "type": "string"
+                "idanswer": {
+                    "type": "integer"
+                },
+                "idquestion": {
+                    "type": "integer"
+                },
+                "iduser": {
+                    "type": "integer"
+                },
+                "optiona": {
+                    "type": "boolean"
+                },
+                "optionc": {
+                    "type": "boolean"
+                },
+                "optiond": {
+                    "type": "boolean"
+                },
+                "optioni": {
+                    "type": "boolean"
                 }
             }
         },
@@ -550,9 +586,6 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "optioni": {
-                    "type": "string"
-                },
-                "question": {
                     "type": "string"
                 }
             }
@@ -632,9 +665,6 @@ const docTemplate = `{
                 },
                 "optioni": {
                     "type": "string"
-                },
-                "question": {
-                    "type": "string"
                 }
             }
         },
@@ -652,17 +682,32 @@ const docTemplate = `{
         "schemas.AnswerResponse": {
             "type": "object",
             "properties": {
-                "answer": {
-                    "type": "string"
-                },
                 "createdAt": {
                     "type": "string"
                 },
                 "deletedAt": {
                     "type": "string"
                 },
-                "id": {
+                "idanswer": {
                     "type": "integer"
+                },
+                "idquestion": {
+                    "type": "integer"
+                },
+                "iduser": {
+                    "type": "integer"
+                },
+                "optiona": {
+                    "type": "boolean"
+                },
+                "optionc": {
+                    "type": "boolean"
+                },
+                "optiond": {
+                    "type": "boolean"
+                },
+                "optioni": {
+                    "type": "boolean"
                 },
                 "updatedAt": {
                     "type": "string"

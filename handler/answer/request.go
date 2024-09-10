@@ -10,13 +10,24 @@ func errParamIsRequired(name, typ string) error {
 
 // Create answer
 type CreateAnswerRequest struct {
-	Answer string `json:"answer"`
+	IdAnswer   int  `json:"idanswer"`
+	IdUser     int  `json:"iduser"`
+	IdQuestion int  `json:"idquestion"`
+	OptionD    bool `json:"optiond"`
+	OptionI    bool `json:"optioni"`
+	OptionC    bool `json:"optionc"`
+	OptionA    bool `json:"optiona"`
 }
 
 func (r *CreateAnswerRequest) Validate() error {
-	fmt.Println(r.Answer)
-	if r.Answer == "" {
-		return errParamIsRequired("answer", "string")
+	if r.IdAnswer == 0 {
+		return errParamIsRequired("idanswer", "int")
+	}
+	if r.IdUser == 0 {
+		return errParamIsRequired("iduser", "int")
+	}
+	if r.IdQuestion == 0 {
+		return errParamIsRequired("idquestion", "int")
 	}
 	fmt.Println("DBG==passou pelas validações sem erro")
 	return nil
@@ -24,13 +35,19 @@ func (r *CreateAnswerRequest) Validate() error {
 
 // Update answer
 type UpdateAnswerRequest struct {
-	Answer string `json:"answer"`
+	IdAnswer   int  `json:"idanswer"`
+	IdUser     int  `json:"iduser"`
+	IdQuestion int  `json:"idquestion"`
+	OptionD    bool `json:"optiond"`
+	OptionI    bool `json:"optioni"`
+	OptionC    bool `json:"optionc"`
+	OptionA    bool `json:"optiona"`
 }
 
 func (r *UpdateAnswerRequest) Validate() error {
 	// if any field is provided, validation is truthy
-	if r.Answer != "" {
-		fmt.Println("DBG==Answer = vazio")
+	if r.IdAnswer == 0 && r.IdUser == 0 && r.IdQuestion == 0 {
+		fmt.Println("DBG==tudo vazio")
 		return nil
 	}
 	// if none of the fields were provided, return false

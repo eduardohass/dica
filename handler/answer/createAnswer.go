@@ -26,7 +26,6 @@ func CreateAnswerHandler(ctx *gin.Context) {
 	ctx.BindJSON(&request)
 
 	fmt.Println("CreateAnswer - Antes da validação")
-	fmt.Println("DBG==Answer " + request.Answer)
 
 	if err := request.Validate(); err != nil {
 		fmt.Println("CreateAnswer - Caiu no erro")
@@ -36,13 +35,17 @@ func CreateAnswerHandler(ctx *gin.Context) {
 	}
 
 	fmt.Println("CreateAnswer - Depois da validação")
-	fmt.Println("DBG==Answer " + request.Answer)
 
 	answer := schemas.Answer{
-		Answer: request.Answer,
+		IdAnswer:   request.IdAnswer,
+		IdUser:     request.IdUser,
+		IdQuestion: request.IdQuestion,
+		OptionD:    request.OptionD,
+		OptionI:    request.OptionI,
+		OptionC:    request.OptionC,
+		OptionA:    request.OptionA,
 	}
 	fmt.Println("DBG==depois de popular a instancia de answer")
-	fmt.Println("DBG== " + answer.Answer)
 
 	if err := db.Create(&answer).Error; err != nil {
 		fmt.Println("DBG==entrou no metodo de erro quando foi salvar no DB")
