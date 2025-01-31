@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: dica-deployment
+  namespace: dica
   labels:
     app: dica
 spec:
@@ -31,6 +32,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: dica-service
+  namespace: dica
 spec:
   type: ClusterIP  # Tipo de serviço (mude para LoadBalancer se precisar de IP público)
   selector:
