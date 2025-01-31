@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dica-deployment
+  labels:
+    app: dica
+spec:
+  replicas: 1  # Número de cópias do seu container
+  selector:
+    matchLabels:
+      app: dica
+  template:
+    metadata:
+      labels:
+        app: dica
+    spec:
+      containers:
+      - name: dica
+        image: docker pull eduhass/dica:0.0.12
+        ports:
+        - containerPort: 8080  # Porta que seu container usa (ajuste conforme necessário)
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dica-service
+spec:
+  type: ClusterIP  # Tipo de serviço (mude para LoadBalancer se precisar de IP público)
+  selector:
+    app: dica  # Deve combinar com o label do Deployment
+  ports:
+  - name: http
+    port: 8080        # Porta do serviço
+    targetPort: 8080  # Porta do container (igual ao containerPort do Deployment)
